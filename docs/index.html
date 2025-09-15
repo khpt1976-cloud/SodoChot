@@ -136,98 +136,98 @@
                     <div class="nav-group">
                         <div class="nav-group-title">Sơ đồ từng thành phần</div>
                         
-                        <div class="nav-item">
+                        <div class="nav-item" data-target="cart-app">
                             <div class="nav-link">
                                 <i class="fas fa-shopping-cart nav-icon"></i>
                                 <span>Ứng dụng Giỏ hàng</span>
                             </div>
                         </div>
                         
-                        <div class="nav-item">
+                        <div class="nav-item" data-target="product-app">
                             <div class="nav-link">
                                 <i class="fas fa-box nav-icon"></i>
                                 <span>Ứng dụng Sản phẩm</span>
                             </div>
                         </div>
                         
-                        <div class="nav-item">
+                        <div class="nav-item" data-target="news-app">
                             <div class="nav-link">
                                 <i class="fas fa-newspaper nav-icon"></i>
                                 <span>Ứng dụng Tin tức</span>
                             </div>
                         </div>
                         
-                        <div class="nav-item">
+                        <div class="nav-item" data-target="design-calc-app">
                             <div class="nav-link">
                                 <i class="fas fa-calculator nav-icon"></i>
                                 <span>Ứng dụng Tính toán Thiết kế</span>
                             </div>
                         </div>
                         
-                        <div class="nav-item">
+                        <div class="nav-item" data-target="football-app">
                             <div class="nav-link">
                                 <i class="fas fa-futbol nav-icon"></i>
                                 <span>Ứng dụng Bóng đá</span>
                             </div>
                         </div>
                         
-                        <div class="nav-item">
+                        <div class="nav-item" data-target="comm-log-app">
                             <div class="nav-link">
                                 <i class="fas fa-clipboard-list nav-icon"></i>
                                 <span>Ứng dụng Nhật ký thi công</span>
                             </div>
                         </div>
                         
-                        <div class="nav-item">
+                        <div class="nav-item" data-target="chatbot-app">
                             <div class="nav-link">
                                 <i class="fas fa-robot nav-icon"></i>
                                 <span>Ứng dụng Chatbot</span>
                             </div>
                         </div>
                         
-                        <div class="nav-item">
+                        <div class="nav-item" data-target="payment-app">
                             <div class="nav-link">
                                 <i class="fas fa-credit-card nav-icon"></i>
                                 <span>Ứng dụng Thanh toán</span>
                             </div>
                         </div>
                         
-                        <div class="nav-item">
+                        <div class="nav-item" data-target="user-app">
                             <div class="nav-link">
                                 <i class="fas fa-users nav-icon"></i>
                                 <span>Ứng dụng Người dùng</span>
                             </div>
                         </div>
                         
-                        <div class="nav-item">
+                        <div class="nav-item" data-target="admin-app">
                             <div class="nav-link">
                                 <i class="fas fa-user-shield nav-icon"></i>
                                 <span>Ứng dụng Quản trị</span>
                             </div>
                         </div>
                         
-                        <div class="nav-item">
+                        <div class="nav-item" data-target="agent-mgmt-app">
                             <div class="nav-link">
                                 <i class="fas fa-user-tie nav-icon"></i>
                                 <span>Ứng dụng Quản lý Đại lý</span>
                             </div>
                         </div>
                         
-                        <div class="nav-item">
+                        <div class="nav-item" data-target="agent-policy-app">
                             <div class="nav-link">
                                 <i class="fas fa-file-contract nav-icon"></i>
                                 <span>Ứng dụng Chính sách Đại lý</span>
                             </div>
                         </div>
                         
-                        <div class="nav-item">
+                        <div class="nav-item" data-target="shell-config-app">
                             <div class="nav-link">
                                 <i class="fas fa-terminal nav-icon"></i>
                                 <span>Ứng dụng Cấu hình Shell</span>
                             </div>
                         </div>
                         
-                        <div class="nav-item">
+                        <div class="nav-item" data-target="shell-admin-app">
                             <div class="nav-link">
                                 <i class="fas fa-cogs nav-icon"></i>
                                 <span>Ứng dụng Quản trị Cấu hình Shell</span>
@@ -317,6 +317,812 @@
                                     </li>
                                 </ul>
                             </section>
+                        </div>
+                    </div>
+
+                    <!-- Application Content Sections -->
+                    <div id="cart-app" class="content-section" style="display: none;">
+                        <div class="content-header">
+                            <h1>Ứng dụng Giỏ hàng (Cart Application)</h1>
+                            <p class="content-description">Ứng dụng Giỏ hàng bao gồm `Cart Service` (Backend), `Cart Service Frontend` (Giao diện người dùng) và `Cart Service Admin` (Giao diện quản trị), cùng với `Cart DB`.</p>
+                        </div>
+                        <div class="diagram-container">
+                            <h3>Sơ đồ Kiến trúc</h3>
+                            <pre class="diagram-code"><code>/project-root
+├── services/
+│   └── cart-service/                               # Mã nguồn của Dịch vụ Giỏ hàng
+│       ├── src/                                    # Mã nguồn chính của dịch vụ
+│       │   ├── api/                                # Định nghĩa các API endpoints
+│       │   │   ├── cart_controller.py
+│       │   │   └── health_check_controller.py
+│       │   ├── core/                               # Logic nghiệp vụ cốt lõi
+│       │   │   └── cart_service.py
+│       │   ├── models/                             # Định nghĩa các mô hình dữ liệu
+│       │   │   ├── cart_item.py
+│       │   │   └── user_cart.py
+│       │   ├── repositories/                       # Lớp tương tác với Cart DB
+│       │   │   └── cart_repository.py
+│       │   ├── utils/                              # Các hàm tiện ích chung
+│       │   │   └── error_handlers.py
+│       │   ├── config.py                           # Cấu hình của dịch vụ
+│       │   └── main.py                             # Điểm khởi đầu của ứng dụng
+│       ├── tests/                                  # Các bài kiểm thử
+│       ├── Dockerfile                              # Định nghĩa Docker image
+│       ├── requirements.txt                        # Thư viện Python
+│       ├── .env.example                            # File mẫu biến môi trường
+│       └── README.md
+│
+├── frontend/
+│   ├── cart-service-frontend/                      # Giao diện người dùng Giỏ hàng
+│   │   ├── public/
+│   │   │   └── index.html
+│   │   ├── src/
+│   │   │   ├── assets/
+│   │   │   ├── components/
+│   │   │   ├── pages/                              # Trang giỏ hàng, trang thanh toán
+│   │   │   │   └── CartPage.js
+│   │   │   ├── services/                           # Tương tác với Cart Service API
+│   │   │   │   └── cart.api.js
+│   │   │   ├── store/
+│   │   │   └── App.js
+│   │   ├── package.json
+│   │   └── README.md
+│   └── cart-service-admin/                         # Giao diện quản trị Giỏ hàng
+│       ├── public/
+│       │   └── index.html
+│       ├── src/
+│       │   ├── assets/
+│       │   ├── components/
+│       │   ├── pages/                              # Trang quản lý đơn hàng, sản phẩm trong giỏ
+│       │   │   └── OrderManagementPage.js
+│       │   ├── services/                           # Tương tác với Cart Service API (Admin)
+│       │   │   └── admin.cart.api.js
+│       │   ├── store/
+│       │   └── App.js
+│       ├── package.json
+│       └── README.md
+│
+└── # Database: Cart DB (được quản lý bởi cart-service)</code></pre>
+                        </div>
+                    </div>
+                    <div id="product-app" class="content-section" style="display: none;">
+                        <div class="content-header">
+                            <h1>Ứng dụng Sản phẩm (Product Application)</h1>
+                            <p class="content-description">Ứng dụng Sản phẩm bao gồm `Product Service` (Backend), `Product Service Frontend` và `Product Service Admin`, cùng với `Product DB`.</p>
+                        </div>
+                        <div class="diagram-container">
+                            <h3>Sơ đồ Kiến trúc</h3>
+                            <pre class="diagram-code"><code>/project-root
+├── services/
+│   └── product-service/                            # Mã nguồn của Dịch vụ Sản phẩm
+│       ├── src/
+│       │   ├── api/
+│       │   │   ├── product_controller.js
+│       │   │   └── health_check_controller.js
+│       │   ├── core/
+│       │   │   └── product_service.js
+│       │   ├── models/
+│       │   │   └── product.js
+│       │   ├── repositories/                       # Lớp tương tác với Product DB
+│       │   │   └── product_repository.js
+│       │   ├── config.js
+│       │   └── app.js
+│       ├── tests/
+│       ├── Dockerfile
+│       ├── package.json
+│       ├── .env.example
+│       └── README.md
+│
+├── frontend/
+│   ├── product-service-frontend/                   # Giao diện người dùng Sản phẩm
+│   │   ├── public/
+│   │   │   └── index.html
+│   │   ├── src/
+│   │   │   ├── assets/
+│   │   │   ├── components/
+│   │   │   ├── pages/                              # Trang danh sách sản phẩm, chi tiết sản phẩm
+│   │   │   │   └── ProductListPage.js
+│   │   │   ├── services/                           # Tương tác với Product Service API
+│   │   │   │   └── product.api.js
+│   │   │   └── App.js
+│   │   ├── package.json
+│   │   └── README.md
+│   └── product-service-admin/                      # Giao diện quản trị Sản phẩm
+│       ├── public/
+│       │   └── index.html
+│       ├── src/
+│       │   ├── assets/
+│       │   ├── components/
+│       │   ├── pages/                              # Trang thêm/sửa/xóa sản phẩm
+│       │   │   └── ProductEditorPage.js
+│       │   ├── services/                           # Tương tác với Product Service API (Admin)
+│       │   │   └── admin.product.api.js
+│       │   └── App.js
+│       ├── package.json
+│       └── README.md
+│
+└── # Database: Product DB (được quản lý bởi product-service)</code></pre>
+                        </div>
+                    </div>
+                    <div id="news-app" class="content-section" style="display: none;">
+                        <div class="content-header">
+                            <h1>Ứng dụng Tin tức (News Application)</h1>
+                            <p class="content-description">Ứng dụng Tin tức bao gồm `News Service` (Backend), `News Service Frontend` và `News Service Admin`, cùng với `News DB`.</p>
+                        </div>
+                        <div class="diagram-container">
+                            <h3>Sơ đồ Kiến trúc</h3>
+                            <pre class="diagram-code"><code>/project-root
+├── services/
+│   └── news-service/                               # Mã nguồn của Dịch vụ Tin tức
+│       ├── src/
+│       │   ├── handlers/
+│       │   │   ├── news_handler.go
+│       │   │   └── health_handler.go
+│       │   ├── domain/
+│       │   │   └── news.go
+│       │   ├── storage/                            # Lớp tương tác với News DB
+│       │   │   └── news_repository.go
+│       │   ├── config.go
+│       │   └── main.go
+│       ├── tests/
+│       ├── Dockerfile
+│       ├── go.mod
+│       ├── go.sum
+│       ├── .env.example
+│       └── README.md
+│
+├── frontend/
+│   ├── news-service-frontend/                      # Giao diện người dùng Tin tức
+│   │   ├── public/
+│   │   │   └── index.html
+│   │   ├── src/
+│   │   │   ├── assets/
+│   │   │   ├── components/
+│   │   │   ├── pages/                              # Trang danh sách tin tức, chi tiết tin tức
+│   │   │   │   └── NewsListPage.js
+│   │   │   ├── services/                           # Tương tác với News Service API
+│   │   │   │   └── news.api.js
+│   │   │   └── App.js
+│   │   ├── package.json
+│   │   └── README.md
+│   └── news-service-admin/                         # Giao diện quản trị Tin tức
+│       ├── public/
+│       │   └── index.html
+│       ├── src/
+│       │   ├── assets/
+│       │   ├── components/
+│       │   ├── pages/                              # Trang thêm/sửa/xóa tin tức
+│       │   │   └── NewsEditorPage.js
+│       │   ├── services/                           # Tương tác với News Service API (Admin)
+│       │   │   └── admin.news.api.js
+│       │   └── App.js
+│       ├── package.json
+│       └── README.md
+│
+└── # Database: News DB (được quản lý bởi news-service)</code></pre>
+                        </div>
+                    </div>
+                    <div id="design-calc-app" class="content-section" style="display: none;">
+                        <div class="content-header">
+                            <h1>Ứng dụng Tính toán Thiết kế (Design Calculation Application)</h1>
+                            <p class="content-description">Ứng dụng này bao gồm `Design Calculation Service` (Backend), `Design Calculation Frontend` và `Design Calculation Admin`, cùng với `Design Calculation DB`.</p>
+                        </div>
+                        <div class="diagram-container">
+                            <h3>Sơ đồ Kiến trúc</h3>
+                            <pre class="diagram-code"><code>/project-root
+├── services/
+│   └── design-calculation-service/                 # Mã nguồn của Dịch vụ Tính toán Thiết kế
+│       ├── src/
+│       │   ├── api/
+│       │   │   ├── calculation_controller.py
+│       │   │   └── health_check_controller.py
+│       │   ├── core/
+│       │   │   └── calculation_engine.py           # Logic tính toán chính
+│       │   ├── models/
+│       │   │   └── design_params.py
+│       │   ├── repositories/                       # Lớp tương tác với Design Calculation DB
+│       │   │   └── calculation_repository.py
+│       │   ├── config.py
+│       │   └── main.py
+│       ├── tests/
+│       ├── Dockerfile
+│       ├── requirements.txt
+│       ├── .env.example
+│       └── README.md
+│
+├── frontend/
+│   ├── design-calculation-frontend/                # Giao diện người dùng Tính toán Thiết kế
+│   │   ├── public/
+│   │   │   └── index.html
+│   │   ├── src/
+│   │   │   ├── assets/
+│   │   │   ├── components/
+│   │   │   ├── pages/                              # Trang nhập thông số, hiển thị kết quả
+│   │   │   │   └── CalculationPage.js
+│   │   │   ├── services/                           # Tương tác với Design Calculation Service API
+│   │   │   │   └── calculation.api.js
+│   │   │   └── App.js
+│   │   ├── package.json
+│   │   └── README.md
+│   └── design-calculation-admin/                   # Giao diện quản trị Tính toán Thiết kế
+│       ├── public/
+│       │   └── index.html
+│       ├── src/
+│       │   ├── assets/
+│       │   ├── components/
+│       │   ├── pages/                              # Trang quản lý công thức, tham số
+│       │   │   └── FormulaManagementPage.js
+│       │   ├── services/                           # Tương tác với Design Calculation Service API (Admin)
+│       │   │   └── admin.calculation.api.js
+│       │   └── App.js
+│       ├── package.json
+│       └── README.md
+│
+└── # Database: Design Calculation DB (được quản lý bởi design-calculation-service)</code></pre>
+                        </div>
+                    </div>
+                    <div id="football-app" class="content-section" style="display: none;">
+                        <div class="content-header">
+                            <h1>Ứng dụng Bóng đá (Football Application)</h1>
+                            <p class="content-description">Ứng dụng này bao gồm `Football Service` (Backend), `Football Service Frontend` và `Football Service Admin`, cùng với `Football DB`.</p>
+                        </div>
+                        <div class="diagram-container">
+                            <h3>Sơ đồ Kiến trúc</h3>
+                            <pre class="diagram-code"><code>/project-root
+├── services/
+│   └── football-service/                           # Mã nguồn của Dịch vụ Bóng đá
+│       ├── src/
+│       │   ├── api/
+│       │   │   ├── match_controller.py
+│       │   │   └── health_check_controller.py
+│       │   ├── core/
+│       │   │   └── match_data_processor.py
+│       │   ├── models/
+│       │   │   └── match.py
+│       │   ├── repositories/                       # Lớp tương tác với Football DB
+│       │   │   └── match_repository.py
+│       │   ├── config.py
+│       │   └── main.py
+│       ├── tests/
+│       ├── Dockerfile
+│       ├── requirements.txt
+│       ├── .env.example
+│       └── README.md
+│
+├── frontend/
+│   ├── football-service-frontend/                  # Giao diện người dùng Bóng đá
+│   │   ├── public/
+│   │   │   └── index.html
+│   │   ├── src/
+│   │   │   ├── assets/
+│   │   │   ├── components/
+│   │   │   ├── pages/                              # Trang lịch thi đấu, kết quả, bảng xếp hạng
+│   │   │   │   └── MatchListPage.js
+│   │   │   ├── services/                           # Tương tác với Football Service API
+│   │   │   │   └── football.api.js
+│   │   │   └── App.js
+│   │   ├── package.json
+│   │   └── README.md
+│   └── football-service-admin/                     # Giao diện quản trị Bóng đá
+│       ├── public/
+│       │   └── index.html
+│       ├── src/
+│       │   ├── assets/
+│       │   ├── components/
+│       │   ├── pages/                              # Trang quản lý trận đấu, đội bóng, cầu thủ
+│       │   │   └── MatchManagementPage.js
+│       │   ├── services/                           # Tương tác với Football Service API (Admin)
+│       │   │   └── admin.football.api.js
+│       │   └── App.js
+│       ├── package.json
+│       └── README.md
+│
+└── # Database: Football DB (được quản lý bởi football-service)</code></pre>
+                        </div>
+                    </div>
+                    <div id="comm-log-app" class="content-section" style="display: none;">
+                        <div class="content-header">
+                            <h1>Ứng dụng Nhật ký thi công (Communication Log Application)</h1>
+                            <p class="content-description">Ứng dụng này bao gồm `Communication Log Service` (Backend), `Communication Log Frontend` và `Communication Log Admin`, cùng với `Communication Log DB`.</p>
+                        </div>
+                        <div class="diagram-container">
+                            <h3>Sơ đồ Kiến trúc</h3>
+                            <pre class="diagram-code"><code>/project-root
+├── services/
+│   └── communication-log-service/                  # Mã nguồn của Dịch vụ Nhật ký thi công
+│       ├── src/
+│       │   ├── api/
+│       │   │   ├── log_controller.py
+│       │   │   └── health_check_controller.py
+│       │   ├── core/
+│       │   │   └── log_manager.py
+│       │   ├── models/
+│       │   │   └── communication_log.py
+│       │   ├── repositories/                       # Lớp tương tác với Communication Log DB
+│       │   │   └── log_repository.py
+│       │   ├── config.py
+│       │   └── main.py
+│       ├── tests/
+│       ├── Dockerfile
+│       ├── requirements.txt
+│       ├── .env.example
+│       └── README.md
+│
+├── frontend/
+│   ├── communication-log-frontend/                 # Giao diện người dùng Nhật ký thi công
+│   │   ├── public/
+│   │   │   └── index.html
+│   │   ├── src/
+│   │   │   ├── assets/
+│   │   │   ├── components/
+│   │   │   ├── pages/                              # Trang xem/thêm nhật ký
+│   │   │   │   └── LogEntryPage.js
+│   │   │   ├── services/                           # Tương tác với Communication Log Service API
+│   │   │   │   └── log.api.js
+│   │   │   └── App.js
+│   │   ├── package.json
+│   │   └── README.md
+│   └── communication-log-admin/                    # Giao diện quản trị Nhật ký thi công
+│       ├── public/
+│       │   └── index.html
+│       ├── src/
+│       │   ├── assets/
+│       │   ├── components/
+│       │   ├── pages/                              # Trang quản lý, phê duyệt nhật ký
+│       │   │   └── LogManagementPage.js
+│       │   ├── services/                           # Tương tác với Communication Log Service API (Admin)
+│       │   │   └── admin.log.api.js
+│       │   └── App.js
+│       ├── package.json
+│       └── README.md
+│
+└── # Database: Communication Log DB (được quản lý bởi communication-log-service)</code></pre>
+                        </div>
+                    </div>
+                    <div id="chatbot-app" class="content-section" style="display: none;">
+                        <div class="content-header">
+                            <h1>Ứng dụng Chatbot (Chatbot Application)</h1>
+                            <p class="content-description">Ứng dụng này bao gồm `Chatbot Service` (Backend), `Chatbot Service Frontend` và `Chatbot Service Admin`, cùng với `Chatbot DB`.</p>
+                        </div>
+                        <div class="diagram-container">
+                            <h3>Sơ đồ Kiến trúc</h3>
+                            <pre class="diagram-code"><code>/project-root
+├── services/
+│   └── chatbot-service/                            # Mã nguồn của Dịch vụ Chatbot
+│       ├── src/
+│       │   ├── api/
+│       │   │   ├── chat_controller.py
+│       │   │   └── health_check_controller.py
+│       │   ├── core/
+│       │   │   └── chatbot_engine.py
+│       │   ├── models/
+│       │   │   └── conversation.py
+│       │   ├── repositories/                       # Lớp tương tác với Chatbot DB
+│       │   │   └── conversation_repository.py
+│       │   ├── config.py
+│       │   └── main.py
+│       ├── tests/
+│       ├── Dockerfile
+│       ├── requirements.txt
+│       ├── .env.example
+│       └── README.md
+│
+├── frontend/
+│   ├── chatbot-service-frontend/                   # Giao diện người dùng Chatbot
+│   │   ├── public/
+│   │   │   └── index.html
+│   │   ├── src/
+│   │   │   ├── assets/
+│   │   │   ├── components/
+│   │   │   ├── pages/                              # Trang chat, lịch sử hội thoại
+│   │   │   │   └── ChatPage.js
+│   │   │   ├── services/                           # Tương tác với Chatbot Service API
+│   │   │   │   └── chatbot.api.js
+│   │   │   └── App.js
+│   │   ├── package.json
+│   │   └── README.md
+│   └── chatbot-service-admin/                      # Giao diện quản trị Chatbot
+│       ├── public/
+│       │   └── index.html
+│       ├── src/
+│       │   ├── assets/
+│       │   ├── components/
+│       │   ├── pages/                              # Trang quản lý bot, training data
+│       │   │   └── BotManagementPage.js
+│       │   ├── services/                           # Tương tác với Chatbot Service API (Admin)
+│       │   │   └── admin.chatbot.api.js
+│       │   └── App.js
+│       ├── package.json
+│       └── README.md
+│
+└── # Database: Chatbot DB (được quản lý bởi chatbot-service)</code></pre>
+                        </div>
+                    </div>
+                    <div id="payment-app" class="content-section" style="display: none;">
+                        <div class="content-header">
+                            <h1>Ứng dụng Thanh toán (Payment Application)</h1>
+                            <p class="content-description">Ứng dụng này bao gồm `Payment Service` (Backend), `Payment Service Frontend` và `Payment Service Admin`, cùng với `Payment DB`.</p>
+                        </div>
+                        <div class="diagram-container">
+                            <h3>Sơ đồ Kiến trúc</h3>
+                            <pre class="diagram-code"><code>/project-root
+├── services/
+│   └── payment-service/                            # Mã nguồn của Dịch vụ Thanh toán
+│       ├── src/
+│       │   ├── api/
+│       │   │   ├── payment_controller.py
+│       │   │   └── health_check_controller.py
+│       │   ├── core/
+│       │   │   └── payment_processor.py
+│       │   ├── models/
+│       │   │   └── transaction.py
+│       │   ├── repositories/                       # Lớp tương tác với Payment DB
+│       │   │   └── payment_repository.py
+│       │   ├── config.py
+│       │   └── main.py
+│       ├── tests/
+│       ├── Dockerfile
+│       ├── requirements.txt
+│       ├── .env.example
+│       └── README.md
+│
+├── frontend/
+│   ├── payment-service-frontend/                   # Giao diện người dùng Thanh toán
+│   │   ├── public/
+│   │   │   └── index.html
+│   │   ├── src/
+│   │   │   ├── assets/
+│   │   │   ├── components/
+│   │   │   ├── pages/                              # Trang thanh toán, lịch sử giao dịch
+│   │   │   │   └── PaymentPage.js
+│   │   │   ├── services/                           # Tương tác với Payment Service API
+│   │   │   │   └── payment.api.js
+│   │   │   └── App.js
+│   │   ├── package.json
+│   │   └── README.md
+│   └── payment-service-admin/                      # Giao diện quản trị Thanh toán
+│       ├── public/
+│       │   └── index.html
+│       ├── src/
+│       │   ├── assets/
+│       │   ├── components/
+│       │   ├── pages/                              # Trang quản lý giao dịch, hoàn tiền
+│       │   │   └── TransactionManagementPage.js
+│       │   ├── services/                           # Tương tác với Payment Service API (Admin)
+│       │   │   └── admin.payment.api.js
+│       │   └── App.js
+│       ├── package.json
+│       └── README.md
+│
+└── # Database: Payment DB (được quản lý bởi payment-service)</code></pre>
+                        </div>
+                    </div>
+                    <div id="user-app" class="content-section" style="display: none;">
+                        <div class="content-header">
+                            <h1>Ứng dụng Người dùng (User Application)</h1>
+                            <p class="content-description">Ứng dụng này bao gồm `User Service` (Backend), `User Service Frontend` và `User Service Admin`, cùng với `User DB`.</p>
+                        </div>
+                        <div class="diagram-container">
+                            <h3>Sơ đồ Kiến trúc</h3>
+                            <pre class="diagram-code"><code>/project-root
+├── services/
+│   └── user-service/                               # Mã nguồn của Dịch vụ Người dùng
+│       ├── src/
+│       │   ├── api/
+│       │   │   ├── user_controller.py
+│       │   │   └── health_check_controller.py
+│       │   ├── core/
+│       │   │   └── user_manager.py
+│       │   ├── models/
+│       │   │   └── user.py
+│       │   ├── repositories/                       # Lớp tương tác với User DB
+│       │   │   └── user_repository.py
+│       │   ├── config.py
+│       │   └── main.py
+│       ├── tests/
+│       ├── Dockerfile
+│       ├── requirements.txt
+│       ├── .env.example
+│       └── README.md
+│
+├── frontend/
+│   ├── user-service-frontend/                      # Giao diện người dùng Người dùng
+│   │   ├── public/
+│   │   │   └── index.html
+│   │   ├── src/
+│   │   │   ├── assets/
+│   │   │   ├── components/
+│   │   │   ├── pages/                              # Trang đăng ký, đăng nhập, hồ sơ cá nhân
+│   │   │   │   └── ProfilePage.js
+│   │   │   ├── services/                           # Tương tác với User Service API
+│   │   │   │   └── user.api.js
+│   │   │   └── App.js
+│   │   ├── package.json
+│   │   └── README.md
+│   └── user-service-admin/                         # Giao diện quản trị Người dùng
+│       ├── public/
+│       │   └── index.html
+│       ├── src/
+│       │   ├── assets/
+│       │   ├── components/
+│       │   ├── pages/                              # Trang quản lý người dùng, phân quyền
+│       │   │   └── UserManagementPage.js
+│       │   ├── services/                           # Tương tác với User Service API (Admin)
+│       │   │   └── admin.user.api.js
+│       │   └── App.js
+│       ├── package.json
+│       └── README.md
+│
+└── # Database: User DB (được quản lý bởi user-service)</code></pre>
+                        </div>
+                    </div>
+                    <div id="admin-app" class="content-section" style="display: none;">
+                        <div class="content-header">
+                            <h1>Ứng dụng Quản trị (Admin Application)</h1>
+                            <p class="content-description">Ứng dụng này bao gồm `Admin Service` (Backend), `Admin Service Frontend` và `Admin Service Admin`, cùng với `Admin DB`.</p>
+                        </div>
+                        <div class="diagram-container">
+                            <h3>Sơ đồ Kiến trúc</h3>
+                            <pre class="diagram-code"><code>/project-root
+├── services/
+│   └── admin-service/                              # Mã nguồn của Dịch vụ Quản trị
+│       ├── src/
+│       │   ├── api/
+│       │   │   ├── dashboard_controller.js
+│       │   │   └── health_check_controller.js
+│       │   ├── core/
+│       │   │   └── system_monitor.js
+│       │   ├── models/
+│       │   │   └── audit_log.js
+│       │   ├── repositories/                       # Lớp tương tác với Admin DB
+│       │   │   └── audit_log_repository.js
+│       │   ├── config.js
+│       │   └── app.js
+│       ├── tests/
+│       ├── Dockerfile
+│       ├── package.json
+│       ├── .env.example
+│       └── README.md
+│
+├── frontend/
+│   ├── admin-service-frontend/                     # Giao diện người dùng Quản trị (Dashboard)
+│   │   ├── public/
+│   │   │   └── index.html
+│   │   ├── src/
+│   │   │   ├── assets/
+│   │   │   ├── components/
+│   │   │   ├── pages/                              # Trang dashboard, báo cáo hệ thống
+│   │   │   │   └── DashboardPage.js
+│   │   │   ├── services/                           # Tương tác với Admin Service API
+│   │   │   │   └── admin.api.js
+│   │   │   └── App.js
+│   │   ├── package.json
+│   │   └── README.md
+│   └── admin-service-admin/                        # Giao diện quản trị Admin (cấu hình hệ thống)
+│       ├── public/
+│       │   └── index.html
+│       ├── src/
+│       │   ├── assets/
+│       │   ├── components/
+│       │   ├── pages/                              # Trang cấu hình hệ thống, quản lý vai trò
+│       │   │   └── SystemConfigPage.js
+│       │   ├── services/                           # Tương tác với Admin Service API (Admin)
+│       │   │   └── super.admin.api.js
+│       │   └── App.js
+│       ├── package.json
+│       └── README.md
+│
+└── # Database: Admin DB (được quản lý bởi admin-service)</code></pre>
+                        </div>
+                    </div>
+                    <div id="agent-mgmt-app" class="content-section" style="display: none;">
+                        <div class="content-header">
+                            <h1>Ứng dụng Quản lý Đại lý (Agent Management Application)</h1>
+                            <p class="content-description">Ứng dụng này bao gồm `Agent Management Service` (Backend), `Agent Management Frontend` và `Agent Management Admin`, cùng với `Agent Management DB`.</p>
+                        </div>
+                        <div class="diagram-container">
+                            <h3>Sơ đồ Kiến trúc</h3>
+                            <pre class="diagram-code"><code>/project-root
+├── services/
+│   └── agent-management-service/                   # Mã nguồn của Dịch vụ Quản lý Đại lý
+│       ├── src/
+│       │   ├── api/
+│       │   │   ├── agent_controller.py
+│       │   │   └── health_check_controller.py
+│       │   ├── core/
+│       │   │   └── agent_manager.py
+│       │   ├── models/
+│       │   │   └── agent.py
+│       │   ├── repositories/                       # Lớp tương tác với Agent Management DB
+│       │   │   └── agent_repository.py
+│       │   ├── config.py
+│       │   └── main.py
+│       ├── tests/
+│       ├── Dockerfile
+│       ├── requirements.txt
+│       ├── .env.example
+│       └── README.md
+│
+├── frontend/
+│   ├── agent-management-frontend/                  # Giao diện người dùng Quản lý Đại lý
+│   │   ├── public/
+│   │   │   └── index.html
+│   │   ├── src/
+│   │   │   ├── assets/
+│   │   │   ├── components/
+│   │   │   ├── pages/                              # Trang danh sách đại lý, thông tin đại lý
+│   │   │   │   └── AgentListPage.js
+│   │   │   ├── services/                           # Tương tác với Agent Management Service API
+│   │   │   │   └── agent.api.js
+│   │   │   └── App.js
+│   │   ├── package.json
+│   │   └── README.md
+│   └── agent-management-admin/                     # Giao diện quản trị Quản lý Đại lý
+│       ├── public/
+│       │   └── index.html
+│       ├── src/
+│       │   ├── assets/
+│       │   ├── components/
+│       │   ├── pages/                              # Trang thêm/sửa/xóa đại lý, quản lý hoa hồng
+│       │   │   └── AgentEditorPage.js
+│       │   ├── services/                           # Tương tác với Agent Management Service API (Admin)
+│       │   │   └── admin.agent.api.js
+│       │   └── App.js
+│       ├── package.json
+│       └── README.md
+│
+└── # Database: Agent Management DB (được quản lý bởi agent-management-service)</code></pre>
+                        </div>
+                    </div>
+                    <div id="agent-policy-app" class="content-section" style="display: none;">
+                        <div class="content-header">
+                            <h1>Ứng dụng Chính sách Đại lý (Agent Policy Application)</h1>
+                            <p class="content-description">Ứng dụng này bao gồm `Agent Policy Service` (Backend), `Agent Policy Frontend` và `Agent Policy Admin`, cùng với `Agent Policy DB`.</p>
+                        </div>
+                        <div class="diagram-container">
+                            <h3>Sơ đồ Kiến trúc</h3>
+                            <pre class="diagram-code"><code>/project-root
+├── services/
+│   └── agent-policy-service/                       # Mã nguồn của Dịch vụ Chính sách Đại lý
+│       ├── src/
+│       │   ├── api/
+│       │   │   ├── policy_controller.py
+│       │   │   └── health_check_controller.py
+│       │   ├── core/
+│       │   │   └── policy_engine.py
+│       │   ├── models/
+│       │   │   └── policy.py
+│       │   ├── repositories/                       # Lớp tương tác với Agent Policy DB
+│       │   │   └── policy_repository.py
+│       │   ├── config.py
+│       │   └── main.py
+│       ├── tests/
+│       ├── Dockerfile
+│       ├── requirements.txt
+│       ├── .env.example
+│       └── README.md
+│
+├── frontend/
+│   ├── agent-policy-frontend/                      # Giao diện người dùng Chính sách Đại lý
+│   │   ├── public/
+│   │   │   └── index.html
+│   │   ├── src/
+│   │   │   ├── assets/
+│   │   │   ├── components/
+│   │   │   ├── pages/                              # Trang xem các chính sách áp dụng
+│   │   │   │   └── PolicyViewPage.js
+│   │   │   ├── services/                           # Tương tác với Agent Policy Service API
+│   │   │   │   └── policy.api.js
+│   │   │   └── App.js
+│   │   ├── package.json
+│   │   └── README.md
+│   └── agent-policy-admin/                         # Giao diện quản trị Chính sách Đại lý
+│       ├── public/
+│       │   └── index.html
+│       ├── src/
+│       │   ├── assets/
+│       │   ├── components/
+│       │   ├── pages/                              # Trang quản lý, tạo mới, chỉnh sửa chính sách
+│       │   │   └── PolicyEditorPage.js
+│       │   ├── services/                           # Tương tác với Agent Policy Service API (Admin)
+│       │   │   └── admin.policy.api.js
+│       │   └── App.js
+│       ├── package.json
+│       └── README.md
+│
+└── # Database: Agent Policy DB (được quản lý bởi agent-policy-service)</code></pre>
+                        </div>
+                    </div>
+                    <div id="shell-config-app" class="content-section" style="display: none;">
+                        <div class="content-header">
+                            <h1>Ứng dụng Cấu hình Shell (Shell Config Application)</h1>
+                            <p class="content-description">Ứng dụng này bao gồm `Shell Config Service` (Backend), `Shell App User` và `Shell App Admin` (là các Frontend chính), cùng với `Shell Config DB`.</p>
+                        </div>
+                        <div class="diagram-container">
+                            <h3>Sơ đồ Kiến trúc</h3>
+                            <pre class="diagram-code"><code>/project-root
+├── services/
+│   └── shell-config-service/                       # Mã nguồn của Dịch vụ Cấu hình Shell
+│       ├── src/
+│       │   ├── api/
+│       │   │   ├── config_controller.py
+│       │   │   └── health_check_controller.py
+│       │   ├── core/
+│       │   │   └── config_manager.py
+│       │   ├── models/
+│       │   │   └── app_config.py
+│       │   ├── repositories/                       # Lớp tương tác với Shell Config DB
+│       │   │   └── config_repository.py
+│       │   ├── config.py
+│       │   └── main.py
+│       ├── tests/
+│       ├── Dockerfile
+│       ├── requirements.txt
+│       ├── .env.example
+│       └── README.md
+│
+├── frontend/
+│   ├── shell-app-user/                             # Ứng dụng Frontend chính cho người dùng cuối
+│   │   ├── public/
+│   │   │   └── index.html
+│   │   ├── src/                                    # Mã nguồn chính của ứng dụng Frontend
+│   │   │   ├── assets/
+│   │   │   ├── components/
+│   │   │   ├── pages/                              # Trang chủ, trang cài đặt cá nhân
+│   │   │   │   └── UserDashboardPage.js
+│   │   │   ├── services/                           # Tương tác với Shell Config Service API
+│   │   │   │   └── shell.config.api.js
+│   │   │   ├── store/                              # Quản lý trạng thái cấu hình
+│   │   │   └── App.js
+│   │   ├── .env
+│   │   ├── .env.production
+│   │   ├── package.json
+│   │   └── README.md
+│   └── shell-app-admin/                            # Ứng dụng Frontend chính cho quản trị viên
+│       ├── public/
+│       │   └── index.html
+│       ├── src/
+│       │   ├── assets/
+│       │   ├── components/
+│       │   ├── pages/                              # Trang quản lý cấu hình toàn hệ thống
+│       │   │   └── GlobalConfigPage.js
+│       │   ├── services/                           # Tương tác với Shell Config Service API (Admin)
+│       │   │   └── admin.shell.config.api.js
+│       │   ├── store/
+│       │   └── App.js
+│       ├── .env
+│       ├── .env.production
+│       ├── package.json
+│       └── README.md
+│
+└── # Database: Shell Config DB (được quản lý bởi shell-config-service)</code></pre>
+                        </div>
+                    </div>
+                    <div id="shell-admin-app" class="content-section" style="display: none;">
+                        <div class="content-header">
+                            <h1>Ứng dụng Quản trị Cấu hình Shell (Shell Config Admin Frontend)</h1>
+                            <p class="content-description">Ứng dụng này là một Frontend độc lập, chuyên biệt cho việc quản lý cấu hình của hệ thống Shell, không thuộc `Shell App Admin`.</p>
+                        </div>
+                        <div class="diagram-container">
+                            <h3>Sơ đồ Kiến trúc</h3>
+                            <pre class="diagram-code"><code>/project-root
+├── frontend/
+│   └── shell-config-admin-frontend/                # Giao diện quản trị cấu hình Shell độc lập
+│       ├── public/
+│       │   └── index.html
+│       ├── src/
+│       │   ├── assets/
+│       │   ├── components/
+│       │   ├── pages/                              # Trang quản lý các thiết lập cấu hình, người dùng, quyền hạn
+│       │   │   └── ConfigManagementPage.js
+│       │   ├── services/                           # Tương tác với Shell Config Service API (Admin)
+│       │   │   └── shell.config.admin.api.js
+│       │   ├── store/
+│       │   └── App.js
+│       ├── .env
+│       ├── .env.production
+│       ├── package.json
+│       └── README.md</code></pre>
                         </div>
                     </div>
 

@@ -136,9 +136,40 @@ function clearSearchResults() {
 // Sidebar Navigation
 function initializeSidebar() {
     const navLinks = document.querySelectorAll('.nav-link');
+    const navItems = document.querySelectorAll('.nav-item');
     const expandableItems = document.querySelectorAll('.expandable');
     
-    // Handle navigation clicks
+    // Handle navigation clicks for nav-items (applications)
+    navItems.forEach(item => {
+        item.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Check if this is an application navigation
+            const targetId = this.getAttribute('data-target');
+            if (targetId) {
+                switchToApplication(targetId, this);
+            }
+            
+            // Remove active class from all nav-items
+            navItems.forEach(i => i.classList.remove('active'));
+            
+            // Add active class to clicked item
+            this.classList.add('active');
+            
+            // Close mobile menu if open
+            const sidebar = document.getElementById('sidebar');
+            if (sidebar && sidebar.classList.contains('open')) {
+                sidebar.classList.remove('open');
+                const mobileToggle = document.getElementById('mobile-menu-toggle');
+                if (mobileToggle) {
+                    const icon = mobileToggle.querySelector('i');
+                    icon.className = 'fas fa-bars';
+                }
+            }
+        });
+    });
+    
+    // Handle navigation clicks for nav-links (pages)
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
             e.preventDefault();
@@ -534,6 +565,80 @@ function switchToPage(pageId, navElement) {
             history.pushState({ page: pageId }, '', newUrl);
         }
     }
+}
+
+// Application Navigation System
+function switchToApplication(appId, navElement) {
+    // Hide all content pages and sections
+    const allPages = document.querySelectorAll('.content-page');
+    const allSections = document.querySelectorAll('.content-section');
+    
+    allPages.forEach(page => {
+        page.style.display = 'none';
+    });
+    
+    allSections.forEach(section => {
+        section.style.display = 'none';
+    });
+    
+    // Show the selected application
+    const targetApp = document.getElementById(appId);
+    if (targetApp) {
+        targetApp.style.display = 'block';
+        
+        // Update breadcrumb for application
+        updateBreadcrumbForApp(appId, navElement);
+        
+        // Update page title for application
+        updatePageTitleForApp(appId);
+        
+        // Track application view
+        trackPageView(appId);
+        
+        // Scroll to top
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        
+        // Update URL without page reload
+        if (history.pushState) {
+            const newUrl = window.location.pathname + '?app=' + appId;
+            history.pushState({ app: appId }, '', newUrl);
+        }
+    }
+}
+
+function updateBreadcrumbForApp(appId, navElement) {
+    const breadcrumb = document.querySelector('.breadcrumb');
+    if (breadcrumb && navElement) {
+        const appTitle = navElement.querySelector('span').textContent;
+        
+        // Update the last breadcrumb item
+        const lastItem = breadcrumb.querySelector('.breadcrumb-item.active');
+        if (lastItem) {
+            lastItem.textContent = appTitle;
+        }
+    }
+}
+
+function updatePageTitleForApp(appId) {
+    const appTitles = {
+        'cart-app': 'Ứng dụng Giỏ hàng - Sơ đồ Kiến trúc',
+        'product-app': 'Ứng dụng Sản phẩm - Sơ đồ Kiến trúc',
+        'news-app': 'Ứng dụng Tin tức - Sơ đồ Kiến trúc',
+        'design-calc-app': 'Ứng dụng Tính toán Thiết kế - Sơ đồ Kiến trúc',
+        'football-app': 'Ứng dụng Bóng đá - Sơ đồ Kiến trúc',
+        'comm-log-app': 'Ứng dụng Nhật ký thi công - Sơ đồ Kiến trúc',
+        'chatbot-app': 'Ứng dụng Chatbot - Sơ đồ Kiến trúc',
+        'payment-app': 'Ứng dụng Thanh toán - Sơ đồ Kiến trúc',
+        'user-app': 'Ứng dụng Người dùng - Sơ đồ Kiến trúc',
+        'admin-app': 'Ứng dụng Quản trị - Sơ đồ Kiến trúc',
+        'agent-mgmt-app': 'Ứng dụng Quản lý Đại lý - Sơ đồ Kiến trúc',
+        'agent-policy-app': 'Ứng dụng Chính sách Đại lý - Sơ đồ Kiến trúc',
+        'shell-config-app': 'Ứng dụng Cấu hình Shell - Sơ đồ Kiến trúc',
+        'shell-admin-app': 'Ứng dụng Quản trị Cấu hình Shell - Sơ đồ Kiến trúc'
+    };
+    
+    const newTitle = appTitles[appId] || 'Sơ đồ Kiến trúc - Dự án Hpt';
+    document.title = newTitle;
 }
 
 function updateBreadcrumb(pageId, navElement) {

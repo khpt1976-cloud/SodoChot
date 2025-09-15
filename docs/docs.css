@@ -506,6 +506,98 @@ body {
 
 .content-section {
     margin: 32px 0;
+    padding: 24px;
+    background: var(--bg-primary);
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+}
+
+/* Application Content Styling */
+.content-header {
+    margin-bottom: 24px;
+    border-bottom: 2px solid rgb(var(--primary) / 0.1);
+    padding-bottom: 16px;
+}
+
+.content-header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+    line-height: 1.2;
+}
+
+.content-description {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+/* Diagram Container Styling */
+.diagram-container {
+    margin-top: 24px;
+}
+
+.diagram-container h3 {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.diagram-container h3::before {
+    content: '📊';
+    font-size: 18px;
+}
+
+.diagram-code {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 20px;
+    margin: 0;
+    overflow-x: auto;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--text-primary);
+    white-space: pre;
+}
+
+.diagram-code code {
+    background: none;
+    padding: 0;
+    border: none;
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+}
+
+/* Responsive diagram styling */
+@media (max-width: 768px) {
+    .diagram-code {
+        font-size: 12px;
+        padding: 16px;
+        overflow-x: scroll;
+    }
+    
+    .content-section {
+        padding: 16px;
+        margin: 16px 0;
+    }
+    
+    .content-header h1 {
+        font-size: 24px;
+    }
+    
+    .content-description {
+        font-size: 15px;
+    }
 }
 
 .section-title {
