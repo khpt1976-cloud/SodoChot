@@ -144,7 +144,7 @@ function initializeSidebar() {
             e.preventDefault();
             
             // Check if this is a page navigation link
-            const pageId = this.getAttribute('data-page');
+            const pageId = this.getAttribute('data-page') || this.parentElement.getAttribute('data-page');
             if (pageId) {
                 switchToPage(pageId, this);
             }
