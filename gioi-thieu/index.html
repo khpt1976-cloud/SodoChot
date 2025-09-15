@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giới thiệu về Dự án - ConstructVN</title>
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        .intro-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .intro-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 10px;
+        }
+        
+        .intro-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .intro-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .section {
+            margin-bottom: 3rem;
+            padding: 2rem;
+            border-left: 4px solid #667eea;
+            background: #f8f9ff;
+            border-radius: 0 10px 10px 0;
+        }
+        
+        .section h2 {
+            color: #667eea;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+        
+        .section h3 {
+            color: #764ba2;
+            font-size: 1.4rem;
+            margin: 1.5rem 0 1rem 0;
+        }
+        
+        .section p {
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+        
+        .section ul {
+            margin: 1rem 0;
+            padding-left: 2rem;
+        }
+        
+        .section li {
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1.5rem 0;
+        }
+        
+        .cost-estimate {
+            background: #e8f5e8;
+            border-left: 4px solid #4caf50;
+            padding: 1.5rem;
+            border-radius: 0 10px 10px 0;
+            margin: 1rem 0;
+        }
+        
+        .revenue-estimate {
+            background: #fff3e0;
+            border-left: 4px solid #ff9800;
+            padding: 1.5rem;
+            border-radius: 0 10px 10px 0;
+            margin: 1rem 0;
+        }
+        
+        .back-btn {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 25px;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .back-btn:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+        }
+        
+        .back-btn::before {
+            content: "🏠 ";
+            margin-right: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="intro-container">
+        <a href="../index.html" class="back-btn">Về trang chủ</a>
+        
+        <div class="intro-header">
+            <h1>Giới thiệu về Dự án</h1>
+            <p>Hệ thống Microservice hiện đại cho quản lý dự án xây dựng</p>
+        </div>
+
+        <div class="section">
+            <h2>1. Tổng quan Dự án</h2>
+            <p>Dự án này được xây dựng trên nền tảng kiến trúc Microservice hiện đại, nhằm cung cấp một hệ thống linh hoạt, có khả năng mở rộng và dễ bảo trì. Dựa trên sơ đồ kiến trúc đã phân tích, dự án bao gồm nhiều dịch vụ độc lập như Quản lý Sản phẩm, Giỏ hàng, Thanh toán, Quản lý Người dùng, Tin tức, và các dịch vụ chuyên biệt khác (ví dụ: Tính toán Thiết kế, Bóng đá, Nhật ký thi công, Chatbot, Quản lý Đại lý, Chính sách Đại lý).</p>
+            
+            <div class="highlight-box">
+                <h3>Mục tiêu chính:</h3>
+                <ul>
+                    <li>Cung cấp một nền tảng dịch vụ đa dạng, đáp ứng nhiều nhu cầu khác nhau của người dùng</li>
+                    <li>Đảm bảo tính ổn định, bảo mật và hiệu suất cao</li>
+                    <li>Dễ dàng mở rộng và phát triển các tính năng mới mà không ảnh hưởng đến toàn bộ hệ thống</li>
+                    <li>Tối ưu hóa trải nghiệm người dùng và hiệu quả quản lý</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>2. Cách kinh doanh của Dự án</h2>
+            <p>Dựa trên cấu trúc Microservice đa dạng, dự án có thể áp dụng nhiều mô hình kinh doanh khác nhau:</p>
+            
+            <ul>
+                <li><strong>Mô hình SaaS (Software as a Service):</strong> Cung cấp các dịch vụ chuyên biệt dưới dạng đăng ký hàng tháng/năm</li>
+                <li><strong>Mô hình Thương mại điện tử (E-commerce):</strong> Hoạt động như một nền tảng bán hàng trực tuyến</li>
+                <li><strong>Mô hình Quảng cáo/Nội dung:</strong> Tạo doanh thu từ quảng cáo và nội dung trả phí</li>
+                <li><strong>Mô hình Phí giao dịch:</strong> Thu phí trên mỗi giao dịch thành công</li>
+                <li><strong>Mô hình Freemium:</strong> Tính năng cơ bản miễn phí, tính phí cho tính năng nâng cao</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>3. Ước tính chi phí để thực hiện</h2>
+            <p>Việc ước tính chi phí cho một dự án Microservice cần xem xét nhiều yếu tố:</p>
+            
+            <h3>Chi phí Hạ tầng (VPS):</h3>
+            <div class="cost-estimate">
+                <ul>
+                    <li>Gói VPS hiện tại: Khoảng 339.000 VNĐ/tháng (~14 USD/tháng)</li>
+                    <li>Chi phí tên miền: 200.000 - 500.000 VNĐ/năm</li>
+                    <li>Chứng chỉ SSL: Miễn phí (Let's Encrypt) hoặc vài trăm nghìn - vài triệu VNĐ/năm</li>
+                </ul>
+            </div>
+            
+            <h3>Chi phí Phát triển:</h3>
+            <ul>
+                <li><strong>Nhân lực:</strong> Chi phí lớn nhất - bao gồm Backend Developer, Frontend Developer, DevOps Engineer, QA Engineer, UI/UX Designer, Product Manager</li>
+                <li><strong>Công cụ và phần mềm:</strong> IDE, phần mềm quản lý dự án</li>
+            </ul>
+            
+            <h3>Chi phí Vận hành và Bảo trì:</h3>
+            <ul>
+                <li>Giám sát hệ thống, cập nhật phần mềm, xử lý lỗi, sao lưu dữ liệu</li>
+                <li>Dịch vụ bên thứ ba: email, SMS, CDN</li>
+            </ul>
+            
+            <div class="cost-estimate">
+                <h3>Ước tính sơ bộ (giai đoạn khởi đầu):</h3>
+                <p><strong>Chi phí cố định hàng tháng:</strong> ~350.000 VNĐ (chủ yếu VPS)</p>
+                <p><strong>Chi phí phát triển:</strong> Thời gian phát triển (vài tháng đến 1 năm hoặc hơn)</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>4. Suy đoán về Thu nhập</h2>
+            <p>Thu nhập phụ thuộc vào mô hình kinh doanh và khả năng thu hút khách hàng:</p>
+            
+            <div class="revenue-estimate">
+                <h3>Các kịch bản doanh thu:</h3>
+                <ul>
+                    <li><strong>Doanh thu từ SaaS:</strong> 50.000 - 200.000 VNĐ/tháng/người dùng × 100 khách hàng = 5-20 triệu VNĐ/tháng</li>
+                    <li><strong>Doanh thu từ E-commerce:</strong> 1000 lượt truy cập/ngày × 1% tỷ lệ chuyển đổi × 300.000 VNĐ/đơn hàng = 90 triệu VNĐ/tháng</li>
+                    <li><strong>Doanh thu từ quảng cáo:</strong> Phụ thuộc vào lượng truy cập và tương tác</li>
+                </ul>
+                <p><em>Lưu ý: Đây chỉ là suy đoán ban đầu, cần nghiên cứu thị trường sâu hơn.</em></p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>5. Nhận định về Xu hướng</h2>
+            <p>Dự án được xây dựng trên kiến trúc Microservice - xu hướng công nghệ mạnh mẽ trong ngành phần mềm:</p>
+            
+            <h3>Lợi thế của Microservice:</h3>
+            <ul>
+                <li><strong>Tính linh hoạt và khả năng mở rộng:</strong> Dễ dàng thích nghi và mở rộng quy mô</li>
+                <li><strong>Tốc độ phát triển nhanh:</strong> Các nhóm nhỏ làm việc độc lập</li>
+                <li><strong>Khả năng phục hồi:</strong> Lỗi ở một dịch vụ ít ảnh hưởng đến toàn hệ thống</li>
+                <li><strong>Công nghệ hiện đại:</strong> Docker, Nginx, các tiêu chuẩn công nghiệp</li>
+            </ul>
+            
+            <h3>Xu hướng có thể tận dụng:</h3>
+            <ul>
+                <li><strong>UX/UI tập trung:</strong> Tối ưu trải nghiệm cho từng đối tượng</li>
+                <li><strong>Tích hợp AI/ML:</strong> Mở rộng Chatbot và các tính năng AI khác</li>
+                <li><strong>Big Data:</strong> Phân tích dữ liệu để đưa ra quyết định kinh doanh thông minh</li>
+            </ul>
+            
+            <div class="highlight-box">
+                <p><strong>Kết luận:</strong> Dự án có nền tảng công nghệ vững chắc để phát triển trong bối cảnh số hóa. Thành công phụ thuộc vào việc xác định giá trị cốt lõi, khả năng tiếp cận thị trường và liên tục cải tiến sản phẩm.</p>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 3rem;">
+            <a href="../index.html" class="back-btn">Quay lại trang chủ</a>
+        </div>
+    </div>
+</body>
+</html>

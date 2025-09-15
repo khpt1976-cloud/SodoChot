@@ -536,13 +536,13 @@ function switchToPage(pageId, navElement) {
     // Hide all content pages
     const allPages = document.querySelectorAll('.content-page');
     allPages.forEach(page => {
-        page.style.display = 'none';
+        page.classList.remove('active');
     });
     
     // Show the selected page
     const targetPage = document.getElementById(pageId + '-content');
     if (targetPage) {
-        targetPage.style.display = 'block';
+        targetPage.classList.add('active');
         
         // Update breadcrumb
         updateBreadcrumb(pageId, navElement);
@@ -574,17 +574,17 @@ function switchToApplication(appId, navElement) {
     const allSections = document.querySelectorAll('.content-section');
     
     allPages.forEach(page => {
-        page.style.display = 'none';
+        page.classList.remove('active');
     });
     
     allSections.forEach(section => {
-        section.style.display = 'none';
+        section.classList.remove('active');
     });
     
     // Show the selected application
     const targetApp = document.getElementById(appId);
     if (targetApp) {
-        targetApp.style.display = 'block';
+        targetApp.classList.add('active');
         
         // Update breadcrumb for application
         updateBreadcrumbForApp(appId, navElement);

@@ -987,6 +987,12 @@ body {
 /* Content Pages */
 .content-page {
     animation: fadeIn 0.5s ease-out;
+    display: none; /* Hide all by default */
+}
+
+/* Show only the active content page */
+.content-page.active {
+    display: block;
 }
 
 .content-page.hidden {

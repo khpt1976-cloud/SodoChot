@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sơ đồ Kiến trúc Microservice</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #1a2332 0%, #2c3e50 100%);
+            min-height: 100vh;
+            overflow: hidden;
+        }
+        .container {
+            background: rgba(26, 35, 50, 0.9);
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+        h1 {
+            text-align: center;
+            color: white;
+            margin: 0;
+            padding: 15px 0;
+            background: rgba(26, 35, 50, 0.95);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 1000;
+        }
+        
+        /* Toolbar công cụ */
+        .toolbar {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            padding: 10px;
+            z-index: 1001;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .tool-btn {
+            width: 45px;
+            height: 45px;
+            border: none;
+            border-radius: 8px;
+            background: #007bff;
+            color: white;
+            cursor: pointer;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .tool-btn:hover {
+            background: #0056b3;
+            transform: scale(1.05);
+        }
+        
+        .tool-btn:active {
+            transform: scale(0.95);
+        }
+        
+        .tool-btn.reset {
+            background: #28a745;
+        }
+        
+        .tool-btn.reset:hover {
+            background: #1e7e34;
+        }
+        
+        .tool-btn.home {
+            background: #6f42c1;
+        }
+        
+        .tool-btn.home:hover {
+            background: #5a32a3;
+        }
+        
+        /* Tooltip */
+        .tool-btn::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            right: 55px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #333;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 12px;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+        }
+        
+        .tool-btn:hover::after {
+            opacity: 1;
+        }
+        
+        /* Container cho diagram có thể zoom và pan */
+        .diagram-container {
+            position: absolute;
+            top: 60px;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            overflow: hidden;
+            cursor: grab;
+        }
+        
+        .diagram-container.panning {
+            cursor: grabbing;
+        }
+        
+        .mermaid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            transform-origin: 0 0;
+            transition: transform 0.3s ease;
+        }
+        
+        .mermaid svg {
+            overflow: visible;
+            width: 100%;
+            height: auto;
+            min-height: 100%;
+        }
+        
+        /* Zoom level indicator */
+        .zoom-indicator {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            z-index: 1001;
+        }
+
+        /* Tùy chỉnh màu nền cho các subgraph chính */
+        .mermaid .cluster rect {
+            opacity: 0.4 !important;
+        }
+        
+        /* Force màu cho các subgraph bằng CSS */
+        .mermaid svg g.cluster:nth-child(1) rect {
+            fill: #E3F2FD !important;
+        }
+        .mermaid svg g.cluster:nth-child(2) rect {
+            fill: #E8F5E8 !important;
+        }
+        .mermaid svg g.cluster:nth-child(3) rect {
+            fill: #F3E5F5 !important;
+        }
+        .mermaid svg g.cluster:nth-child(4) rect {
+            fill: #FFF3E0 !important;
+        }
+        
+        /* Ẩn hoàn toàn các spacer nodes */
+        .mermaid g[id*="SPACER"] {
+            display: none !important;
+        }
+        
+        /* Đặt tất cả text trong sơ đồ màu đỏ */
+        .mermaid text {
+            fill: #ff0000 !important;
+            color: #ff0000 !important;
+        }
+        
+        .mermaid .node text,
+        .mermaid .cluster text,
+        .mermaid .edgeLabel text,
+        .mermaid .label text {
+            fill: #ff0000 !important;
+            color: #ff0000 !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Sơ đồ Kiến trúc Microservice</h1>
+        
+        <!-- Toolbar công cụ -->
+        <div class="toolbar">
+            <button class="tool-btn home" data-tooltip="Về trang chủ" onclick="goHome()">🏠</button>
+            <button class="tool-btn" data-tooltip="Phóng to" onclick="zoomIn()">🔍+</button>
+            <button class="tool-btn" data-tooltip="Thu nhỏ" onclick="zoomOut()">🔍-</button>
+            <button class="tool-btn reset" data-tooltip="Đặt lại" onclick="resetZoom()">⚡</button>
+            <button class="tool-btn" data-tooltip="Fit màn hình" onclick="fitToScreen()">📐</button>
+        </div>
+        
+        <!-- Zoom indicator -->
+        <div class="zoom-indicator" id="zoomIndicator">100%</div>
+        
+        <!-- Container cho diagram -->
+        <div class="diagram-container" id="diagramContainer">
+            <div class="mermaid" id="mermaidDiagram">
+graph TB
+    subgraph "Frontend Applications"
+        direction TB
+        ShellAppUser[Shell App User]
+        ShellAppAdmin[Shell App Admin]
+        
+        subgraph "User Frontend Components"
+            direction TB
+            CartFE[Cart Service Frontend<br>Giao diện Giỏ hàng]:::frontend
+            ProductFE[Product Service Frontend<br>Giao diện Sản phẩm]:::frontend
+            NewsFE[News Service Frontend<br>Giao diện Tin tức]:::frontend
+            DesignCalculationFE[Design Calculation Frontend<br>Giao diện Tính toán Thiết kế]:::frontend
+            FootballFE[Football Service Frontend<br>Giao diện Bóng đá]:::frontend
+            CommunicationLogFE[Communication Log Frontend<br>Giao diện Nhật ký thi công]:::frontend
+            ChatbotFE[Chatbot Service Frontend<br>Giao diện Chatbot]:::frontend
+            PaymentFE[Payment Service Frontend<br>Giao diện Thanh toán]:::frontend
+            UserFE[User Service Frontend<br>Giao diện Người dùng]:::frontend
+            AdminFE[Admin Service Frontend<br>Giao diện Quản trị]:::frontend
+            AgentManagementFE[Agent Management Frontend<br>Giao diện Quản lý Đại lý]:::frontend
+            AgentPolicyFE[Agent Policy Frontend<br>Giao diện Chính sách Đại lý]:::frontend
+        end
+        
+        subgraph "Admin Frontend Components"
+            direction TB
+            CartAdminFE[Cart Service Admin<br>Quản trị Giỏ hàng]:::adminfe
+            ProductAdminFE[Product Service Admin<br>Quản trị Sản phẩm]:::adminfe
+            NewsAdminFE[News Service Admin<br>Quản trị Tin tức]:::adminfe
+            DesignCalculationAdminFE[Design Calculation Admin<br>Quản trị Tính toán Thiết kế]:::adminfe
+            FootballAdminFE[Football Service Admin<br>Quản trị Bóng đá]:::adminfe
+            CommunicationLogAdminFE[Communication Log Admin<br>Quản trị Nhật ký thi công]:::adminfe
+            ChatbotAdminFE[Chatbot Service Admin<br>Quản trị Chatbot]:::adminfe
+            PaymentAdminFE[Payment Service Admin<br>Quản trị Thanh toán]:::adminfe
+            UserAdminFE[User Service Admin<br>Quản trị Người dùng]:::adminfe
+            AdminAdminFE[Admin Service Admin<br>Quản trị Hệ thống]:::adminfe
+            AgentManagementAdminFE[Agent Management Admin<br>Quản trị Đại lý]:::adminfe
+            AgentPolicyAdminFE[Agent Policy Admin<br>Quản trị Chính sách Đại lý]:::adminfe
+            ShellConfigAdminFE[Shell Config Admin<br>Quản trị Cấu hình Shell]:::adminfe
+        end
+    end
+
+    %% Tạo khoảng cách để đẩy hàng trên lên cao
+    SPACER1[ ]:::invisible
+    SPACER2[ ]:::invisible
+    SPACER3[ ]:::invisible
+    SPACER4[ ]:::invisible
+    SPACER5[ ]:::invisible
+    SPACER6[ ]:::invisible
+    SPACER7[ ]:::invisible
+    SPACER8[ ]:::invisible
+
+    subgraph "API Gateway (Cổng API)"
+        direction TB
+        APIGatewayUser[API Gateway User]
+        APIGatewayAdmin[API Gateway Admin]
+    end
+
+    subgraph "Backend Microservices (Các dịch vụ độc lập)"
+            CartService(Cart Service<br>Dịch vụ Giỏ hàng):::group1
+        ProductService(Product Service<br>Dịch vụ Sản phẩm):::group1
+        NewsService(News Service<br>Dịch vụ Tin tức):::group1
+        
+            DesignCalculationService(Design Calculation Service<br>Dịch vụ Tính toán Thiết kế):::group2
+        FootballService(Football Service<br>Dịch vụ Bóng đá):::group2
+        CommunicationLogService(Communication Log Service<br>Dịch vụ Nhật ký thi công):::group2
+        ChatbotService(Chatbot Service<br>Dịch vụ Chatbot):::group2
+        
+            PaymentService(Payment Service<br>Dịch vụ Thanh toán):::group3
+        UserService(User Service<br>Dịch vụ Người dùng):::group3
+        ShellConfigService(Shell Config Service<br>Dịch vụ Cấu hình Shell):::group3
+        AdminService(Admin Service<br>Dịch vụ Quản trị):::group3
+        
+            AgentManagementService(Agent Management Service<br>Dịch vụ Quản lý Đại lý):::group4
+        AgentPolicyService(Agent Policy Service<br>Dịch vụ Chính sách Đại lý):::group4
+    end
+
+    subgraph "Infrastructure (Hạ tầng)"
+        direction TB
+        MessageBroker(Message Broker)
+        Cache(Cache)
+        
+        subgraph "Databases"
+            direction TB
+            CartDB[Cart DB]:::newdb
+            ProductDB[Product DB]:::newdb
+            NewsDB[News DB]:::newdb
+            DesignCalculationDB[Design Calculation DB]
+            FootballDB[Football DB]:::newdb
+            CommunicationLogDB[Communication Log DB]:::newdb
+            ChatbotDB[Chatbot DB]
+            PaymentDB[Payment DB]
+            UserDB[User DB]
+            ShellConfigDB[Shell Config DB]:::newdb
+            AdminDB[Admin DB]
+            AgentManagementDB[Agent Management DB]
+            AgentPolicyDB[Agent Policy DB]
+        end
+    end
+
+    ShellAppUser --> APIGatewayUser
+    ShellAppAdmin --> APIGatewayAdmin
+    
+    %% Shell App User loads các frontend components
+    ShellAppUser --> CartFE
+    ShellAppUser --> ProductFE
+    ShellAppUser --> NewsFE
+    ShellAppUser --> DesignCalculationFE
+    ShellAppUser --> FootballFE
+    ShellAppUser --> CommunicationLogFE
+    ShellAppUser --> ChatbotFE
+    ShellAppUser --> PaymentFE
+    ShellAppUser --> UserFE
+    ShellAppUser --> AdminFE
+    ShellAppUser --> AgentManagementFE
+    ShellAppUser --> AgentPolicyFE
+
+    %% Shell App Admin loads các admin frontend components
+    ShellAppAdmin --> CartAdminFE
+    ShellAppAdmin --> ProductAdminFE
+    ShellAppAdmin --> NewsAdminFE
+    ShellAppAdmin --> DesignCalculationAdminFE
+    ShellAppAdmin --> FootballAdminFE
+    ShellAppAdmin --> CommunicationLogAdminFE
+    ShellAppAdmin --> ChatbotAdminFE
+    ShellAppAdmin --> PaymentAdminFE
+    ShellAppAdmin --> UserAdminFE
+    ShellAppAdmin --> AdminAdminFE
+    ShellAppAdmin --> AgentManagementAdminFE
+    ShellAppAdmin --> AgentPolicyAdminFE
+    ShellAppAdmin --> ShellConfigAdminFE
+
+    %% Frontend components kết nối với backend services thông qua API Gateway
+    CartFE --> APIGatewayUser
+    ProductFE --> APIGatewayUser
+    NewsFE --> APIGatewayUser
+    DesignCalculationFE --> APIGatewayUser
+    FootballFE --> APIGatewayUser
+    CommunicationLogFE --> APIGatewayUser
+    ChatbotFE --> APIGatewayUser
+    PaymentFE --> APIGatewayUser
+    UserFE --> APIGatewayUser
+    AdminFE --> APIGatewayUser
+    AgentManagementFE --> APIGatewayUser
+    AgentPolicyFE --> APIGatewayUser
+
+    %% Admin Frontend components kết nối với backend services thông qua API Gateway Admin
+    CartAdminFE --> APIGatewayAdmin
+    ProductAdminFE --> APIGatewayAdmin
+    NewsAdminFE --> APIGatewayAdmin
+    DesignCalculationAdminFE --> APIGatewayAdmin
+    FootballAdminFE --> APIGatewayAdmin
+    CommunicationLogAdminFE --> APIGatewayAdmin
+    ChatbotAdminFE --> APIGatewayAdmin
+    PaymentAdminFE --> APIGatewayAdmin
+    UserAdminFE --> APIGatewayAdmin
+    AdminAdminFE --> APIGatewayAdmin
+    AgentManagementAdminFE --> APIGatewayAdmin
+    AgentPolicyAdminFE --> APIGatewayAdmin
+    ShellConfigAdminFE --> APIGatewayAdmin
+
+    APIGatewayUser --> CartService
+    APIGatewayUser --> ProductService
+    APIGatewayUser --> NewsService
+    APIGatewayUser --> FootballService
+    APIGatewayUser --> ChatbotService
+    APIGatewayUser --> PaymentService
+    APIGatewayUser --> UserService
+    
+    APIGatewayAdmin --> CartService
+    APIGatewayAdmin --> ProductService
+    APIGatewayAdmin --> NewsService
+    APIGatewayAdmin --> DesignCalculationService
+    APIGatewayAdmin --> FootballService
+    APIGatewayAdmin --> CommunicationLogService
+    APIGatewayAdmin --> ChatbotService
+    APIGatewayAdmin --> PaymentService
+    APIGatewayAdmin --> UserService
+    APIGatewayAdmin --> ShellConfigService
+    APIGatewayAdmin --> AdminService
+    APIGatewayAdmin --> AgentManagementService
+    APIGatewayAdmin --> AgentPolicyService
+
+    AdminService --> UserService
+    AdminService --> PaymentService
+    AdminService --> AgentPolicyService
+    AdminService --> AgentManagementService
+    AdminService --> ProductService
+    AdminService --> CartService
+    AdminService --> NewsService
+    AgentPolicyService --> PaymentService
+    CartService --> ProductService
+    CartService --> UserService
+    CartService --> PaymentService
+    FootballService --> UserService
+    CommunicationLogService --> AdminService
+    ShellConfigService --> AdminService
+
+    PaymentService --> MessageBroker
+    UserService --> MessageBroker
+    AgentPolicyService --> Cache
+    CartService --> MessageBroker
+    ProductService --> Cache
+    NewsService --> Cache
+    FootballService --> Cache
+    ShellConfigService --> Cache
+
+    CartService --> CartDB
+    ProductService --> ProductDB
+    NewsService --> NewsDB
+    DesignCalculationService --> DesignCalculationDB
+    FootballService --> FootballDB
+    CommunicationLogService --> CommunicationLogDB
+    ChatbotService --> ChatbotDB
+    PaymentService --> PaymentDB
+    UserService --> UserDB
+    ShellConfigService --> ShellConfigDB
+    AdminService --> AdminDB
+    AgentManagementService --> AgentManagementDB
+    AgentPolicyService --> AgentPolicyDB
+
+    %% Infrastructure Layer - Nền tảng hạ tầng độc lập
+    subgraph "🏗️ Infrastructure Layer"
+        direction TB
+        InfrastructureBase[Infrastructure<br/>Nền tảng hạ tầng<br/>Docker, Kubernetes, Cloud Services<br/>Monitoring, Logging, Security]:::infrastructure
+    end
+
+    classDef group1 fill:#E6F3FF,stroke:#333,stroke-width:2px
+    classDef group2 fill:#F0FFF0,stroke:#333,stroke-width:2px
+    classDef group3 fill:#FFF0F5,stroke:#333,stroke-width:2px
+    classDef group4 fill:#F5F5DC,stroke:#333,stroke-width:2px
+    classDef newdb fill:#FFE4B5,stroke:#333,stroke-width:2px
+    classDef frontend fill:#E6E6FA,stroke:#4B0082,stroke-width:2px
+    classDef adminfe fill:#FFE4E1,stroke:#DC143C,stroke-width:2px
+    classDef infrastructure fill:#F5F5F5,stroke:#2C3E50,stroke-width:3px
+    
+    %% Định nghĩa màu nền cho subgraph
+    classDef subgraph1 fill:#E3F2FD,stroke:#333,stroke-width:2px
+    classDef subgraph2 fill:#E8F5E8,stroke:#333,stroke-width:2px  
+    classDef subgraph3 fill:#F3E5F5,stroke:#333,stroke-width:2px
+    classDef subgraph4 fill:#FFF3E0,stroke:#333,stroke-width:2px
+    
+    %% Ẩn các spacer nodes
+    classDef invisible fill:transparent,stroke:transparent,color:transparent
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Biến toàn cục cho zoom và pan
+        let currentZoom = 1;
+        let currentX = 0;
+        let currentY = 0;
+        let isDragging = false;
+        let startX = 0;
+        let startY = 0;
+
+        // Khởi tạo Mermaid
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'dark',
+            themeVariables: {
+                primaryColor: '#00bcd4',
+                primaryTextColor: '#ff0000',
+                primaryBorderColor: '#00bcd4',
+                lineColor: '#ff0000',
+                secondaryColor: '#1a2332',
+                tertiaryColor: '#2c3e50',
+                // Đặt tất cả text màu đỏ
+                nodeTextColor: '#ff0000',
+                clusterTextColor: '#ff0000',
+                edgeLabelBackground: 'transparent',
+                edgeLabelColor: '#ff0000'
+            }
+        });
+
+        // Hàm zoom in
+        function zoomIn() {
+            currentZoom = Math.min(currentZoom * 1.2, 3);
+            updateTransform();
+            updateZoomIndicator();
+        }
+
+        // Hàm zoom out
+        function zoomOut() {
+            currentZoom = Math.max(currentZoom / 1.2, 0.3);
+            updateTransform();
+            updateZoomIndicator();
+        }
+
+        // Hàm reset zoom
+        function resetZoom() {
+            currentZoom = 1;
+            currentX = 0;
+            currentY = 0;
+            updateTransform();
+            updateZoomIndicator();
+        }
+
+        // Hàm fit to screen
+        function fitToScreen() {
+            const mermaidElement = document.getElementById('mermaidDiagram');
+            const svg = mermaidElement.querySelector('svg');
+            if (svg) {
+                const container = document.getElementById('diagramContainer');
+                const containerRect = container.getBoundingClientRect();
+                const svgRect = svg.getBoundingClientRect();
+                
+                const scaleX = containerRect.width / svgRect.width;
+                const scaleY = containerRect.height / svgRect.height;
+                currentZoom = Math.min(scaleX, scaleY) * 0.9;
+                
+                currentX = (containerRect.width - svgRect.width * currentZoom) / 2;
+                currentY = (containerRect.height - svgRect.height * currentZoom) / 2;
+                
+                updateTransform();
+                updateZoomIndicator();
+            }
+        }
+
+        // Hàm quay về trang chủ
+        function goHome() {
+            window.location.href = '../index.html';
+        }
+
+        // Cập nhật transform
+        function updateTransform() {
+            const mermaidElement = document.getElementById('mermaidDiagram');
+            mermaidElement.style.transform = `translate(${currentX}px, ${currentY}px) scale(${currentZoom})`;
+        }
+
+        // Cập nhật zoom indicator
+        function updateZoomIndicator() {
+            document.getElementById('zoomIndicator').textContent = Math.round(currentZoom * 100) + '%';
+        }
+
+        // Xử lý mouse wheel cho zoom
+        document.getElementById('diagramContainer').addEventListener('wheel', function(e) {
+            e.preventDefault();
+            if (e.deltaY < 0) {
+                zoomIn();
+            } else {
+                zoomOut();
+            }
+        });
+
+        // Xử lý drag để pan
+        const container = document.getElementById('diagramContainer');
+        
+        container.addEventListener('mousedown', function(e) {
+            isDragging = true;
+            startX = e.clientX - currentX;
+            startY = e.clientY - currentY;
+            container.classList.add('panning');
+        });
+
+        document.addEventListener('mousemove', function(e) {
+            if (isDragging) {
+                currentX = e.clientX - startX;
+                currentY = e.clientY - startY;
+                updateTransform();
+            }
+        });
+
+        document.addEventListener('mouseup', function() {
+            isDragging = false;
+            container.classList.remove('panning');
+        });
+
+        // Khởi tạo diagram khi trang load
+        document.addEventListener('DOMContentLoaded', function() {
+            try {
+                mermaid.run().then(() => {
+                    console.log('Mermaid diagram rendered successfully');
+                    // Fit to screen sau khi render xong
+                    setTimeout(fitToScreen, 500);
+                });
+            } catch (error) {
+                console.error('Error rendering Mermaid diagram:', error);
+                document.getElementById('mermaidDiagram').innerHTML = '<p style="color: red; text-align: center; margin-top: 50px;">Error rendering diagram. Please refresh the page.</p>';
+            }
+        });
+    </script>
+</body>
+</html>
