@@ -662,6 +662,7 @@ function updatePageTitle(pageId) {
         'thu-tu-trien-khai': 'Thứ tự triển khai dự án - Tài liệu',
         'luu-y-trien-khai': 'Lưu ý khi triển khai - Tài liệu',
         'tung-buoc-trien-khai': 'Từng bước triển khai - Tài liệu',
+        'nhiem-vu-shell': 'Nhiệm vụ thành phần Shell trong kiến trúc microservice - Tài liệu',
         'settings': 'Settings - Tài liệu'
     };
     
@@ -690,6 +691,8 @@ function updateTOCForPage(pageId) {
         tocClass = 'luu-y-trien-khai';
     } else if (pageId === 'tung-buoc-trien-khai') {
         tocClass = 'tung-buoc-trien-khai';
+    } else if (pageId === 'nhiem-vu-shell') {
+        tocClass = 'nhiem-vu-shell';
     }
     
     const targetTocSection = document.querySelector(`.toc-content-${tocClass}`);

@@ -244,6 +244,16 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- Nhiệm vụ thành phần Shell -->
+                    <div class="nav-group">
+                        <div class="nav-item" data-page="nhiem-vu-shell">
+                            <div class="nav-link">
+                                <i class="fas fa-cogs nav-icon"></i>
+                                <span>Nhiệm vụ thành phần Shell trong kiến trúc microservice</span>
+                            </div>
+                        </div>
+                    </div>
                 </nav>
             </div>
         </aside>
@@ -2270,6 +2280,138 @@ git push</code></pre>
                         </div>
                     </div>
 
+                    <!-- Nhiệm vụ thành phần Shell Content -->
+                    <div class="content-page" id="nhiem-vu-shell-content" style="display: none;">
+                        <div class="content-header">
+                            <h1>Giải thích chi tiết chức năng các thành phần Shell trong kiến trúc microservice</h1>
+                            <p><strong>Tác giả:</strong> Manus AI | <strong>Ngày:</strong> 15 tháng 9 năm 2025</p>
+                            <p>Trong kiến trúc microservice hiện đại, việc quản lý giao diện người dùng và cấu hình hệ thống một cách linh hoạt và hiệu quả là vô cùng quan trọng. Tài liệu này sẽ đi sâu vào giải thích chức năng của bốn thành phần cốt lõi thuộc Ứng dụng Cấu hình Shell (Shell Config Application), đóng vai trò trung tâm trong việc định hình và quản lý giao diện cũng như trải nghiệm người dùng trên toàn bộ hệ thống microservice.</p>
+                        </div>
+
+                        <div class="content-body">
+                            <section id="shell-config-service">
+                                <h2>1. shell-config-service (Dịch vụ Backend Cấu hình)</h2>
+                                <p><code>shell-config-service</code> đóng vai trò là trái tim của hệ thống cấu hình, là một dịch vụ backend chuyên biệt chịu trách nhiệm quản lý tập trung tất cả các thiết lập và thông số cấu hình cho toàn bộ kiến trúc microservice. Nó không chỉ đơn thuần là một kho lưu trữ dữ liệu mà còn là một bộ xử lý logic mạnh mẽ, đảm bảo tính nhất quán, bảo mật và khả năng mở rộng của các cấu hình hệ thống.</p>
+                                
+                                <div class="step-section">
+                                    <h3>1.1. Chức năng cốt lõi</h3>
+                                    
+                                    <h4>1.1.1. Lưu trữ và Cung cấp Cấu hình Tập trung</h4>
+                                    <p>Chức năng chính yếu của <code>shell-config-service</code> là lưu trữ tất cả các thông tin cấu hình trong một cơ sở dữ liệu chuyên dụng, được gọi là <code>Shell Config DB</code>. Cơ sở dữ liệu này có thể chứa đa dạng các loại cấu hình, từ các thiết lập giao diện người dùng (UI/UX) như màu sắc chủ đạo, logo, bố cục trang, đến các thông số kỹ thuật quan trọng như danh sách các micro-frontend cần tải, đường dẫn API, hoặc các biến môi trường.</p>
+                                    
+                                    <h4>1.1.2. Cung cấp API mạnh mẽ</h4>
+                                    <p>Để các ứng dụng frontend và các dịch vụ khác có thể tương tác với kho cấu hình, <code>shell-config-service</code> cung cấp một bộ API (Application Programming Interface) được thiết kế rõ ràng và bảo mật. Các API này cho phép các ứng dụng frontend như <code>shell-app-user</code> và <code>shell-app-admin</code> thực hiện các thao tác như đọc (GET), tạo (POST), cập nhật (PUT), và xóa (DELETE) các cấu hình.</p>
+                                    
+                                    <h4>1.1.3. Quản lý Logic Nghiệp vụ Cấu hình</h4>
+                                    <p>Ngoài việc lưu trữ và cung cấp dữ liệu, <code>shell-config-service</code> còn tích hợp các logic nghiệp vụ phức tạp liên quan đến quản lý cấu hình:</p>
+                                    <ul>
+                                        <li><strong>Xác thực dữ liệu cấu hình:</strong> Đảm bảo rằng các cấu hình được lưu trữ tuân thủ các quy tắc và định dạng đã định nghĩa</li>
+                                        <li><strong>Quản lý phiên bản cấu hình:</strong> Cho phép lưu trữ nhiều phiên bản của cùng một cấu hình</li>
+                                        <li><strong>Áp dụng các quy tắc và chính sách:</strong> Thực thi các quy tắc về quyền truy cập và ràng buộc cấu hình</li>
+                                        <li><strong>Thông báo thay đổi cấu hình:</strong> Thông báo cho các ứng dụng khác khi có cấu hình quan trọng thay đổi</li>
+                                    </ul>
+                                </div>
+
+                                <div class="step-section">
+                                    <h3>1.2. Vai trò trong hệ thống</h3>
+                                    <p><code>shell-config-service</code> là một thành phần không thể thiếu để xây dựng một hệ thống microservice linh hoạt và dễ quản lý. Nó giúp:</p>
+                                    <ul>
+                                        <li><strong>Tách biệt mối quan tâm:</strong> Tách biệt hoàn toàn phần cấu hình ra khỏi mã nguồn của các ứng dụng</li>
+                                        <li><strong>Khả năng mở rộng:</strong> Dễ dàng thêm mới hoặc thay đổi các cấu hình mà không ảnh hưởng đến hoạt động của các dịch vụ khác</li>
+                                        <li><strong>Tính nhất quán:</strong> Đảm bảo rằng tất cả các phiên bản của ứng dụng đều sử dụng cùng một bộ cấu hình được kiểm soát</li>
+                                        <li><strong>Kiểm soát tập trung:</strong> Cung cấp một điểm kiểm soát duy nhất cho tất cả các cấu hình</li>
+                                    </ul>
+                                </div>
+                            </section>
+
+                            <section id="shell-app-user">
+                                <h2>2. shell-app-user (Ứng dụng Frontend cho Người dùng cuối)</h2>
+                                <p><code>shell-app-user</code> là giao diện chính mà người dùng cuối tương tác trực tiếp. Nó đóng vai trò như một cổng thông tin tổng hợp, nơi các tính năng và dịch vụ từ nhiều microservice khác nhau được tập hợp lại và trình bày một cách thống nhất.</p>
+                                
+                                <div class="step-section">
+                                    <h3>2.1. Chức năng cốt lõi</h3>
+                                    
+                                    <h4>2.1.1. Tải và Hiển thị Giao diện Động</h4>
+                                    <p>Khi người dùng truy cập vào hệ thống, <code>shell-app-user</code> sẽ là ứng dụng đầu tiên được tải. Nhiệm vụ quan trọng nhất của nó là tương tác với <code>shell-config-service</code> để lấy về các cấu hình cần thiết:</p>
+                                    <ul>
+                                        <li><strong>Cấu trúc điều hướng:</strong> Xác định các mục menu chính, các liên kết phụ, và cách bố trí thanh điều hướng</li>
+                                        <li><strong>Thành phần giao diện chung:</strong> Logo, footer, các biểu tượng, hoặc các widget cố định trên trang</li>
+                                        <li><strong>Danh sách các micro-frontend:</strong> Liệt kê các ứng dụng con cần được tải và hiển thị</li>
+                                        <li><strong>Chủ đề và phong cách:</strong> Các thiết lập về màu sắc, font chữ, bố cục tổng thể</li>
+                                    </ul>
+                                    
+                                    <h4>2.1.2. Tích hợp các Micro-Frontend (Host Application)</h4>
+                                    <p><code>shell-app-user</code> hoạt động như một "Host Application" hoặc "Container" cho các micro-frontend khác. Điều này có nghĩa là nó chịu trách nhiệm:</p>
+                                    <ul>
+                                        <li><strong>Tải động các micro-frontend:</strong> Dựa trên cấu hình nhận được từ <code>shell-config-service</code></li>
+                                        <li><strong>Quản lý vòng đời của micro-frontend:</strong> Khởi tạo, hiển thị, cập nhật và hủy bỏ các micro-frontend</li>
+                                        <li><strong>Thiết lập môi trường chia sẻ:</strong> Cung cấp một môi trường chung để các micro-frontend có thể hoạt động hài hòa</li>
+                                    </ul>
+                                    
+                                    <h4>2.1.3. Cung cấp Trải nghiệm Thống nhất và Cá nhân hóa</h4>
+                                    <p>Một trong những mục tiêu chính của <code>shell-app-user</code> là đảm bảo người dùng có một trải nghiệm liền mạch và nhất quán:</p>
+                                    <ul>
+                                        <li><strong>Header và Footer chung:</strong> Duy trì các thành phần giao diện chung trên tất cả các trang</li>
+                                        <li><strong>Thanh điều hướng nhất quán:</strong> Cung cấp một thanh điều hướng đồng bộ</li>
+                                        <li><strong>Quản lý Cài đặt Cá nhân:</strong> Cho phép người dùng tùy chỉnh các cài đặt riêng của họ</li>
+                                    </ul>
+                                </div>
+                            </section>
+
+                            <section id="shell-app-admin">
+                                <h2>3. shell-app-admin (Ứng dụng Frontend cho Quản trị viên)</h2>
+                                <p><code>shell-app-admin</code> là một ứng dụng frontend chuyên biệt, được thiết kế dành riêng cho các quản trị viên nghiệp vụ. Mục tiêu chính của nó là cung cấp một giao diện trực quan và dễ sử dụng để quản lý và cấu hình các khía cạnh khác nhau của <code>shell-app-user</code> và các micro-frontend liên quan.</p>
+                                
+                                <div class="step-section">
+                                    <h3>3.1. Chức năng cốt lõi</h3>
+                                    
+                                    <h4>3.1.1. Quản lý Cấu hình Toàn hệ thống cho Người dùng cuối</h4>
+                                    <p>Chức năng trung tâm của <code>shell-app-admin</code> là cho phép quản trị viên thay đổi các cấu hình ảnh hưởng trực tiếp đến giao diện và hành vi của <code>shell-app-user</code>:</p>
+                                    <ul>
+                                        <li><strong>Quản lý Menu và Điều hướng:</strong> Thêm, sửa, xóa hoặc sắp xếp lại các mục trong thanh điều hướng chính</li>
+                                        <li><strong>Cấu hình Bố cục và Nội dung Trang:</strong> Điều chỉnh bố cục của các trang, thêm các widget, banner quảng cáo</li>
+                                        <li><strong>Quản lý Branding và Chủ đề:</strong> Thay đổi logo, biểu tượng, bảng màu chủ đạo, font chữ</li>
+                                        <li><strong>Bật/Tắt Micro-Frontend:</strong> Kích hoạt hoặc vô hiệu hóa các micro-frontend cụ thể</li>
+                                        <li><strong>Quản lý Cài đặt Mặc định:</strong> Thiết lập các giá trị mặc định cho các cài đặt cá nhân của người dùng</li>
+                                    </ul>
+                                    
+                                    <h4>3.1.2. Tương tác với shell-config-service</h4>
+                                    <p>Mọi thay đổi mà quản trị viên thực hiện trên <code>shell-app-admin</code> đều không được lưu trữ trực tiếp trong ứng dụng này. Thay vào đó, <code>shell-app-admin</code> sẽ gửi các yêu cầu (thông qua các API) đến <code>shell-config-service</code>.</p>
+                                </div>
+                            </section>
+
+                            <section id="shell-config-admin">
+                                <h2>4. shell-config-admin (Giao diện Quản trị Cấu hình Lõi)</h2>
+                                <p><code>shell-config-admin</code> (được gọi rõ hơn là <code>shell-config-admin-frontend</code> trong tài liệu kiến trúc) là một ứng dụng frontend quản trị chuyên sâu, khác biệt với <code>shell-app-admin</code>. Trong khi <code>shell-app-admin</code> tập trung vào việc quản lý các cấu hình nghiệp vụ ảnh hưởng đến trải nghiệm người dùng cuối, <code>shell-config-admin-frontend</code> lại được thiết kế để quản lý các cấu hình kỹ thuật và nền tảng của chính <code>shell-config-service</code>.</p>
+                                
+                                <div class="step-section">
+                                    <h3>4.1. Chức năng cốt lõi</h3>
+                                    
+                                    <h4>4.1.1. Quản lý Cấu hình "Lõi" của shell-config-service</h4>
+                                    <p>Chức năng của <code>shell-config-admin-frontend</code> tập trung vào các khía cạnh kỹ thuật và vận hành của dịch vụ cấu hình:</p>
+                                    <ul>
+                                        <li><strong>Quản lý Kết nối Cơ sở dữ liệu:</strong> Cung cấp giao diện để cấu hình và quản lý các thông tin kết nối đến <code>Shell Config DB</code></li>
+                                        <li><strong>Quản lý Người dùng và Phân quyền API:</strong> Tạo, sửa, xóa các tài khoản người dùng có quyền truy cập vào các API của <code>shell-config-service</code></li>
+                                        <li><strong>Quản lý Biến môi trường và Cấu hình Dịch vụ:</strong> Xem và chỉnh sửa các biến môi trường hoặc các tệp cấu hình của chính <code>shell-config-service</code></li>
+                                        <li><strong>Giám sát và Ghi log:</strong> Tích hợp các công cụ để xem log hoạt động của <code>shell-config-service</code></li>
+                                    </ul>
+                                    
+                                    <h4>4.1.2. Độc lập và Bảo mật</h4>
+                                    <p>Sự tách biệt giữa <code>shell-config-admin-frontend</code> và <code>shell-app-admin</code> là một quyết định thiết kế quan trọng nhằm:</p>
+                                    <ul>
+                                        <li><strong>Tăng cường Bảo mật:</strong> Tách biệt giao diện quản trị kỹ thuật khỏi giao diện quản trị nghiệp vụ</li>
+                                        <li><strong>Phân tách Trách nhiệm:</strong> Phản ánh rõ ràng sự phân chia vai trò trong một tổ chức</li>
+                                    </ul>
+                                </div>
+                            </section>
+
+                            <section id="tong-ket">
+                                <h2>Tổng kết</h2>
+                                <p>Bốn thành phần <code>shell-config-service</code>, <code>shell-app-user</code>, <code>shell-app-admin</code>, và <code>shell-config-admin-frontend</code> tạo thành một hệ sinh thái hoàn chỉnh để quản lý cấu hình và giao diện người dùng trong một kiến trúc microservice. Sự phân tách rõ ràng về chức năng và trách nhiệm giữa các thành phần này không chỉ giúp tăng cường tính linh hoạt, khả năng mở rộng và bảo mật, mà còn cho phép các đội ngũ khác nhau (kỹ thuật, nghiệp vụ) làm việc song song một cách hiệu quả, góp phần vào sự thành công của toàn bộ hệ thống.</p>
+                            </section>
+                        </div>
+                    </div>
+
                 <!-- Page Navigation -->
                 <div class="page-navigation">
                     <div class="page-nav-item">
@@ -2356,6 +2498,15 @@ git push</code></pre>
                             <a href="#phat-trien-user-service" class="toc-link">Phát triển User Service</a>
                             <a href="#trien-khai-vps" class="toc-link">Triển khai VPS</a>
                             <a href="#lap-lai-phat-trien" class="toc-link">Lặp lại và Phát triển</a>
+                        </div>
+
+                        <!-- TOC for Nhiệm vụ thành phần Shell -->
+                        <div class="toc-content-nhiem-vu-shell" style="display: none;">
+                            <a href="#shell-config-service" class="toc-link">shell-config-service</a>
+                            <a href="#shell-app-user" class="toc-link">shell-app-user</a>
+                            <a href="#shell-app-admin" class="toc-link">shell-app-admin</a>
+                            <a href="#shell-config-admin" class="toc-link">shell-config-admin</a>
+                            <a href="#tong-ket" class="toc-link">Tổng kết</a>
                         </div>
                     </nav>
                 </div>
