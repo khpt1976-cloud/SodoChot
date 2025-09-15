@@ -551,6 +551,7 @@ function updateBreadcrumb(pageId, navElement) {
 
 function updatePageTitle(pageId) {
     const pageTitles = {
+        'gioi-thieu': 'Giới thiệu về Dự án - Tài liệu',
         'so-do-tong-the': 'Sơ đồ tổng thể - Tài liệu',
         'microservice-architecture': 'Microservice Architecture - Tài liệu',
         'settings': 'Settings - Tài liệu'
@@ -569,7 +570,9 @@ function updateTOCForPage(pageId) {
     
     // Show the appropriate TOC section
     let tocClass = 'settings'; // default
-    if (pageId === 'microservice-architecture') {
+    if (pageId === 'gioi-thieu') {
+        tocClass = 'gioi-thieu';
+    } else if (pageId === 'microservice-architecture') {
         tocClass = 'microservice';
     } else if (pageId === 'so-do-tong-the') {
         tocClass = 'so-do-tong-the';

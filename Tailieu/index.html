@@ -96,10 +96,10 @@
 
                     <!-- Main Navigation -->
                     <div class="nav-group">
-                        <div class="nav-item">
+                        <div class="nav-item" data-page="gioi-thieu">
                             <div class="nav-link">
                                 <i class="fas fa-play-circle nav-icon"></i>
-                                <span>Introduction</span>
+                                <span>Giới thiệu</span>
                             </div>
                         </div>
                         
@@ -356,6 +356,175 @@
                                         <strong>Use the Cloud API</strong> to programmatically interact with OpenHands.
                                     </li>
                                 </ul>
+                            </section>
+                        </div>
+                    </div>
+
+                    <!-- Giới thiệu Content -->
+                    <div class="content-page" id="gioi-thieu-content" style="display: none;">
+                        <div class="content-header">
+                            <h1>Giới thiệu về Dự án</h1>
+                            <p>Tổng quan về dự án, mô hình kinh doanh, chi phí và xu hướng phát triển</p>
+                        </div>
+                        
+                        <div class="content-body">
+                            <section class="content-section">
+                                <h2 id="tong-quan-du-an">1. Tổng quan Dự án</h2>
+                                <p>Dự án này được xây dựng trên nền tảng kiến trúc Microservice hiện đại, nhằm cung cấp một hệ thống linh hoạt, có khả năng mở rộng và dễ bảo trì. Dựa trên sơ đồ kiến trúc đã phân tích, dự án bao gồm nhiều dịch vụ độc lập như Quản lý Sản phẩm, Giỏ hàng, Thanh toán, Quản lý Người dùng, Tin tức, và các dịch vụ chuyên biệt khác (ví dụ: Tính toán Thiết kế, Bóng đá, Nhật ký thi công, Chatbot, Quản lý Đại lý, Chính sách Đại lý). Hệ thống được thiết kế để phục vụ cả người dùng cuối (User Frontend) và quản trị viên (Admin Frontend) thông qua các API Gateway riêng biệt.</p>
+                                
+                                <div class="highlight-box">
+                                    <h3><i class="fas fa-bullseye"></i> Mục tiêu chính:</h3>
+                                    <ul class="goal-list">
+                                        <li>Cung cấp một nền tảng dịch vụ đa dạng, đáp ứng nhiều nhu cầu khác nhau của người dùng.</li>
+                                        <li>Đảm bảo tính ổn định, bảo mật và hiệu suất cao.</li>
+                                        <li>Dễ dàng mở rộng và phát triển các tính năng mới mà không ảnh hưởng đến toàn bộ hệ thống.</li>
+                                        <li>Tối ưu hóa trải nghiệm người dùng và hiệu quả quản lý.</li>
+                                    </ul>
+                                </div>
+                            </section>
+
+                            <section class="content-section">
+                                <h2 id="cach-kinh-doanh">2. Cách kinh doanh của Dự án</h2>
+                                <p>Dựa trên cấu trúc Microservice đa dạng, dự án có thể áp dụng nhiều mô hình kinh doanh khác nhau, tùy thuộc vào trọng tâm và đối tượng khách hàng mục tiêu:</p>
+                                
+                                <div class="business-models">
+                                    <div class="business-model">
+                                        <h3><i class="fas fa-cloud"></i> Mô hình SaaS (Software as a Service)</h3>
+                                        <p>Cung cấp các dịch vụ chuyên biệt (ví dụ: Dịch vụ Tính toán Thiết kế, Dịch vụ Quản lý Đại lý) dưới dạng đăng ký hàng tháng/năm cho các doanh nghiệp hoặc cá nhân có nhu cầu.</p>
+                                    </div>
+                                    
+                                    <div class="business-model">
+                                        <h3><i class="fas fa-shopping-cart"></i> Mô hình Thương mại điện tử (E-commerce)</h3>
+                                        <p>Nếu trọng tâm là các dịch vụ Giỏ hàng, Sản phẩm, Thanh toán, dự án có thể hoạt động như một nền tảng bán hàng trực tuyến cho các sản phẩm/dịch vụ của riêng mình hoặc của bên thứ ba (marketplace).</p>
+                                    </div>
+                                    
+                                    <div class="business-model">
+                                        <h3><i class="fas fa-ad"></i> Mô hình Quảng cáo/Nội dung</h3>
+                                        <p>Với Dịch vụ Tin tức và các dịch vụ tương tác (Chatbot), dự án có thể tạo ra doanh thu từ quảng cáo hiển thị, nội dung trả phí hoặc các gói dịch vụ cao cấp.</p>
+                                    </div>
+                                    
+                                    <div class="business-model">
+                                        <h3><i class="fas fa-credit-card"></i> Mô hình Phí giao dịch</h3>
+                                        <p>Đối với Dịch vụ Thanh toán, có thể thu phí trên mỗi giao dịch thành công.</p>
+                                    </div>
+                                    
+                                    <div class="business-model">
+                                        <h3><i class="fas fa-star-half-alt"></i> Mô hình Freemium</h3>
+                                        <p>Cung cấp các tính năng cơ bản miễn phí và tính phí cho các tính năng nâng cao hoặc gói dịch vụ cao cấp hơn.</p>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <section class="content-section">
+                                <h2 id="uoc-tinh-chi-phi">3. Ước tính chi phí để thực hiện</h2>
+                                <p>Việc ước tính chi phí cho một dự án Microservice cần xem xét nhiều yếu tố. Với việc triển khai trên một VPS đơn lẻ ban đầu, chi phí sẽ được tối ưu hóa, nhưng vẫn cần tính toán cho các giai đoạn phát triển và vận hành:</p>
+                                
+                                <div class="cost-breakdown">
+                                    <div class="cost-category">
+                                        <h3><i class="fas fa-server"></i> Chi phí Hạ tầng (VPS)</h3>
+                                        <ul>
+                                            <li>Gói VPS hiện tại của bạn: Khoảng <strong>339.000 VNĐ/tháng</strong> (tương đương ~14 USD/tháng).</li>
+                                            <li>Chi phí tên miền (Domain Name): Khoảng <strong>200.000 - 500.000 VNĐ/năm</strong>.</li>
+                                            <li>Chứng chỉ SSL (nếu không dùng Let's Encrypt miễn phí): Có thể từ vài trăm nghìn đến vài triệu VNĐ/năm.</li>
+                                            <li><strong>Lưu ý:</strong> Khi dự án phát triển, bạn có thể cần nâng cấp VPS hoặc chuyển sang các nền tảng Cloud lớn hơn, chi phí hạ tầng sẽ tăng đáng kể.</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="cost-category">
+                                        <h3><i class="fas fa-code"></i> Chi phí Phát triển</h3>
+                                        <ul>
+                                            <li><strong>Nhân lực:</strong> Đây là chi phí lớn nhất. Nếu bạn tự phát triển, chi phí là thời gian và công sức của bạn. Nếu thuê ngoài hoặc có đội ngũ, chi phí sẽ bao gồm lương cho các vị trí Backend Developer, Frontend Developer, DevOps Engineer, QA Engineer, UI/UX Designer, Product Manager.</li>
+                                            <li><strong>Công cụ và phần mềm:</strong> Các công cụ phát triển, IDE, phần mềm quản lý dự án (nếu có).</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="cost-category">
+                                        <h3><i class="fas fa-tools"></i> Chi phí Vận hành và Bảo trì</h3>
+                                        <ul>
+                                            <li>Thời gian và công sức để giám sát hệ thống, cập nhật phần mềm, xử lý lỗi, sao lưu dữ liệu.</li>
+                                            <li>Chi phí cho các dịch vụ bên thứ ba (nếu có) như dịch vụ gửi email, SMS, CDN, v.v.</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="cost-category">
+                                        <h3><i class="fas fa-bullhorn"></i> Chi phí Marketing và Bán hàng</h3>
+                                        <p>Để đưa sản phẩm đến với người dùng.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="cost-estimate">
+                                    <h3><i class="fas fa-calculator"></i> Ước tính sơ bộ (cho giai đoạn khởi đầu với 1 người phát triển trên 1 VPS):</h3>
+                                    <ul>
+                                        <li><strong>Chi phí cố định hàng tháng:</strong> ~350.000 VNĐ (chủ yếu là VPS).</li>
+                                        <li><strong>Chi phí phát triển:</strong> Thời gian của bạn (có thể kéo dài vài tháng đến 1 năm hoặc hơn tùy quy mô).</li>
+                                    </ul>
+                                </div>
+                            </section>
+
+                            <section class="content-section">
+                                <h2 id="suy-doan-thu-nhap">4. Suy đoán về Thu nhập</h2>
+                                <p>Thu nhập sẽ phụ thuộc trực tiếp vào mô hình kinh doanh được lựa chọn và khả năng thu hút người dùng/khách hàng. Một số kịch bản:</p>
+                                
+                                <div class="revenue-scenarios">
+                                    <div class="revenue-scenario">
+                                        <h3><i class="fas fa-chart-line"></i> Doanh thu từ đăng ký/SaaS</h3>
+                                        <p>Nếu mỗi dịch vụ chuyên biệt thu phí 50.000 - 200.000 VNĐ/tháng/người dùng, với 100 khách hàng, doanh thu có thể đạt <strong>5 - 20 triệu VNĐ/tháng</strong>.</p>
+                                    </div>
+                                    
+                                    <div class="revenue-scenario">
+                                        <h3><i class="fas fa-shopping-bag"></i> Doanh thu từ thương mại điện tử</h3>
+                                        <p>Tỷ lệ chuyển đổi và giá trị đơn hàng trung bình sẽ quyết định. Ví dụ, với 1000 lượt truy cập/ngày và tỷ lệ chuyển đổi 1%, giá trị đơn hàng trung bình 300.000 VNĐ, doanh thu có thể là <strong>3 triệu VNĐ/ngày (90 triệu VNĐ/tháng)</strong>.</p>
+                                    </div>
+                                    
+                                    <div class="revenue-scenario">
+                                        <h3><i class="fas fa-ad"></i> Doanh thu từ quảng cáo</h3>
+                                        <p>Phụ thuộc vào lượng truy cập và tương tác của người dùng. Cần một lượng lớn người dùng để tạo ra doanh thu đáng kể.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="note-box">
+                                    <p><strong>Lưu ý:</strong> Đây chỉ là suy đoán ban đầu. Thu nhập thực tế sẽ cần được xác định thông qua nghiên cứu thị trường sâu hơn, thử nghiệm sản phẩm (MVP - Minimum Viable Product) và chiến lược marketing hiệu quả.</p>
+                                </div>
+                            </section>
+
+                            <section class="content-section">
+                                <h2 id="nhan-dinh-xu-huong">5. Nhận định về Xu hướng</h2>
+                                <p>Dự án được xây dựng trên kiến trúc Microservice, đây là một xu hướng công nghệ mạnh mẽ và tiếp tục phát triển trong ngành phần mềm. Việc áp dụng kiến trúc này mang lại nhiều lợi thế:</p>
+                                
+                                <div class="trend-advantages">
+                                    <div class="advantage-item">
+                                        <h3><i class="fas fa-expand-arrows-alt"></i> Tính linh hoạt và khả năng mở rộng</h3>
+                                        <p>Cho phép dự án dễ dàng thích nghi với các yêu cầu thay đổi và mở rộng quy mô khi cần thiết.</p>
+                                    </div>
+                                    
+                                    <div class="advantage-item">
+                                        <h3><i class="fas fa-rocket"></i> Tốc độ phát triển nhanh</h3>
+                                        <p>Các nhóm nhỏ có thể làm việc độc lập trên từng dịch vụ, đẩy nhanh quá trình phát triển và triển khai.</p>
+                                    </div>
+                                    
+                                    <div class="advantage-item">
+                                        <h3><i class="fas fa-shield-alt"></i> Khả năng phục hồi</h3>
+                                        <p>Lỗi ở một dịch vụ ít có khả năng ảnh hưởng đến toàn bộ hệ thống.</p>
+                                    </div>
+                                    
+                                    <div class="advantage-item">
+                                        <h3><i class="fas fa-cogs"></i> Công nghệ hiện đại</h3>
+                                        <p>Sử dụng Docker, Nginx, và các công nghệ liên quan giúp dự án luôn cập nhật với các tiêu chuẩn công nghiệp.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="future-trends">
+                                    <h3><i class="fas fa-crystal-ball"></i> Các xu hướng khác mà dự án có thể tận dụng:</h3>
+                                    <ul>
+                                        <li><strong>Trải nghiệm người dùng (UX) và giao diện người dùng (UI) tập trung:</strong> Với các thành phần Frontend riêng biệt, dự án có thể tối ưu hóa trải nghiệm cho từng đối tượng.</li>
+                                        <li><strong>Tích hợp AI/ML:</strong> Dịch vụ Chatbot là một ví dụ, có thể mở rộng để tích hợp các tính năng AI/ML khác nhằm nâng cao giá trị sản phẩm.</li>
+                                        <li><strong>Dữ liệu lớn (Big Data):</strong> Với nhiều cơ sở dữ liệu độc lập, dự án có tiềm năng thu thập và phân tích lượng lớn dữ liệu để đưa ra các quyết định kinh doanh thông minh.</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="conclusion">
+                                    <p><strong>Nhìn chung,</strong> dự án có nền tảng công nghệ vững chắc để phát triển trong bối cảnh thị trường số hóa ngày càng tăng. Thành công sẽ phụ thuộc vào việc xác định rõ ràng giá trị cốt lõi, khả năng tiếp cận thị trường và liên tục cải tiến sản phẩm.</p>
+                                </div>
                             </section>
                         </div>
                     </div>
@@ -777,6 +946,15 @@
                             <a href="#settings" class="toc-link active">Settings</a>
                             <a href="#key-features" class="toc-link">Key Features</a>
                             <a href="#next-steps" class="toc-link">Next Steps</a>
+                        </div>
+                        
+                        <!-- TOC for Giới thiệu -->
+                        <div class="toc-content-gioi-thieu" style="display: none;">
+                            <a href="#tong-quan-du-an" class="toc-link">Tổng quan Dự án</a>
+                            <a href="#cach-kinh-doanh" class="toc-link">Cách kinh doanh</a>
+                            <a href="#uoc-tinh-chi-phi" class="toc-link">Ước tính chi phí</a>
+                            <a href="#suy-doan-thu-nhap" class="toc-link">Suy đoán thu nhập</a>
+                            <a href="#nhan-dinh-xu-huong" class="toc-link">Nhận định xu hướng</a>
                         </div>
                         
                         <!-- TOC for Sơ đồ tổng thể -->
