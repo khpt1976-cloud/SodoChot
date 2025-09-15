@@ -97,39 +97,12 @@
                     <!-- Main Navigation -->
                     <div class="nav-group">
                         <div class="nav-item" data-page="gioi-thieu">
-                            <div class="nav-link">
+                            <div class="nav-link active">
                                 <i class="fas fa-play-circle nav-icon"></i>
                                 <span>Giới thiệu</span>
                             </div>
                         </div>
-                        
-                        <div class="nav-item" data-page="so-do-tong-the">
-                            <div class="nav-link">
-                                <i class="fas fa-sitemap nav-icon"></i>
-                                <span>Sơ đồ tổng thể</span>
-                            </div>
-                        </div>
-                        
-                        <div class="nav-item">
-                            <div class="nav-link">
-                                <i class="fas fa-hammer nav-icon"></i>
-                                <span>Start Building</span>
-                            </div>
-                        </div>
-                        
-                        <div class="nav-item">
-                            <div class="nav-link">
-                                <i class="fas fa-star nav-icon"></i>
-                                <span>Key Features</span>
-                            </div>
-                        </div>
-                        
-                        <div class="nav-item">
-                            <div class="nav-link">
-                                <i class="fas fa-question-circle nav-icon"></i>
-                                <span>FAQs</span>
-                            </div>
-                        </div>
+
                     </div>
 
                     <!-- Sơ đồ từng thành phần Section -->
@@ -241,6 +214,36 @@
                     <div class="nav-group">
                         <div class="nav-group-title">Dự án Hpt Developers</div>
                     </div>
+                    
+                    <!-- Thứ tự triển khai -->
+                    <div class="nav-group">
+                        <div class="nav-item" data-page="thu-tu-trien-khai">
+                            <div class="nav-link">
+                                <i class="fas fa-tasks nav-icon"></i>
+                                <span>Thứ tự triển khai dự án</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Lưu ý khi triển khai -->
+                    <div class="nav-group">
+                        <div class="nav-item" data-page="luu-y-trien-khai">
+                            <div class="nav-link">
+                                <i class="fas fa-exclamation-triangle nav-icon"></i>
+                                <span>Lưu ý khi triển khai</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Từng bước triển khai -->
+                    <div class="nav-group">
+                        <div class="nav-item" data-page="tung-buoc-trien-khai">
+                            <div class="nav-link">
+                                <i class="fas fa-list-ol nav-icon"></i>
+                                <span>Từng bước triển khai</span>
+                            </div>
+                        </div>
+                    </div>
                 </nav>
             </div>
         </aside>
@@ -256,13 +259,13 @@
                     <i class="fas fa-chevron-right breadcrumb-separator"></i>
                     <span class="breadcrumb-item">Dự án Hpt</span>
                     <i class="fas fa-chevron-right breadcrumb-separator"></i>
-                    <span class="breadcrumb-item active">Settings</span>
+                    <span class="breadcrumb-item active">Giới thiệu</span>
                 </div>
 
                 <!-- Page Content -->
                 <article class="page-content" id="main-content">
-                    <!-- Default Settings Content -->
-                    <div class="content-page" id="settings-content">
+                    <!-- Default Gioi thieu Content -->
+                    <div class="content-page" id="settings-content" style="display: none;">
                         <header class="page-header">
                             <h1 class="page-title">Settings</h1>
                             <p class="page-description">
@@ -1127,7 +1130,7 @@
                     </div>
 
                     <!-- Giới thiệu Content -->
-                    <div class="content-page" id="gioi-thieu-content" style="display: none;">
+                    <div class="content-page" id="gioi-thieu-content">
                         <div class="content-header">
                             <h1>Giới thiệu về Dự án</h1>
                             <p>Tổng quan về dự án, mô hình kinh doanh, chi phí và xu hướng phát triển</p>
@@ -1482,6 +1485,238 @@
                         </div>
                     </div>
 
+                    <!-- Thứ tự triển khai Content -->
+                    <div class="content-page" id="thu-tu-trien-khai-content" style="display: none;">
+                        <div class="content-header">
+                            <h1>Thứ tự Triển khai Dự án Microservice</h1>
+                            <p>Tài liệu này tổng hợp các chiến lược triển khai dự án Microservice, bao gồm thứ tự triển khai tuần tự khi nguồn lực hạn chế và các phần có thể triển khai song song khi có đội ngũ.</p>
+                        </div>
+                        
+                        <div class="content-body">
+                            <section class="content-section">
+                                <h2 id="trien-khai-tuan-tu">1. Thứ tự triển khai tuần tự cho một người</h2>
+                                <p>Nếu chỉ có một người triển khai toàn bộ hệ thống này một cách tuần tự, thứ tự triển khai phải được ưu tiên dựa trên sự phụ thuộc và xây dựng nền tảng trước, sau đó mới đến các tính năng cụ thể. Một thứ tự logic và hiệu quả sẽ như sau:</p>
+                                
+                                <div class="phase-container">
+                                    <h3 class="phase-title">
+                                        <i class="fas fa-foundation"></i> Giai đoạn 1: Xây dựng Nền tảng (Foundation)
+                                    </h3>
+                                    <p class="phase-description">Mục tiêu của giai đoạn này là tạo ra bộ khung xương cho toàn bộ hệ thống. Bạn cần những thành phần cốt lõi để các dịch vụ sau này có thể "cắm" vào.</p>
+                                    
+                                    <div class="step-list">
+                                        <div class="step-item">
+                                            <div class="step-number">1</div>
+                                            <div class="step-content">
+                                                <h4>Infrastructure (Hạ tầng)</h4>
+                                                <p>Thiết lập môi trường cloud (VPS), cài đặt hệ điều hành, cấu hình mạng cơ bản, tường lửa, SSH an toàn. Đây là bước đầu tiên và tiên quyết.</p>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="step-item">
+                                            <div class="step-number">2</div>
+                                            <div class="step-content">
+                                                <h4>User Service (Dịch vụ Người dùng)</h4>
+                                                <p>Hầu hết mọi dịch vụ khác đều cần xác thực và quản lý người dùng. Do đó, <code>User Service</code> và <code>User DB</code> phải được xây dựng trước tiên. Đây là dịch vụ trung tâm.</p>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="step-item">
+                                            <div class="step-number">3</div>
+                                            <div class="step-content">
+                                                <h4>API Gateway (Cổng API)</h4>
+                                                <p>Thiết lập <code>API Gateway User</code> và <code>API Gateway Admin</code> (sử dụng Nginx). Ban đầu, chỉ cần cấu hình để nó có thể giao tiếp với <code>User Service</code>. Cổng API sẽ là điểm vào duy nhất cho tất cả các yêu cầu sau này.</p>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="step-item">
+                                            <div class="step-number">4</div>
+                                            <div class="step-content">
+                                                <h4>Shell App (User/Admin)</h4>
+                                                <p>Xây dựng hai ứng dụng frontend khung (<code>Shell App User</code> và <code>Shell App Admin</code>). Ban đầu, chúng chỉ cần có khả năng đăng nhập/đăng ký thông qua <code>User Service</code> và hiển thị một giao diện cơ bản.</p>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="step-item">
+                                            <div class="step-number">5</div>
+                                            <div class="step-content">
+                                                <h4>Message Broker & Cache (Cài đặt cơ bản)</h4>
+                                                <p>Cài đặt <code>Message Broker</code> (ví dụ: RabbitMQ) và <code>Cache</code> (ví dụ: Redis) trên VPS. Chỉ cần cài đặt và đảm bảo chúng hoạt động, chưa cần tích hợp sâu.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="phase-container">
+                                    <h3 class="phase-title">
+                                        <i class="fas fa-layer-group"></i> Giai đoạn 2: Triển khai các Microservice cốt lõi theo từng lát cắt dọc
+                                    </h3>
+                                    <p class="phase-description">Sau khi có nền tảng, bạn sẽ bắt đầu triển khai các Microservice theo từng "lát cắt dọc" (Backend Service + Database + Frontend tương ứng). Bắt đầu với các dịch vụ quan trọng nhất hoặc ít phụ thuộc nhất.</p>
+                                    
+                                    <div class="step-list">
+                                        <div class="step-item">
+                                            <div class="step-number">6</div>
+                                            <div class="step-content">
+                                                <h4>Product Service (Dịch vụ Sản phẩm)</h4>
+                                                <ul>
+                                                    <li>Xây dựng <code>Product Service</code> (Backend) và <code>Product DB</code>.</li>
+                                                    <li>Cập nhật cấu hình Nginx (API Gateway) để định tuyến các yêu cầu đến <code>Product Service</code>.</li>
+                                                    <li>Xây dựng <code>Product Service Frontend</code> (giao diện hiển thị sản phẩm) và <code>Product Service Admin</code> (giao diện quản lý sản phẩm).</li>
+                                                    <li>Tích hợp các giao diện này vào <code>Shell App User</code> và <code>Shell App Admin</code>.</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="step-item">
+                                            <div class="step-number">7</div>
+                                            <div class="step-content">
+                                                <h4>Cart Service (Dịch vụ Giỏ hàng)</h4>
+                                                <ul>
+                                                    <li>Xây dựng <code>Cart Service</code> (Backend) và <code>Cart DB</code>.</li>
+                                                    <li>Cập nhật cấu hình Nginx (API Gateway).</li>
+                                                    <li>Xây dựng <code>Cart Service Frontend</code> và <code>Cart Service Admin</code>.</li>
+                                                    <li>Tích hợp vào <code>Shell App User</code> và <code>Shell App Admin</code>.</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="step-item">
+                                            <div class="step-number">8</div>
+                                            <div class="step-content">
+                                                <h4>Payment Service (Dịch vụ Thanh toán)</h4>
+                                                <ul>
+                                                    <li>Xây dựng <code>Payment Service</code> (Backend) và <code>Payment DB</code>.</li>
+                                                    <li>Cập nhật cấu hình Nginx (API Gateway).</li>
+                                                    <li>Xây dựng <code>Payment Service Frontend</code> và <code>Payment Service Admin</code>.</li>
+                                                    <li>Tích hợp vào <code>Shell App User</code> và <code>Shell App Admin</code>.</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="phase-container">
+                                    <h3 class="phase-title">
+                                        <i class="fas fa-puzzle-piece"></i> Giai đoạn 3: Triển khai các Microservice khác theo thứ tự ưu tiên
+                                    </h3>
+                                    <p class="phase-description">Tiếp tục triển khai các dịch vụ còn lại theo cùng mô hình "lát cắt dọc", dựa trên mức độ ưu tiên và sự phụ thuộc của chúng.</p>
+                                    
+                                    <div class="step-list">
+                                        <div class="step-item">
+                                            <div class="step-number">9</div>
+                                            <div class="step-content">
+                                                <h4>News Service (Dịch vụ Tin tức)</h4>
+                                                <p><code>News Service</code> (Backend) & <code>News DB</code> → Cập nhật API Gateway → <code>News Service Frontend</code> & <code>News Service Admin</code> → Tích hợp vào Shell App.</p>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="step-item">
+                                            <div class="step-number">10</div>
+                                            <div class="step-content">
+                                                <h4>Agent Management Service (Dịch vụ Quản lý Đại lý)</h4>
+                                                <p><code>Agent Management Service</code> & <code>Agent Management DB</code> → Cập nhật API Gateway → <code>Agent Management Frontend</code> & <code>Agent Management Admin</code> → Tích hợp vào Shell App.</p>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="step-item">
+                                            <div class="step-number">11</div>
+                                            <div class="step-content">
+                                                <h4>Agent Policy Service (Dịch vụ Chính sách Đại lý)</h4>
+                                                <p><code>Agent Policy Service</code> & <code>Agent Policy DB</code> → Cập nhật API Gateway → <code>Agent Policy Frontend</code> & <code>Agent Policy Admin</code> → Tích hợp vào Shell App.</p>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="step-item">
+                                            <div class="step-number">12</div>
+                                            <div class="step-content">
+                                                <h4>Shell Config Service (Dịch vụ Cấu hình Shell)</h4>
+                                                <p><code>Shell Config Service</code> & <code>Shell Config DB</code> → Cập nhật API Gateway → Tích hợp vào Shell App (để quản lý cấu hình).</p>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="step-item">
+                                            <div class="step-number">13</div>
+                                            <div class="step-content">
+                                                <h4>Admin Service (Dịch vụ Quản trị)</h4>
+                                                <p><code>Admin Service</code> & <code>Admin DB</code> → Cập nhật API Gateway → <code>Admin Service Frontend</code> & <code>Admin Service Admin</code> → Tích hợp vào Shell App.</p>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="step-item">
+                                            <div class="step-number">14</div>
+                                            <div class="step-content">
+                                                <h4>Các dịch vụ khác</h4>
+                                                <p>Triển khai <code>Design Calculation Service</code>, <code>Football Service</code>, <code>Communication Log Service</code>, <code>Chatbot Service</code> theo thứ tự ưu tiên của dự án.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="highlight-box">
+                                    <p><strong>Với mỗi dịch vụ, quy trình lặp lại là:</strong> (1) Xây dựng Backend & DB → (2) Cập nhật API Gateway → (3) Xây dựng Frontend & Admin → (4) Tích hợp vào Shell App.</p>
+                                </div>
+                            </section>
+                            
+                            <section class="content-section">
+                                <h2 id="trien-khai-song-song">2. Các phần có thể triển khai song song (khi có đội ngũ)</h2>
+                                <p>Khi có một đội ngũ phát triển, kiến trúc Microservice cho phép nhiều nhóm làm việc đồng thời trên các phần khác nhau của hệ thống, giúp tăng tốc độ phát triển tổng thể. Các khối sau đây có thể được phát triển, kiểm thử và triển khai một cách song song:</p>
+                                
+                                <div class="parallel-grid">
+                                    <div class="parallel-item">
+                                        <div class="parallel-icon">
+                                            <i class="fas fa-server"></i>
+                                        </div>
+                                        <h4>Các Microservice Backend riêng lẻ</h4>
+                                        <p>Mỗi dịch vụ backend (ví dụ: Cart Service, Product Service, User Service, v.v.) được thiết kế để hoạt động độc lập. Các nhóm khác nhau có thể làm việc trên các dịch vụ này đồng thời.</p>
+                                    </div>
+                                    
+                                    <div class="parallel-item">
+                                        <div class="parallel-icon">
+                                            <i class="fas fa-database"></i>
+                                        </div>
+                                        <h4>Cơ sở dữ liệu của từng Microservice</h4>
+                                        <p>Mỗi microservice thường có cơ sở dữ liệu riêng của nó. Việc thiết kế và triển khai mỗi DB có thể tiến hành song song với việc phát triển microservice tương ứng.</p>
+                                    </div>
+                                    
+                                    <div class="parallel-item">
+                                        <div class="parallel-icon">
+                                            <i class="fas fa-desktop"></i>
+                                        </div>
+                                        <h4>Các thành phần Frontend riêng lẻ</h4>
+                                        <p>Các giao diện người dùng (Frontend Components) cho từng dịch vụ hoặc vai trò (User Frontend, Admin Frontend) có thể được phát triển độc lập. Điều này đặc biệt đúng nếu áp dụng kiến trúc Micro-frontend.</p>
+                                    </div>
+                                    
+                                    <div class="parallel-item">
+                                        <div class="parallel-icon">
+                                            <i class="fas fa-cloud"></i>
+                                        </div>
+                                        <h4>Hạ tầng (Infrastructure)</h4>
+                                        <p>Việc thiết lập và quản lý hạ tầng có thể được thực hiện song song với việc phát triển các dịch vụ mà không cần đợi các dịch vụ hoàn thiện.</p>
+                                    </div>
+                                    
+                                    <div class="parallel-item">
+                                        <div class="parallel-icon">
+                                            <i class="fas fa-exchange-alt"></i>
+                                        </div>
+                                        <h4>API Gateway (Cổng API)</h4>
+                                        <p>Việc thiết lập và cấu hình cơ bản của API Gateway có thể bắt đầu độc lập. Các cấu hình cụ thể cho từng dịch vụ sẽ được thêm vào khi các microservice backend được phát triển.</p>
+                                    </div>
+                                    
+                                    <div class="parallel-item">
+                                        <div class="parallel-icon">
+                                            <i class="fas fa-share-alt"></i>
+                                        </div>
+                                        <h4>Message Broker và Cache</h4>
+                                        <p>Các thành phần này cũng có thể được thiết lập và cấu hình ở mức độ cơ bản một cách độc lập để sẵn sàng cho việc tích hợp với các microservice.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="highlight-box">
+                                    <p><strong>Lưu ý:</strong> Việc phân tích này giúp tối ưu hóa việc phân bổ nguồn lực và rút ngắn thời gian tổng thể của dự án bằng cách cho phép nhiều nhóm làm việc đồng thời trên các phần khác nhau của hệ thống.</p>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+
                     <!-- Microservice Architecture Content -->
                     <div class="content-page" id="microservice-architecture-content" style="display: none;">
                         <header class="page-header" id="microservice-architecture">
@@ -1674,6 +1909,367 @@
                     </div>
                 </article>
 
+                    <!-- Lưu ý khi triển khai Content -->
+                    <div class="content-page" id="luu-y-trien-khai-content" style="display: none;">
+                        <div class="content-header">
+                            <h1>Những lưu ý khi triển khai dự án Microservice trên VPS đơn lẻ</h1>
+                            <p>Việc triển khai một dự án Microservice, đặc biệt là trên một máy chủ ảo (VPS) đơn lẻ, mang lại nhiều lợi ích về tính linh hoạt và khả năng mở rộng trong tương lai. Tuy nhiên, nó cũng đi kèm với những thách thức và yêu cầu sự chú ý đặc biệt.</p>
+                        </div>
+
+                        <div class="content-body">
+                            <section class="content-section">
+                                <h2 id="kien-truc-thiet-ke">1. Về Kiến trúc và Thiết kế</h2>
+                                <ul class="feature-list">
+                                    <li class="feature-item">
+                                        <strong>Hiểu rõ nguyên tắc Microservice:</strong> Đảm bảo mỗi service thực hiện một chức năng nghiệp vụ duy nhất, có cơ sở dữ liệu riêng (nếu cần), và giao tiếp qua API rõ ràng. Tránh biến Microservice thành Monolith phân tán.
+                                    </li>
+                                    <li class="feature-item">
+                                        <strong>Thiết kế API rõ ràng:</strong> Các giao diện API giữa các service phải được định nghĩa rõ ràng, ổn định và có tài liệu hóa tốt (ví dụ: sử dụng OpenAPI/Swagger).
+                                    </li>
+                                    <li class="feature-item">
+                                        <strong>Quản lý trạng thái (State Management):</strong> Cân nhắc kỹ nơi lưu trữ trạng thái. Tránh lưu trạng thái trong service (stateless services) để dễ dàng mở rộng và phục hồi.
+                                    </li>
+                                    <li class="feature-item">
+                                        <strong>Xử lý giao dịch phân tán (Distributed Transactions):</strong> Đây là một thách thức lớn trong Microservice. Tránh các giao dịch kéo dài qua nhiều service. Sử dụng các mẫu như Saga Pattern hoặc Eventual Consistency khi cần thiết.
+                                    </li>
+                                    <li class="feature-item">
+                                        <strong>Bảo mật từ đầu:</strong> Thiết kế bảo mật vào kiến trúc từ giai đoạn đầu, bao gồm xác thực (Authentication), ủy quyền (Authorization), mã hóa dữ liệu truyền tải (TLS/SSL) và dữ liệu lưu trữ.
+                                    </li>
+                                </ul>
+                            </section>
+
+                            <section class="content-section">
+                                <h2 id="phat-trien-kiem-thu">2. Về Phát triển và Kiểm thử</h2>
+                                <ul class="feature-list">
+                                    <li class="feature-item">
+                                        <strong>Phát triển "Lát cắt dọc" (Vertical Slice):</strong> Tập trung hoàn thiện một tính năng end-to-end (Frontend -> Backend -> DB) trước khi chuyển sang tính năng khác. Điều này giúp bạn có sản phẩm hoạt động sớm và dễ dàng kiểm thử.
+                                    </li>
+                                    <li class="feature-item">
+                                        <strong>Kiểm thử tự động:</strong> Viết unit tests, integration tests và end-to-end tests cho từng service. Điều này cực kỳ quan trọng để đảm bảo chất lượng khi có nhiều service.
+                                    </li>
+                                    <li class="feature-item">
+                                        <strong>Môi trường phát triển cục bộ:</strong> Đảm bảo môi trường phát triển cục bộ (sử dụng Docker Compose) phản ánh gần đúng môi trường triển khai để tránh các lỗi "chỉ chạy trên máy tôi".
+                                    </li>
+                                    <li class="feature-item">
+                                        <strong>Quản lý Dependencies:</strong> Cẩn thận với các thư viện và phiên bản phụ thuộc. Sử dụng các công cụ quản lý gói (npm, pip, composer) và khóa phiên bản (<code>package-lock.json</code>, <code>requirements.txt</code>).
+                                    </li>
+                                </ul>
+                            </section>
+
+                            <section class="content-section">
+                                <h2 id="trien-khai-van-hanh">3. Về Triển khai và Vận hành (trên VPS đơn lẻ)</h2>
+                                
+                                <div class="subsection">
+                                    <h3><i class="fas fa-server"></i> Tài nguyên VPS hạn chế:</h3>
+                                    <ul class="feature-list">
+                                        <li class="feature-item">
+                                            <strong>CPU/RAM:</strong> Với gói VPS cơ bản (3 Cores, 2-3GB RAM), bạn sẽ nhanh chóng hết tài nguyên nếu chạy quá nhiều service hoặc service tiêu tốn nhiều bộ nhớ. Cân nhắc tối ưu hóa service để sử dụng ít tài nguyên nhất có thể.
+                                        </li>
+                                        <li class="feature-item">
+                                            <strong>Disk I/O:</strong> SSD 50GB là đủ cho nhiều dự án nhỏ, nhưng nếu các service ghi/đọc dữ liệu liên tục hoặc có lượng truy cập cao, hiệu suất ổ đĩa có thể là nút thắt cổ chai.
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div class="subsection">
+                                    <h3><i class="fab fa-docker"></i> Docker và Docker Compose:</h3>
+                                    <ul class="feature-list">
+                                        <li class="feature-item">
+                                            <strong>Bắt buộc sử dụng:</strong> Docker là công cụ không thể thiếu để đóng gói và chạy các Microservice một cách cô lập. Docker Compose giúp quản lý nhiều container trên một máy chủ.
+                                        </li>
+                                        <li class="feature-item">
+                                            <strong>Tối ưu hóa Dockerfile:</strong> Xây dựng Docker image nhỏ gọn, sử dụng multi-stage builds để giảm kích thước image và tăng tốc độ triển khai.
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div class="subsection">
+                                    <h3><i class="fas fa-network-wired"></i> Nginx làm Reverse Proxy/API Gateway:</h3>
+                                    <ul class="feature-list">
+                                        <li class="feature-item">
+                                            <strong>Cần thiết:</strong> Nginx sẽ đóng vai trò là điểm vào duy nhất cho tất cả các yêu cầu từ bên ngoài, định tuyến chúng đến các service backend hoặc frontend phù hợp đang chạy trong Docker container.
+                                        </li>
+                                        <li class="feature-item">
+                                            <strong>Cấu hình SSL:</strong> Đảm bảo cấu hình HTTPS với Let's Encrypt hoặc chứng chỉ SSL khác để bảo mật giao tiếp.
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div class="subsection">
+                                    <h3><i class="fas fa-database"></i> Cơ sở dữ liệu:</h3>
+                                    <ul class="feature-list">
+                                        <li class="feature-item">
+                                            <strong>Chạy trong Docker:</strong> Với VPS đơn lẻ, bạn có thể chạy các DB trong Docker container. Tuy nhiên, cần đảm bảo dữ liệu được lưu trữ trên volume bền vững (<code>volumes</code> trong <code>docker-compose.yml</code>) để không bị mất khi container bị xóa hoặc cập nhật.
+                                        </li>
+                                        <li class="feature-item">
+                                            <strong>Sao lưu (Backup):</strong> Thiết lập cơ chế sao lưu tự động cho tất cả các cơ sở dữ liệu. Đây là một trong những việc quan trọng nhất để tránh mất dữ liệu.
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div class="subsection">
+                                    <h3><i class="fas fa-code-branch"></i> CI/CD (Continuous Integration/Continuous Deployment):</h3>
+                                    <ul class="feature-list">
+                                        <li class="feature-item">
+                                            <strong>Tự động hóa:</strong> Thiết lập GitHub Actions (hoặc GitLab CI/CD, Jenkins) để tự động build, kiểm thử và triển khai code lên VPS mỗi khi có thay đổi. Điều này giúp tiết kiệm thời gian và giảm lỗi thủ công.
+                                        </li>
+                                        <li class="feature-item">
+                                            <strong>Secrets Management:</strong> Sử dụng GitHub Secrets (hoặc các công cụ quản lý secret khác) để lưu trữ các thông tin nhạy cảm (khóa SSH, mật khẩu DB, Docker Hub credentials) một cách an toàn.
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div class="subsection">
+                                    <h3><i class="fas fa-chart-line"></i> Giám sát và Ghi log (Monitoring & Logging):</h3>
+                                    <ul class="feature-list">
+                                        <li class="feature-item">
+                                            <strong>Cần thiết:</strong> Ngay cả trên một VPS, bạn cần biết các service của mình đang hoạt động như thế nào. Cài đặt các công cụ giám sát cơ bản (ví dụ: <code>htop</code>, <code>docker stats</code>, Prometheus/Grafana nếu có thể) và hệ thống ghi log tập trung (ví dụ: ELK stack hoặc đơn giản là lưu log vào file và xoay vòng).
+                                        </li>
+                                        <li class="feature-item">
+                                            <strong>Health Checks:</strong> Cấu hình health checks cho từng service để Docker Compose hoặc Nginx có thể biết khi nào một service không hoạt động và khởi động lại nó.
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div class="subsection">
+                                    <h3><i class="fas fa-shield-alt"></i> Bảo mật VPS:</h3>
+                                    <ul class="feature-list">
+                                        <li class="feature-item">
+                                            <strong>Tường lửa (UFW/firewalld):</strong> Chỉ mở các cổng cần thiết (22 cho SSH, 80 cho HTTP, 443 cho HTTPS).
+                                        </li>
+                                        <li class="feature-item">
+                                            <strong>SSH Key:</strong> Luôn sử dụng SSH key thay vì mật khẩu để đăng nhập SSH.
+                                        </li>
+                                        <li class="feature-item">
+                                            <strong>Cập nhật hệ thống:</strong> Thường xuyên cập nhật hệ điều hành và các gói phần mềm trên VPS.
+                                        </li>
+                                    </ul>
+                                </div>
+                            </section>
+
+                            <section class="content-section">
+                                <h2 id="quan-ly-du-an">4. Về Quản lý Dự án và Quy trình làm việc</h2>
+                                <ul class="feature-list">
+                                    <li class="feature-item">
+                                        <strong>Quản lý mã nguồn (Git):</strong> Sử dụng Git và GitHub (hoặc GitLab, Bitbucket) để quản lý mã nguồn, theo dõi thay đổi và cộng tác (ngay cả khi bạn làm một mình).
+                                    </li>
+                                    <li class="feature-item">
+                                        <strong>Tài liệu hóa:</strong> Ghi lại tất cả các quyết định thiết kế, cấu hình, API, và quy trình triển khai. Tài liệu tốt sẽ giúp bạn rất nhiều khi quay lại dự án sau một thời gian hoặc khi có người khác tham gia.
+                                    </li>
+                                    <li class="feature-item">
+                                        <strong>Bắt đầu nhỏ, lặp lại:</strong> Đừng cố gắng xây dựng mọi thứ cùng một lúc. Bắt đầu với một service cốt lõi, hoàn thiện nó, triển khai, sau đó lặp lại cho các service khác.
+                                    </li>
+                                </ul>
+                                
+                                <div class="note-box">
+                                    <p><strong>Kết luận:</strong> Việc tuân thủ những lưu ý này sẽ giúp bạn xây dựng một hệ thống Microservice ổn định, bảo mật và dễ quản lý hơn trên môi trường VPS đơn lẻ của mình.</p>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+
+                    <!-- Từng bước triển khai Content -->
+                    <div class="content-page" id="tung-buoc-trien-khai-content" style="display: none;">
+                        <div class="content-header">
+                            <h1>Từng bước triển khai dự án Microservice trên VPS đơn lẻ (Chi tiết)</h1>
+                            <p>Tài liệu này cung cấp một hướng dẫn chi tiết và thực tế về quy trình triển khai dự án Microservice của bạn trên một máy chủ ảo (VPS) đơn lẻ. Nó tập trung vào việc xác định thứ tự ưu tiên, quản lý các mối quan hệ phụ thuộc, và hoàn thiện từng "lát cắt dọc" (vertical slice) của chức năng.</p>
+                        </div>
+
+                        <div class="content-body">
+                            <section id="thiet-ke-dinh-hinh">
+                                <h2>Giai đoạn 1: Thiết kế và Định hình Dự án (Nền tảng cho mọi thứ)</h2>
+                                <p>Đây là giai đoạn quan trọng nhất để định hình dự án, xác định cấu trúc và các thành phần trước khi bắt tay vào code. <strong>Không nên bỏ qua hoặc làm qua loa giai đoạn này.</strong></p>
+                                
+                                <div class="step-section">
+                                    <h3>Bước 1: Phân tích Sơ đồ Kiến trúc và Xác định các Khối Cốt lõi</h3>
+                                    <ol>
+                                        <li><strong>Phân tích sơ đồ kiến trúc tổng thể:</strong> Dựa trên sơ đồ bạn đã cung cấp (ví dụ: <code>sodochuan.html</code>), hiểu rõ các thành phần chính: Infrastructure, Backend Microservices, API Gateway, Frontend Applications, Databases.</li>
+                                        <li><strong>Xác định các khối độc lập:</strong> Liệt kê các Microservice Backend, Frontend Components và Database tương ứng có thể hoạt động như một ứng dụng độc lập.</li>
+                                        <li><strong>Xác định các dịch vụ nền tảng (Foundation Services):</strong> Trong kiến trúc Microservice, một số dịch vụ là nền tảng cho các dịch vụ khác. <code>User Service</code> (quản lý người dùng, xác thực) là ví dụ điển hình.</li>
+                                        <li><strong>Xác định thứ tự ưu tiên triển khai ban đầu:</strong> Dựa trên các dịch vụ nền tảng, quyết định dịch vụ nào cần được phát triển và triển khai trước tiên.</li>
+                                    </ol>
+                                </div>
+
+                                <div class="step-section">
+                                    <h3>Bước 2: Thiết kế Cấu trúc Thư mục Tổng thể của Dự án</h3>
+                                    <p>Đây là bước bạn hình dung và tạo ra cấu trúc thư mục gốc cho toàn bộ dự án. Việc này giúp tổ chức mã nguồn một cách rõ ràng và nhất quán.</p>
+                                    <pre><code>. (project-root)
+├── .git/
+├── .github/
+├── infrastructure/
+├── services/
+│   ├── cart-service/
+│   ├── product-service/
+│   └── user-service/
+├── frontend/
+│   ├── shell-app-user/
+│   ├── cart-service-frontend/
+│   └── user-service-frontend/
+├── docker-compose.yml
+├── nginx/
+├── docs/
+├── .env.example
+├── README.md
+└── LICENSE</code></pre>
+                                </div>
+
+                                <div class="step-section">
+                                    <h3>Bước 3: Thiết kế Cấu trúc Thư mục Chi tiết cho từng Phần Độc lập</h3>
+                                    <p>Đi sâu vào cấu trúc bên trong mỗi Microservice Backend và Frontend Component. Bước này giúp bạn định hình các file và thư mục con sẽ có trong từng dịch vụ.</p>
+                                </div>
+
+                                <div class="step-section">
+                                    <h3>Bước 4: Lập kế hoạch các File Cấu hình Ban đầu</h3>
+                                    <ol>
+                                        <li><strong><code>docker-compose.yml</code>:</strong> Lập kế hoạch các dịch vụ Docker sẽ chạy cục bộ và trên VPS.</li>
+                                        <li><strong><code>.env.example</code> và <code>.env</code>:</strong> Xác định các biến môi trường cần thiết cho dự án.</li>
+                                        <li><strong><code>.gitignore</code>:</strong> Liệt kê các file và thư mục cần bỏ qua khi đẩy lên Git.</li>
+                                    </ol>
+                                </div>
+                            </section>
+
+                            <section id="chuan-bi-moi-truong">
+                                <h2>Giai đoạn 2: Chuẩn bị Môi trường Phát triển và Khởi tạo Repository</h2>
+                                
+                                <div class="step-section">
+                                    <h3>Bước 5: Chuẩn bị Môi trường Phát triển (trên máy tính cá nhân)</h3>
+                                    <ol>
+                                        <li><strong>Cài đặt Git:</strong> Đảm bảo bạn đã cài đặt Git trên máy tính của mình để quản lý mã nguồn.</li>
+                                        <li><strong>Cài đặt IDE/Editor:</strong> Sử dụng một trình soạn thảo mã nguồn mạnh mẽ như Visual Studio Code (VS Code).</li>
+                                        <li><strong>Cài đặt Docker Desktop:</strong> Cài đặt Docker Desktop trên máy tính cá nhân.</li>
+                                        <li><strong>Cài đặt Node.js và Python:</strong> Cài đặt các môi trường lập trình bạn sẽ sử dụng cho các Microservice và Frontend.</li>
+                                    </ol>
+                                </div>
+
+                                <div class="step-section">
+                                    <h3>Bước 6: Khởi tạo Dự án trên GitHub</h3>
+                                    <ol>
+                                        <li>Truy cập vào <a href="https://github.com" target="_blank">GitHub</a> và tạo một <strong>repository mới</strong> (private hoặc public tùy bạn).</li>
+                                        <li>Đặt tên cho repository, ví dụ: <code>my-microservice-project</code>.</li>
+                                        <li><strong>KHÔNG</strong> khởi tạo với <code>README</code>, <code>.gitignore</code> hoặc <code>license</code> vội. Chúng ta sẽ tạo chúng ở bước sau.</li>
+                                    </ol>
+                                </div>
+
+                                <div class="step-section">
+                                    <h3>Bước 7: Khởi tạo Cấu trúc Thư mục Dự án Cục bộ</h3>
+                                    <pre><code>mkdir my-microservice-project
+cd my-microservice-project
+git init
+git remote add origin &lt;URL_CUA_REPOSITORY_GITHUB_CUA_BAN&gt;
+mkdir docs frontend infrastructure nginx services
+mkdir services/user-service services/product-service services/cart-service
+mkdir frontend/shell-app-user frontend/product-service-frontend frontend/cart-service-frontend
+touch README.md .gitignore docker-compose.yml .env.example .env</code></pre>
+                                </div>
+
+                                <div class="step-section">
+                                    <h3>Bước 8: Cấu hình các File Ban đầu</h3>
+                                    <p>Cấu hình <code>.gitignore</code>, <code>README.md</code>, <code>docker-compose.yml</code>, và các file môi trường.</p>
+                                </div>
+
+                                <div class="step-section">
+                                    <h3>Bước 9: Đẩy Lên GitHub Lần đầu</h3>
+                                    <pre><code>git add .
+git commit -m "Initial project structure"
+git push -u origin master</code></pre>
+                                    <p><strong>=> Luôn đẩy code lên GitHub thường xuyên!</strong></p>
+                                </div>
+                            </section>
+
+                            <section id="phat-trien-user-service">
+                                <h2>Giai đoạn 3: Phát triển "Lát cắt dọc" đầu tiên - User Service (Nền tảng)</h2>
+                                <p><strong>Mục tiêu:</strong> Hoàn thiện <code>User Service</code> (Backend), <code>User DB</code> và <code>User Service Frontend</code> để có một tính năng xác thực/quản lý người dùng hoạt động đầy đủ.</p>
+
+                                <div class="step-section">
+                                    <h3>Bước 10: Phát triển User Service (Backend) và Dockerize</h3>
+                                    <ol>
+                                        <li>Trong thư mục <code>services/</code>, tạo thư mục <code>user-service</code>.</li>
+                                        <li>Tạo cấu trúc thư mục chi tiết cho dịch vụ này (<code>src/</code>, <code>tests/</code>, <code>Dockerfile</code>, <code>requirements.txt</code>).</li>
+                                        <li>Viết mã nguồn cho <code>User Service</code>: các API đăng ký, đăng nhập, lấy thông tin người dùng.</li>
+                                        <li>Viết <code>Dockerfile</code> cho <code>User Service</code> để đóng gói nó thành một Docker image.</li>
+                                    </ol>
+                                </div>
+
+                                <div class="step-section">
+                                    <h3>Bước 10.1: Build và Kiểm thử Docker Image cục bộ</h3>
+                                    <pre><code>docker build -t your-dockerhub-username/user-service:latest ./services/user-service
+docker run -p 8001:8000 your-dockerhub-username/user-service:latest</code></pre>
+                                </div>
+
+                                <div class="step-section">
+                                    <h3>Bước 11: Cấu hình Docker Compose cho User Service và User DB</h3>
+                                    <p>Cập nhật file <code>docker-compose.yml</code> ở thư mục gốc để thêm <code>User Service</code> và cơ sở dữ liệu của nó.</p>
+                                </div>
+
+                                <div class="step-section">
+                                    <h3>Bước 12: Kiểm thử Cục bộ với Docker Compose</h3>
+                                    <pre><code>docker-compose up --build</code></pre>
+                                </div>
+
+                                <div class="step-section">
+                                    <h3>Bước 13: Phát triển User Service Frontend</h3>
+                                    <p>Tạo Frontend cho User Service với các trang đăng ký, đăng nhập, hồ sơ người dùng.</p>
+                                </div>
+
+                                <div class="step-section">
+                                    <h3>Bước 14: Đẩy Lên GitHub</h3>
+                                    <pre><code>git add .
+git commit -m "feat: Implement User Service vertical slice (Backend + Frontend)"
+git push</code></pre>
+                                </div>
+                            </section>
+
+                            <section id="trien-khai-vps">
+                                <h2>Giai đoạn 4: Triển khai Lên VPS và Tự động hóa</h2>
+                                
+                                <div class="step-section">
+                                    <h3>Bước 15: Cấu hình VPS (Một lần duy nhất)</h3>
+                                    <p>SSH vào VPS và thực hiện các bước cài đặt Docker, Docker Compose, Nginx, cấu hình tường lửa.</p>
+                                </div>
+
+                                <div class="step-section">
+                                    <h3>Bước 16: Thiết lập CI/CD với GitHub Actions</h3>
+                                    <p>Tạo file <code>.github/workflows/deploy.yml</code> để tự động hóa quy trình triển khai.</p>
+                                </div>
+
+                                <div class="step-section">
+                                    <h3>Bước 17: Triển khai Lần đầu Lên VPS</h3>
+                                    <p>Clone repository về VPS và kích hoạt GitHub Actions để triển khai tự động.</p>
+                                </div>
+                            </section>
+
+                            <section id="lap-lai-phat-trien">
+                                <h2>Giai đoạn 5: Lặp lại và Phát triển các Dịch vụ khác</h2>
+                                <p>Bây giờ bạn đã có một quy trình hoàn chỉnh và một dịch vụ nền tảng hoạt động. Để phát triển các dịch vụ tiếp theo, bạn chỉ cần lặp lại các bước theo từng "lát cắt dọc".</p>
+
+                                <div class="step-section">
+                                    <h3>Thứ tự ưu tiên (ví dụ):</h3>
+                                    <ol>
+                                        <li><strong>Product Service:</strong> (Backend + DB + Frontend) - Dịch vụ cốt lõi để hiển thị sản phẩm</li>
+                                        <li><strong>Cart Service:</strong> (Backend + DB + Frontend) - Cần có sản phẩm để thêm vào giỏ hàng</li>
+                                        <li><strong>Payment Service:</strong> (Backend + DB + Frontend) - Cần có giỏ hàng để thanh toán</li>
+                                        <li><strong>News Service:</strong> (Backend + DB + Frontend) - Có thể phát triển độc lập</li>
+                                        <li><strong>Các dịch vụ khác:</strong> Design Calculation, Football, Communication Log, Chatbot, Admin, Agent Management, Agent Policy, Shell Config</li>
+                                    </ol>
+                                </div>
+
+                                <div class="step-section">
+                                    <h3>Lưu ý quan trọng trong quá trình lặp lại:</h3>
+                                    <ul>
+                                        <li><strong>Cập nhật <code>docker-compose.yml</code>:</strong> Mỗi khi thêm một dịch vụ mới</li>
+                                        <li><strong>Cập nhật GitHub Actions:</strong> Nếu bạn thêm các Docker image mới cần build và push</li>
+                                        <li><strong>Cấu hình Nginx:</strong> Mỗi khi thêm một Frontend mới</li>
+                                        <li><strong>Kiểm thử liên tục:</strong> Luôn kiểm thử cục bộ sau mỗi lần thay đổi lớn</li>
+                                    </ul>
+                                </div>
+
+                                <div class="conclusion">
+                                    <p>Quy trình này giúp bạn tập trung vào việc phát triển từng tính năng hoàn chỉnh, giảm thiểu sự phức tạp và đảm bảo rằng mỗi phần của hệ thống đều hoạt động ổn định trước khi tích hợp thêm các phần khác.</p>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+
                 <!-- Page Navigation -->
                 <div class="page-navigation">
                     <div class="page-nav-item">
@@ -1737,6 +2333,29 @@
                             <a href="#cau-truc-thu-muc" class="toc-link">Cấu trúc Thư mục</a>
                             <a href="#giai-thich-cau-truc" class="toc-link">Giải thích cấu trúc</a>
                             <a href="#loi-ich" class="toc-link">Lợi ích của cấu trúc</a>
+                        </div>
+
+                        <!-- TOC for Thứ tự triển khai -->
+                        <div class="toc-content-thu-tu-trien-khai" style="display: none;">
+                            <a href="#trien-khai-tuan-tu" class="toc-link">Triển khai tuần tự</a>
+                            <a href="#trien-khai-song-song" class="toc-link">Triển khai song song</a>
+                        </div>
+
+                        <!-- TOC for Lưu ý khi triển khai -->
+                        <div class="toc-content-luu-y-trien-khai" style="display: none;">
+                            <a href="#kien-truc-thiet-ke" class="toc-link">Kiến trúc và Thiết kế</a>
+                            <a href="#phat-trien-kiem-thu" class="toc-link">Phát triển và Kiểm thử</a>
+                            <a href="#trien-khai-van-hanh" class="toc-link">Triển khai và Vận hành</a>
+                            <a href="#quan-ly-du-an" class="toc-link">Quản lý Dự án</a>
+                        </div>
+
+                        <!-- TOC for Từng bước triển khai -->
+                        <div class="toc-content-tung-buoc-trien-khai" style="display: none;">
+                            <a href="#thiet-ke-dinh-hinh" class="toc-link">Thiết kế và Định hình Dự án</a>
+                            <a href="#chuan-bi-moi-truong" class="toc-link">Chuẩn bị Môi trường</a>
+                            <a href="#phat-trien-user-service" class="toc-link">Phát triển User Service</a>
+                            <a href="#trien-khai-vps" class="toc-link">Triển khai VPS</a>
+                            <a href="#lap-lai-phat-trien" class="toc-link">Lặp lại và Phát triển</a>
                         </div>
                     </nav>
                 </div>

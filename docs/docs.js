@@ -659,6 +659,9 @@ function updatePageTitle(pageId) {
         'gioi-thieu': 'Giới thiệu về Dự án - Tài liệu',
         'so-do-tong-the': 'Sơ đồ tổng thể - Tài liệu',
         'microservice-architecture': 'Microservice Architecture - Tài liệu',
+        'thu-tu-trien-khai': 'Thứ tự triển khai dự án - Tài liệu',
+        'luu-y-trien-khai': 'Lưu ý khi triển khai - Tài liệu',
+        'tung-buoc-trien-khai': 'Từng bước triển khai - Tài liệu',
         'settings': 'Settings - Tài liệu'
     };
     
@@ -681,6 +684,12 @@ function updateTOCForPage(pageId) {
         tocClass = 'microservice';
     } else if (pageId === 'so-do-tong-the') {
         tocClass = 'so-do-tong-the';
+    } else if (pageId === 'thu-tu-trien-khai') {
+        tocClass = 'thu-tu-trien-khai';
+    } else if (pageId === 'luu-y-trien-khai') {
+        tocClass = 'luu-y-trien-khai';
+    } else if (pageId === 'tung-buoc-trien-khai') {
+        tocClass = 'tung-buoc-trien-khai';
     }
     
     const targetTocSection = document.querySelector(`.toc-content-${tocClass}`);
@@ -738,6 +747,18 @@ function initializePageFromURL() {
             // Remove active from other links
             document.querySelectorAll('.nav-link').forEach(l => {
                 if (l !== navLink) l.classList.remove('active');
+            });
+        }
+    } else {
+        // Default to "Giới thiệu" page when no page parameter
+        const defaultNavLink = document.querySelector('[data-page="gioi-thieu"]');
+        if (defaultNavLink) {
+            switchToPage('gioi-thieu', defaultNavLink);
+            defaultNavLink.classList.add('active');
+            
+            // Remove active from other links
+            document.querySelectorAll('.nav-link').forEach(l => {
+                if (l !== defaultNavLink) l.classList.remove('active');
             });
         }
     }
