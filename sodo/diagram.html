@@ -191,10 +191,117 @@
             fill: #ff0000 !important;
             color: #ff0000 !important;
         }
+        
+        /* Nút trở về trang chủ to và rõ ràng */
+        .big-home-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            padding: 15px 25px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 1002;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .big-home-btn:hover {
+            background: linear-gradient(135deg, #0056b3, #004085);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 123, 255, 0.4);
+        }
+        
+        .big-home-btn:active {
+            transform: translateY(0);
+        }
+        
+        .big-home-btn .icon {
+            font-size: 20px;
+        }
+        
+        /* Nút chuyển đổi theme sáng/tối */
+        .theme-toggle-btn {
+            position: fixed;
+            top: 20px;
+            left: 260px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #333;
+            border: 2px solid #ddd;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            z-index: 1002;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .theme-toggle-btn:hover {
+            background: rgba(255, 255, 255, 1);
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Dark theme styles */
+        body.dark-theme {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+        }
+        
+        body.dark-theme .container {
+            background: rgba(10, 10, 10, 0.95);
+        }
+        
+        body.dark-theme h1 {
+            background: rgba(10, 10, 10, 0.98);
+        }
+        
+        body.dark-theme .theme-toggle-btn {
+            background: rgba(50, 50, 50, 0.9);
+            color: #fff;
+            border-color: #555;
+        }
+        
+        body.dark-theme .theme-toggle-btn:hover {
+            background: rgba(70, 70, 70, 1);
+        }
+        
+        body.dark-theme .toolbar {
+            background: rgba(50, 50, 50, 0.9);
+            border: 1px solid #555;
+        }
+        
+        body.dark-theme .zoom-indicator {
+            background: rgba(50, 50, 50, 0.9);
+            border: 1px solid #555;
+        }
     </style>
 </head>
 <body>
     <div class="container">
+        <!-- Nút trở về trang chủ to và rõ ràng -->
+        <a href="../index.html" class="big-home-btn">
+            <span class="icon">🏠</span>
+            <span>Trở về trang chủ</span>
+        </a>
+        
+        <!-- Nút chuyển đổi theme sáng/tối -->
+        <button class="theme-toggle-btn" id="themeToggle" onclick="toggleTheme()">
+            <span id="themeIcon">🌙</span>
+        </button>
+        
         <h1>Sơ đồ Kiến trúc Microservice</h1>
         
         <!-- Toolbar công cụ -->
@@ -579,8 +686,44 @@ graph TB
             container.classList.remove('panning');
         });
 
+        // Hàm chuyển đổi theme sáng/tối
+        function toggleTheme() {
+            const body = document.body;
+            const themeIcon = document.getElementById('themeIcon');
+            
+            if (body.classList.contains('dark-theme')) {
+                // Chuyển sang theme sáng
+                body.classList.remove('dark-theme');
+                themeIcon.textContent = '🌙';
+                localStorage.setItem('theme', 'light');
+            } else {
+                // Chuyển sang theme tối
+                body.classList.add('dark-theme');
+                themeIcon.textContent = '☀️';
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+        
+        // Khôi phục theme từ localStorage
+        function loadTheme() {
+            const savedTheme = localStorage.getItem('theme');
+            const body = document.body;
+            const themeIcon = document.getElementById('themeIcon');
+            
+            if (savedTheme === 'dark') {
+                body.classList.add('dark-theme');
+                themeIcon.textContent = '☀️';
+            } else {
+                body.classList.remove('dark-theme');
+                themeIcon.textContent = '🌙';
+            }
+        }
+
         // Khởi tạo diagram khi trang load
         document.addEventListener('DOMContentLoaded', function() {
+            // Load theme trước
+            loadTheme();
+            
             try {
                 mermaid.run().then(() => {
                     console.log('Mermaid diagram rendered successfully');

@@ -5,9 +5,33 @@ const validCredentials = {
     password: 'Hpt@768696'
 };
 
+// Check if user is already logged in from localStorage
+function checkLoginStatus() {
+    const loginStatus = localStorage.getItem('constructvn_logged_in');
+    const loginTime = localStorage.getItem('constructvn_login_time');
+    
+    if (loginStatus === 'true' && loginTime) {
+        // Check if login is still valid (24 hours)
+        const currentTime = new Date().getTime();
+        const storedTime = parseInt(loginTime);
+        const hoursDiff = (currentTime - storedTime) / (1000 * 60 * 60);
+        
+        if (hoursDiff < 24) {
+            isLoggedIn = true;
+            console.log('User already logged in from localStorage');
+        } else {
+            // Login expired, clear storage
+            localStorage.removeItem('constructvn_logged_in');
+            localStorage.removeItem('constructvn_login_time');
+            console.log('Login expired, cleared localStorage');
+        }
+    }
+}
+
 // Initialize page state
 document.addEventListener('DOMContentLoaded', function() {
     console.log('DOM loaded, initializing...'); // Debug log
+    checkLoginStatus(); // Check login status first
     initializeNavigation();
     initializeAuth();
     updateNavigationState();
@@ -204,6 +228,11 @@ function handleLogin() {
         // Successful login
         console.log('Login successful'); // Debug log
         isLoggedIn = true;
+        
+        // Save login status to localStorage
+        localStorage.setItem('constructvn_logged_in', 'true');
+        localStorage.setItem('constructvn_login_time', new Date().getTime().toString());
+        
         hideLoginModal();
         updateNavigationState();
         showNotification('Đăng nhập thành công!', 'success');
@@ -222,6 +251,11 @@ function handleLogin() {
 
 function logout() {
     isLoggedIn = false;
+    
+    // Clear login status from localStorage
+    localStorage.removeItem('constructvn_logged_in');
+    localStorage.removeItem('constructvn_login_time');
+    
     updateNavigationState();
     showNotification('Đã đăng xuất thành công!', 'info');
 }

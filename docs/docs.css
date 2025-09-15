@@ -209,8 +209,7 @@ body {
     gap: 12px;
 }
 
-.theme-toggle,
-.github-link {
+.theme-toggle {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -222,11 +221,35 @@ body {
     border-radius: 6px;
     cursor: pointer;
     transition: var(--transition-fast);
-    text-decoration: none;
 }
 
-.theme-toggle:hover,
-.github-link:hover {
+.home-link {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 12px;
+    background: transparent;
+    color: var(--text-muted);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: var(--transition-fast);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    border: 1px solid var(--border-color);
+}
+
+.home-link:hover {
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    border-color: var(--text-muted);
+}
+
+.home-link i {
+    font-size: 14px;
+}
+
+.theme-toggle:hover {
     background-color: var(--bg-secondary);
     color: var(--text-primary);
 }
