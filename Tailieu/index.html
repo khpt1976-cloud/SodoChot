@@ -103,10 +103,10 @@
                             </div>
                         </div>
                         
-                        <div class="nav-item expandable">
+                        <div class="nav-item expandable" data-page="so-do-tong-the">
                             <div class="nav-link">
-                                <i class="fas fa-tachometer-alt nav-icon"></i>
-                                <span>Quick Start</span>
+                                <i class="fas fa-sitemap nav-icon"></i>
+                                <span>Sơ đồ tổng thể</span>
                                 <i class="fas fa-chevron-right expand-icon"></i>
                             </div>
                         </div>
@@ -361,6 +361,193 @@
                         </div>
                     </div>
 
+                    <!-- Sơ đồ tổng thể Content -->
+                    <div class="content-page" id="so-do-tong-the-content" style="display: none;">
+                        <header class="page-header" id="so-do-tong-the">
+                            <h1 class="page-title">Kiến trúc Thư mục Dự án Microservice</h1>
+                            <p class="page-description">
+                                Đây là kiến trúc thư mục tổng quan cho dự án Microservice, được tổ chức để dễ dàng quản lý và mở rộng.
+                            </p>
+                        </header>
+
+                        <div class="content-body">
+                            <p class="section-text">
+                                Cấu trúc này phản ánh sự phân chia rõ ràng giữa các dịch vụ backend, ứng dụng frontend, các thành phần dùng chung và hạ tầng.
+                            </p>
+
+                            <section class="content-section" id="cau-truc-thu-muc">
+                                <h2 class="section-title">Cấu trúc Thư mục</h2>
+                                <div class="code-block-container">
+                                    <pre class="code-block"><code>/project-root
+├── services/                                   # Chứa mã nguồn của tất cả các Microservice Backend
+│   ├── cart-service/                           # Dịch vụ giỏ hàng
+│   ├── product-service/                        # Dịch vụ sản phẩm
+│   ├── news-service/                           # Dịch vụ tin tức
+│   ├── design-calculation-service/             # Dịch vụ tính toán thiết kế
+│   ├── football-service/                       # Dịch vụ bóng đá
+│   ├── communication-log-service/              # Dịch vụ nhật ký thi công
+│   ├── chatbot-service/                        # Dịch vụ chatbot
+│   ├── payment-service/                        # Dịch vụ thanh toán
+│   ├── user-service/                           # Dịch vụ người dùng
+│   ├── shell-config-service/                   # Dịch vụ cấu hình shell
+│   ├── admin-service/                          # Dịch vụ quản trị hệ thống
+│   ├── agent-management-service/               # Dịch vụ quản lý đại lý
+│   └── agent-policy-service/                   # Dịch vụ chính sách đại lý
+
+├── frontend/                                   # Chứa mã nguồn của tất cả các ứng dụng Frontend
+│   ├── shell-app-user/                         # Ứng dụng Frontend chính cho người dùng cuối
+│   ├── shell-app-admin/                        # Ứng dụng Frontend chính cho quản trị viên
+│   ├── shell-config-admin-frontend/            # Ứng dụng Frontend độc lập cho quản trị cấu hình Shell
+│   ├── cart-service-frontend/                  # Giao diện người dùng giỏ hàng
+│   ├── cart-service-admin/                     # Giao diện quản trị giỏ hàng
+│   ├── product-service-frontend/               # Giao diện người dùng sản phẩm
+│   ├── product-service-admin/                  # Giao diện quản trị sản phẩm
+│   ├── news-service-frontend/                  # Giao diện người dùng tin tức
+│   ├── news-service-admin/                     # Giao diện quản trị tin tức
+│   ├── design-calculation-frontend/            # Giao diện người dùng tính toán thiết kế
+│   ├── design-calculation-admin/               # Giao diện quản trị tính toán thiết kế
+│   ├── football-service-frontend/              # Giao diện người dùng bóng đá
+│   ├── football-service-admin/                 # Giao diện quản trị bóng đá
+│   ├── communication-log-frontend/             # Giao diện người dùng nhật ký thi công
+│   ├── communication-log-admin/                # Giao diện quản trị nhật ký thi công
+│   ├── chatbot-service-frontend/               # Giao diện người dùng chatbot
+│   ├── chatbot-service-admin/                  # Giao diện quản trị chatbot
+│   ├── payment-service-frontend/               # Giao diện người dùng thanh toán
+│   ├── payment-service-admin/                  # Giao diện quản trị thanh toán
+│   ├── user-service-frontend/                  # Giao diện người dùng
+│   ├── user-service-admin/                     # Giao diện quản trị người dùng
+│   ├── admin-service-frontend/                 # Giao diện người dùng quản trị
+│   ├── admin-service-admin/                    # Giao diện quản trị hệ thống
+│   ├── agent-management-frontend/              # Giao diện người dùng quản lý đại lý
+│   ├── agent-management-admin/                 # Giao diện quản trị quản lý đại lý
+│   ├── agent-policy-frontend/                  # Giao diện người dùng chính sách đại lý
+│   └── agent-policy-admin/                     # Giao diện quản trị chính sách đại lý
+
+├── api-gateway/                                # Cấu hình và mã nguồn cho API Gateway
+│   ├── user-gateway/                           # API Gateway cho người dùng cuối
+│   └── admin-gateway/                          # API Gateway cho quản trị viên
+
+├── shared/                                     # Chứa các thư viện, module dùng chung
+│   ├── common-models/                          # Các định nghĩa model dùng chung
+│   ├── utils/                                  # Các tiện ích chung
+│   └── config/                                 # Cấu hình chung
+
+├── infrastructure/                             # Cấu hình và mã nguồn liên quan đến hạ tầng
+│   ├── kubernetes/                             # Cấu hình Kubernetes
+│   ├── terraform/                              # Mã Terraform để quản lý hạ tầng
+│   ├── ansible/                                # Playbook Ansible để cấu hình máy chủ
+│   ├── monitoring/                             # Cấu hình cho các công cụ giám sát
+│   └── logging/                                # Cấu hình cho hệ thống logging
+
+├── docs/                                       # Tài liệu dự án
+│   ├── architecture/                           # Tài liệu kiến trúc
+│   ├── deployment/                             # Tài liệu triển khai
+│   └── README.md
+
+├── scripts/                                    # Các script tự động hóa
+│   ├── ci-cd/                                  # Script cho CI/CD pipelines
+│   ├── deploy/                                 # Script triển khai
+│   └── setup/                                  # Script cài đặt môi trường
+
+├── .gitignore                                  # Các file/thư mục bỏ qua bởi Git
+├── README.md                                   # File README tổng quan dự án
+└── docker-compose.yml                          # File Docker Compose cho môi trường phát triển</code></pre>
+                                    <button class="copy-button" onclick="copyToClipboard(this)">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                </div>
+                            </section>
+
+                            <section class="content-section" id="giai-thich-cau-truc">
+                                <h2 class="section-title">Giải thích cấu trúc</h2>
+                                
+                                <div class="explanation-item">
+                                    <h3 class="explanation-title">
+                                        <i class="fas fa-server"></i> services/
+                                    </h3>
+                                    <p class="explanation-text">
+                                        Chứa tất cả các microservice backend. Mỗi thư mục con là một microservice độc lập với mã nguồn, Dockerfile, và các file cấu hình riêng.
+                                    </p>
+                                </div>
+
+                                <div class="explanation-item">
+                                    <h3 class="explanation-title">
+                                        <i class="fas fa-desktop"></i> frontend/
+                                    </h3>
+                                    <p class="explanation-text">
+                                        Chứa tất cả các ứng dụng frontend. Mỗi thư mục con là một ứng dụng frontend độc lập, bao gồm cả Shell Config Admin Frontend được tách biệt.
+                                    </p>
+                                </div>
+
+                                <div class="explanation-item">
+                                    <h3 class="explanation-title">
+                                        <i class="fas fa-exchange-alt"></i> api-gateway/
+                                    </h3>
+                                    <p class="explanation-text">
+                                        Chứa cấu hình và mã nguồn cho các API Gateway, phân tách giữa người dùng và quản trị.
+                                    </p>
+                                </div>
+
+                                <div class="explanation-item">
+                                    <h3 class="explanation-title">
+                                        <i class="fas fa-share-alt"></i> shared/
+                                    </h3>
+                                    <p class="explanation-text">
+                                        Chứa các module, thư viện, hoặc định nghĩa dùng chung giữa các dịch vụ và ứng dụng để tránh trùng lặp mã.
+                                    </p>
+                                </div>
+
+                                <div class="explanation-item">
+                                    <h3 class="explanation-title">
+                                        <i class="fas fa-network-wired"></i> infrastructure/
+                                    </h3>
+                                    <p class="explanation-text">
+                                        Chứa tất cả các cấu hình và mã nguồn liên quan đến hạ tầng, như Kubernetes manifests, Terraform scripts, Ansible playbooks, cấu hình monitoring và logging.
+                                    </p>
+                                </div>
+
+                                <div class="explanation-item">
+                                    <h3 class="explanation-title">
+                                        <i class="fas fa-file-alt"></i> docs/
+                                    </h3>
+                                    <p class="explanation-text">
+                                        Chứa tất cả tài liệu của dự án, bao gồm tài liệu kiến trúc, triển khai, và các hướng dẫn khác.
+                                    </p>
+                                </div>
+
+                                <div class="explanation-item">
+                                    <h3 class="explanation-title">
+                                        <i class="fas fa-terminal"></i> scripts/
+                                    </h3>
+                                    <p class="explanation-text">
+                                        Chứa các script tự động hóa cho các tác vụ như CI/CD, triển khai, và thiết lập môi trường.
+                                    </p>
+                                </div>
+                            </section>
+
+                            <section class="content-section" id="loi-ich">
+                                <h2 class="section-title">Lợi ích của cấu trúc này</h2>
+                                <ul class="benefit-list">
+                                    <li class="benefit-item">
+                                        <strong>Rõ ràng và có tổ chức:</strong> Mỗi thành phần có vị trí rõ ràng trong cấu trúc tổng thể.
+                                    </li>
+                                    <li class="benefit-item">
+                                        <strong>Dễ dàng mở rộng:</strong> Có thể thêm microservice hoặc frontend mới mà không ảnh hưởng đến các thành phần khác.
+                                    </li>
+                                    <li class="benefit-item">
+                                        <strong>Quản lý hiệu quả:</strong> Phân chia rõ ràng giúp team phát triển dễ dàng quản lý và bảo trì.
+                                    </li>
+                                    <li class="benefit-item">
+                                        <strong>Tái sử dụng code:</strong> Thư mục shared giúp tránh trùng lặp và tăng tính nhất quán.
+                                    </li>
+                                    <li class="benefit-item">
+                                        <strong>DevOps thân thiện:</strong> Cấu trúc hỗ trợ tốt cho CI/CD và deployment automation.
+                                    </li>
+                                </ul>
+                            </section>
+                        </div>
+                    </div>
+
                     <!-- Microservice Architecture Content -->
                     <div class="content-page" id="microservice-architecture-content" style="display: none;">
                         <header class="page-header" id="microservice-architecture">
@@ -591,6 +778,14 @@
                             <a href="#settings" class="toc-link active">Settings</a>
                             <a href="#key-features" class="toc-link">Key Features</a>
                             <a href="#next-steps" class="toc-link">Next Steps</a>
+                        </div>
+                        
+                        <!-- TOC for Sơ đồ tổng thể -->
+                        <div class="toc-content-so-do-tong-the" style="display: none;">
+                            <a href="#so-do-tong-the" class="toc-link">Sơ đồ tổng thể</a>
+                            <a href="#cau-truc-thu-muc" class="toc-link">Cấu trúc Thư mục</a>
+                            <a href="#giai-thich-cau-truc" class="toc-link">Giải thích cấu trúc</a>
+                            <a href="#loi-ich" class="toc-link">Lợi ích của cấu trúc</a>
                         </div>
                         
                         <!-- TOC for Microservice Architecture -->

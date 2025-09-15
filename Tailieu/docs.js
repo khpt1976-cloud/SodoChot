@@ -551,6 +551,7 @@ function updateBreadcrumb(pageId, navElement) {
 
 function updatePageTitle(pageId) {
     const pageTitles = {
+        'so-do-tong-the': 'Sơ đồ tổng thể - Tài liệu',
         'microservice-architecture': 'Microservice Architecture - Tài liệu',
         'settings': 'Settings - Tài liệu'
     };
@@ -567,7 +568,14 @@ function updateTOCForPage(pageId) {
     });
     
     // Show the appropriate TOC section
-    const targetTocSection = document.querySelector(`.toc-content-${pageId === 'microservice-architecture' ? 'microservice' : 'settings'}`);
+    let tocClass = 'settings'; // default
+    if (pageId === 'microservice-architecture') {
+        tocClass = 'microservice';
+    } else if (pageId === 'so-do-tong-the') {
+        tocClass = 'so-do-tong-the';
+    }
+    
+    const targetTocSection = document.querySelector(`.toc-content-${tocClass}`);
     if (targetTocSection) {
         targetTocSection.style.display = 'block';
         
@@ -598,9 +606,11 @@ window.addEventListener('popstate', function(event) {
         // Default to settings page
         const settingsContent = document.getElementById('settings-content');
         const microserviceContent = document.getElementById('microservice-architecture-content');
+        const soDoTongTheContent = document.getElementById('so-do-tong-the-content');
         
         if (settingsContent) settingsContent.style.display = 'block';
         if (microserviceContent) microserviceContent.style.display = 'none';
+        if (soDoTongTheContent) soDoTongTheContent.style.display = 'none';
         
         document.title = 'Settings - Tài liệu';
     }
@@ -773,6 +783,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize code copy for all pages
     setTimeout(() => {
         initializeCodeCopyForPage('settings');
+        initializeCodeCopyForPage('so-do-tong-the');
         initializeCodeCopyForPage('microservice-architecture');
     }, 100);
 });
