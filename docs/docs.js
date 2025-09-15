@@ -533,16 +533,25 @@ function trackEvent(category, action, label) {
 
 // Page Navigation System
 function switchToPage(pageId, navElement) {
-    // Hide all content pages
+    // Hide all content pages and sections
     const allPages = document.querySelectorAll('.content-page');
+    const allSections = document.querySelectorAll('.content-section');
+    
     allPages.forEach(page => {
         page.classList.remove('active');
+        page.style.display = 'none';
+    });
+    
+    allSections.forEach(section => {
+        section.classList.remove('active');
+        section.style.display = 'none';
     });
     
     // Show the selected page
     const targetPage = document.getElementById(pageId + '-content');
     if (targetPage) {
         targetPage.classList.add('active');
+        targetPage.style.display = 'block';
         
         // Update breadcrumb
         updateBreadcrumb(pageId, navElement);
@@ -575,16 +584,19 @@ function switchToApplication(appId, navElement) {
     
     allPages.forEach(page => {
         page.classList.remove('active');
+        page.style.display = 'none';
     });
     
     allSections.forEach(section => {
         section.classList.remove('active');
+        section.style.display = 'none';
     });
     
     // Show the selected application
     const targetApp = document.getElementById(appId);
     if (targetApp) {
         targetApp.classList.add('active');
+        targetApp.style.display = 'block';
         
         // Update breadcrumb for application
         updateBreadcrumbForApp(appId, navElement);
