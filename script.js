@@ -12,14 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeAuth();
     updateNavigationState();
     
-    // Add specific handler for Tài liệu link
-    const documentsLink = document.getElementById('nav-documents');
-    if (documentsLink) {
-        documentsLink.addEventListener('click', function(e) {
-            e.preventDefault();
-            window.open('https://work-2-hwidsqjnesezwdgb.prod-runtime.all-hands.dev/Tailieu/', '_blank');
-        });
-    }
+    // Tài liệu link will use default HTML behavior
     
     // Additional direct event binding as backup
     setTimeout(function() {
@@ -53,10 +46,9 @@ function initializeNavigation() {
         // Close mobile menu when clicking on a link
         document.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', (e) => {
-                // Handle Tài liệu link specifically
+                // Let Tài liệu link use default HTML behavior
                 if (link.id === 'nav-documents') {
-                    e.preventDefault();
-                    window.open('https://work-2-hwidsqjnesezwdgb.prod-runtime.all-hands.dev/Tailieu/', '_blank');
+                    // Allow default navigation to docs/
                     return;
                 }
                 
@@ -520,5 +512,5 @@ document.addEventListener('DOMContentLoaded', lazyLoadImages);
 
 // Console welcome message
 console.log('%c🏗️ ConstructVN Website', 'color: #2563eb; font-size: 20px; font-weight: bold;');
-console.log('%cWebsite được phát triển bởi OpenHands AI', 'color: #6b7280; font-size: 14px;');
+console.log('%cWebsite được phát triển bởi Dự án Hpt', 'color: #6b7280; font-size: 14px;');
 console.log('%cMọi tính năng tương tác sẽ được triển khai trong phiên bản tiếp theo.', 'color: #6b7280; font-size: 12px;');
