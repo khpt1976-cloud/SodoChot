@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hệ thống Quản lý Nhật ký Thi công Chuyên nghiệp</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <h2>ConstructVN</h2>
+                </div>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link active">Trang chủ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link disabled" id="nav-diagram">Sơ đồ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link disabled" id="nav-documents">Tài liệu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#contact" class="nav-link disabled" id="nav-contact">Liên hệ</a>
+                    </li>
+                    <li class="nav-item auth-section">
+                        <button class="btn btn-login" id="login-btn">Đăng nhập</button>
+                        <div class="user-info" id="user-info" style="display: none;">
+                            <div class="user-avatar">
+                                <i class="fas fa-user-circle"></i>
+                                <span class="user-name">Hpt</span>
+                            </div>
+                            <button class="btn btn-logout" id="logout-btn">Thoát</button>
+                        </div>
+                    </li>
+                </ul>
+                <div class="nav-toggle" id="mobile-menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">Hệ thống Quản lý Nhật ký Thi công Chuyên nghiệp</h1>
+                <p class="hero-subtitle">Giải pháp số hóa toàn diện cho việc quản lý dự án xây dựng, từ lập nhật ký đến theo dõi tiến độ thi công theo chuẩn Việt Nam.</p>
+                <div class="hero-video">
+                    <div class="video-placeholder">
+                        <i class="fas fa-play-circle"></i>
+                        <span>Video giới thiệu hệ thống</span>
+                    </div>
+                </div>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary">Dùng thử miễn phí</button>
+                    <button class="btn btn-secondary">Xem demo</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>Tính năng nổi bật</h2>
+                <p>Hệ thống quản lý dự án xây dựng toàn diện với các công cụ chuyên nghiệp</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <h3>Quản lý Dự án</h3>
+                    <p>Tạo và quản lý nhiều dự án xây dựng, phân chia công việc và theo dõi tiến độ một cách khoa học.</p>
+                    <a href="#" class="feature-link">Tìm hiểu thêm →</a>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-clipboard-list"></i>
+                    </div>
+                    <h3>Nhật ký Thi công</h3>
+                    <p>Tạo nhật ký nhật ký thi công theo mẫu chuẩn Việt Nam với tính năng tự động hóa thông minh.</p>
+                    <a href="#" class="feature-link">Tìm hiểu thêm →</a>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users-cog"></i>
+                    </div>
+                    <h3>Quản lý Nhóm</h3>
+                    <p>Phân quyền người dùng theo vai trò Admin, Manager, User với các chức năng phù hợp.</p>
+                    <a href="#" class="feature-link">Tìm hiểu thêm →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section id="benefits" class="benefits">
+        <div class="container">
+            <div class="section-header">
+                <h2>Tại sao chọn chúng tôi?</h2>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h3>Tuân thủ chuẩn Việt Nam</h3>
+                    <p>Mẫu nhật ký được thiết kế theo đúng quy định pháp lý và chuẩn kỹ thuật Việt Nam.</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Giao diện thân thiện</h3>
+                    <p>Thiết kế đơn giản, dễ sử dụng phù hợp với mọi đối tượng người dùng trong ngành xây dựng.</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Bảo mật cao</h3>
+                    <p>Dữ liệu được mã hóa và bảo vệ theo tiêu chuẩn quốc tế, đảm bảo an toàn thông tin dự án.</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>Hỗ trợ 24/7</h3>
+                    <p>Đội ngũ hỗ trợ chuyên nghiệp sẵn sàng hỗ trợ bạn mọi lúc, mọi nơi.</p>
+                </div>
+            </div>
+            <div class="trust-section">
+                <h3>Được tin tưởng bởi</h3>
+                <div class="trust-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">1000+</span>
+                        <span class="stat-label">Doanh nghiệp xây dựng</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2>Khách hàng nói gì về chúng tôi</h2>
+                <p>Những phản hồi tích cực từ các doanh nghiệp đã sử dụng hệ thống</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"Hệ thống giúp chúng tôi tiết kiệm rất nhiều thời gian trong việc lập nhật ký. Giao diện đơn giản, dễ sử dụng."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">N</div>
+                        <div class="author-info">
+                            <h4>Nguyễn Văn A</h4>
+                            <p>Giám đốc dự án - Công ty ABC</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"Tính năng quản lý dự án rất tốt, phù hợp cho những dự án lớn theo dõi tiến độ một cách hiệu quả."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">T</div>
+                        <div class="author-info">
+                            <h4>Trần Thị B</h4>
+                            <p>Kỹ sư trưởng - Công ty XYZ</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"Hỗ trợ khách hàng rất tốt, phản hồi nhanh chóng và giải quyết vấn đề hiệu quả."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">L</div>
+                        <div class="author-info">
+                            <h4>Lê Văn C</h4>
+                            <p>Quản lý dự án - Công ty DEF</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <div class="section-header">
+                <h2>Bảng giá dịch vụ</h2>
+                <p>Chọn gói dịch vụ phù hợp với nhu cầu của doanh nghiệp bạn</p>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Miễn phí</h3>
+                        <p>Dùng thử miễn phí cho cá nhân</p>
+                        <div class="price">
+                            <span class="currency">₫</span>
+                            <span class="amount">0</span>
+                            <span class="period">/tháng</span>
+                        </div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Quản lý tối đa 1 dự án</li>
+                        <li><i class="fas fa-check"></i> Nhật ký cơ bản</li>
+                        <li><i class="fas fa-check"></i> 1GB lưu trữ</li>
+                    </ul>
+                    <button class="btn btn-outline">Bắt đầu miễn phí</button>
+                </div>
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Cơ bản</h3>
+                        <p>Phù hợp cho dự án nhỏ và startup</p>
+                        <div class="price">
+                            <span class="currency">₫</span>
+                            <span class="amount">299,000</span>
+                            <span class="period">/tháng</span>
+                        </div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Quản lý tối đa 5 dự án</li>
+                        <li><i class="fas fa-check"></i> Nhật ký thi công cơ bản</li>
+                        <li><i class="fas fa-check"></i> Hỗ trợ email</li>
+                        <li><i class="fas fa-check"></i> 10GB lưu trữ</li>
+                    </ul>
+                    <button class="btn btn-primary">Chọn gói này</button>
+                </div>
+                <div class="pricing-card popular">
+                    <div class="popular-badge">Phổ biến</div>
+                    <div class="pricing-header">
+                        <h3>Chuyên nghiệp</h3>
+                        <p>Tối ưu cho doanh nghiệp vừa và nhỏ</p>
+                        <div class="price">
+                            <span class="currency">₫</span>
+                            <span class="amount">599,000</span>
+                            <span class="period">/tháng</span>
+                        </div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Quản lý không giới hạn dự án</li>
+                        <li><i class="fas fa-check"></i> Nhật ký thi công nâng cao</li>
+                        <li><i class="fas fa-check"></i> Quản lý nhóm và phân quyền</li>
+                        <li><i class="fas fa-check"></i> Hỗ trợ điện thoại và email</li>
+                        <li><i class="fas fa-check"></i> 100GB lưu trữ</li>
+                    </ul>
+                    <button class="btn btn-primary">Chọn gói này</button>
+                </div>
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Doanh nghiệp</h3>
+                        <p>Giải pháp toàn diện cho tập đoàn lớn</p>
+                        <div class="price">
+                            <span class="currency">₫</span>
+                            <span class="amount">1,299,000</span>
+                            <span class="period">/tháng</span>
+                        </div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Tất cả tính năng Professional</li>
+                        <li><i class="fas fa-check"></i> API tích hợp tùy chỉnh</li>
+                        <li><i class="fas fa-check"></i> Nhật ký phân tích chuyên sâu</li>
+                        <li><i class="fas fa-check"></i> Hỗ trợ 24/7 ưu tiên</li>
+                        <li><i class="fas fa-check"></i> Lưu trữ không giới hạn</li>
+                        <li><i class="fas fa-check"></i> Đào tạo và tư vấn chuyên môn</li>
+                    </ul>
+                    <button class="btn btn-outline">Liên hệ tư vấn</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Sẵn sàng bắt đầu?</h2>
+                <p>Tham gia cùng hàng nghìn doanh nghiệp đã tin tưởng sử dụng ConstructVN để quản lý dự án xây dựng.</p>
+                <div class="cta-buttons">
+                    <button class="btn btn-primary btn-large">Dùng thử miễn phí</button>
+                    <button class="btn btn-secondary btn-large">Liên hệ tư vấn</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>ConstructVN</h3>
+                    <p>Giải pháp quản lý dự án xây dựng chuyên nghiệp cho doanh nghiệp Việt Nam.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Sản phẩm</h4>
+                    <ul>
+                        <li><a href="#">Quản lý dự án</a></li>
+                        <li><a href="#">Nhật ký thi công</a></li>
+                        <li><a href="#">Quản lý nhóm</a></li>
+                        <li><a href="#">Báo cáo</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Hỗ trợ</h4>
+                    <ul>
+                        <li><a href="#">Trung tâm trợ giúp</a></li>
+                        <li><a href="#">Hướng dẫn sử dụng</a></li>
+                        <li><a href="#">API Documentation</a></li>
+                        <li><a href="#">Liên hệ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Liên hệ</h4>
+                    <div class="contact-info">
+                        <p><i class="fas fa-phone"></i> +84 123 456 789</p>
+                        <p><i class="fas fa-envelope"></i> info@constructvn.com</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Hà Nội, Việt Nam</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 ConstructVN. Tất cả quyền được bảo lưu.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div class="modal-overlay" id="login-modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Đăng nhập hệ thống</h3>
+                <button class="modal-close" id="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="login-form">
+                    <div class="form-group">
+                        <label for="username">Tên đăng nhập:</label>
+                        <input type="text" id="username" name="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Mật khẩu:</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Đăng nhập</button>
+                        <button type="button" class="btn btn-secondary" id="cancel-login">Hủy</button>
+                    </div>
+                    <div class="login-error" id="login-error" style="display: none;">
+                        Tên đăng nhập hoặc mật khẩu không đúng!
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

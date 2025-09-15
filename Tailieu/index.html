@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="vi" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tài liệu - Hệ thống Quản lý Nhật ký Thi công</title>
+    <link rel="stylesheet" href="docs.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="antialiased text-gray-500 dark:text-gray-400">
+    <!-- Header -->
+    <header class="docs-header">
+        <div class="header-container">
+            <div class="header-left">
+                <div class="logo-section">
+                    <div class="logo-icon">
+                        <i class="fas fa-hard-hat"></i>
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <span class="logo-text">ConstructVN</span>
+                </div>
+            </div>
+            
+            <div class="header-center">
+                <div class="search-container">
+                    <div class="search-box">
+                        <i class="fas fa-search search-icon"></i>
+                        <input type="text" placeholder="Search..." class="search-input">
+                        <div class="search-shortcut">
+                            <span>Ctrl K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="header-right">
+                <div class="header-actions">
+                    <button class="theme-toggle" id="theme-toggle">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <a href="https://github.com/constructvn" class="github-link" target="_blank">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <div class="user-menu">
+                        <div class="user-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <span class="user-name">Hpt</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Layout -->
+    <div class="docs-layout">
+        <!-- Sidebar -->
+        <aside class="docs-sidebar" id="sidebar">
+            <div class="sidebar-content">
+                <!-- Navigation Tree -->
+                <nav class="sidebar-nav">
+                    <div class="nav-section">
+                        <div class="nav-item">
+                            <div class="nav-link active">
+                                <i class="fas fa-book-open nav-icon"></i>
+                                <span>Docs</span>
+                            </div>
+                        </div>
+                        
+                        <div class="nav-item">
+                            <div class="nav-link">
+                                <i class="fas fa-rocket nav-icon"></i>
+                                <span>Success Stories</span>
+                            </div>
+                        </div>
+                        
+                        <div class="nav-item">
+                            <div class="nav-link">
+                                <i class="fas fa-code nav-icon"></i>
+                                <span>API Reference</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dropdown Menu -->
+                    <div class="nav-dropdown">
+                        <div class="dropdown-header">
+                            <span>OpenHands Cloud</span>
+                            <i class="fas fa-chevron-down dropdown-icon"></i>
+                        </div>
+                    </div>
+
+                    <!-- Main Navigation -->
+                    <div class="nav-group">
+                        <div class="nav-item">
+                            <div class="nav-link">
+                                <i class="fas fa-play-circle nav-icon"></i>
+                                <span>Introduction</span>
+                            </div>
+                        </div>
+                        
+                        <div class="nav-item expandable">
+                            <div class="nav-link">
+                                <i class="fas fa-tachometer-alt nav-icon"></i>
+                                <span>Quick Start</span>
+                                <i class="fas fa-chevron-right expand-icon"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="nav-item">
+                            <div class="nav-link">
+                                <i class="fas fa-hammer nav-icon"></i>
+                                <span>Start Building</span>
+                            </div>
+                        </div>
+                        
+                        <div class="nav-item">
+                            <div class="nav-link">
+                                <i class="fas fa-star nav-icon"></i>
+                                <span>Key Features</span>
+                            </div>
+                        </div>
+                        
+                        <div class="nav-item">
+                            <div class="nav-link">
+                                <i class="fas fa-question-circle nav-icon"></i>
+                                <span>FAQs</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- OpenHands Cloud Section -->
+                    <div class="nav-group">
+                        <div class="nav-group-title">OpenHands Cloud</div>
+                        
+                        <div class="nav-item">
+                            <div class="nav-link">
+                                <i class="fas fa-rocket nav-icon"></i>
+                                <span>Getting Started</span>
+                            </div>
+                        </div>
+                        
+                        <div class="nav-item expandable">
+                            <div class="nav-link">
+                                <i class="fas fa-plug nav-icon"></i>
+                                <span>Integrations</span>
+                                <i class="fas fa-chevron-right expand-icon"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="nav-item">
+                            <div class="nav-link">
+                                <i class="fas fa-desktop nav-icon"></i>
+                                <span>Cloud UI</span>
+                            </div>
+                        </div>
+                        
+                        <div class="nav-item">
+                            <div class="nav-link">
+                                <i class="fas fa-code nav-icon"></i>
+                                <span>Cloud API</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- More Sections -->
+                    <div class="nav-group">
+                        <div class="nav-group-title">Run OpenHands on Your Own</div>
+                        
+                        <div class="nav-item">
+                            <div class="nav-link">
+                                <i class="fas fa-play nav-icon"></i>
+                                <span>Getting Started</span>
+                            </div>
+                        </div>
+                        
+                        <div class="nav-item">
+                            <div class="nav-link">
+                                <i class="fas fa-desktop nav-icon"></i>
+                                <span>GUI</span>
+                            </div>
+                        </div>
+                        
+                        <div class="nav-item">
+                            <div class="nav-link">
+                                <i class="fas fa-terminal nav-icon"></i>
+                                <span>CLI</span>
+                            </div>
+                        </div>
+                        
+                        <div class="nav-item">
+                            <div class="nav-link">
+                                <i class="fas fa-headset nav-icon"></i>
+                                <span>Headless</span>
+                            </div>
+                        </div>
+                        
+                        <div class="nav-item">
+                            <div class="nav-link">
+                                <i class="fab fa-github nav-icon"></i>
+                                <span>OpenHands GitHub Action</span>
+                            </div>
+                        </div>
+                        
+                        <div class="nav-item">
+                            <div class="nav-link">
+                                <i class="fas fa-cogs nav-icon"></i>
+                                <span>Advanced Configuration</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Additional Sections -->
+                    <div class="nav-group">
+                        <div class="nav-group-title">Customizations & Settings</div>
+                        
+                        <div class="nav-item">
+                            <div class="nav-link" data-page="settings">
+                                <i class="fas fa-cog nav-icon"></i>
+                                <span>OpenHands Settings</span>
+                            </div>
+                        </div>
+                        
+                        <div class="nav-item">
+                            <div class="nav-link">
+                                <i class="fas fa-database nav-icon"></i>
+                                <span>Repository Customization</span>
+                            </div>
+                        </div>
+                        
+                        <div class="nav-item">
+                            <div class="nav-link" data-page="microservice-architecture">
+                                <i class="fas fa-sitemap nav-icon"></i>
+                                <span>Microservice Architecture</span>
+                            </div>
+                        </div>
+                        
+                        <div class="nav-item">
+                            <div class="nav-link">
+                                <i class="fas fa-comments nav-icon"></i>
+                                <span>Microagents</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tips and Tricks -->
+                    <div class="nav-group">
+                        <div class="nav-group-title">Tips and Tricks</div>
+                        
+                        <div class="nav-item">
+                            <div class="nav-link">
+                                <i class="fas fa-lightbulb nav-icon"></i>
+                                <span>Prompting Best Practices</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Troubleshooting -->
+                    <div class="nav-group">
+                        <div class="nav-group-title">Troubleshooting & Feedback</div>
+                        
+                        <div class="nav-item">
+                            <div class="nav-link">
+                                <i class="fas fa-bug nav-icon"></i>
+                                <span>Troubleshooting</span>
+                            </div>
+                        </div>
+                        
+                        <div class="nav-item">
+                            <div class="nav-link">
+                                <i class="fas fa-comment nav-icon"></i>
+                                <span>Feedback</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- OpenHands Developers -->
+                    <div class="nav-group">
+                        <div class="nav-group-title">OpenHands Developers</div>
+                    </div>
+                </nav>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="docs-main">
+            <div class="main-content">
+                <!-- Breadcrumb -->
+                <div class="breadcrumb">
+                    <span class="breadcrumb-item">
+                        <i class="fas fa-home"></i>
+                    </span>
+                    <i class="fas fa-chevron-right breadcrumb-separator"></i>
+                    <span class="breadcrumb-item">OpenHands Cloud</span>
+                    <i class="fas fa-chevron-right breadcrumb-separator"></i>
+                    <span class="breadcrumb-item active">Settings</span>
+                </div>
+
+                <!-- Page Content -->
+                <article class="page-content" id="main-content">
+                    <!-- Default Settings Content -->
+                    <div class="content-page" id="settings-content">
+                        <header class="page-header">
+                            <h1 class="page-title">Settings</h1>
+                            <p class="page-description">
+                                The Settings page allows you to:
+                            </p>
+                        </header>
+
+                        <div class="content-body">
+                            <ul class="feature-list">
+                                <li class="feature-item">
+                                    <strong>Configure GitHub repository access</strong> for OpenHands.
+                                </li>
+                                <li class="feature-item">
+                                    <strong>Install the OpenHands Slack app</strong>.
+                                </li>
+                                <li class="feature-item">
+                                    Set application settings like your preferred language, notifications and other preferences.
+                                </li>
+                                <li class="feature-item">
+                                    Add credits to your account.
+                                </li>
+                                <li class="feature-item">
+                                    <strong>Generate custom secrets</strong>.
+                                </li>
+                                <li class="feature-item">
+                                    <strong>Create API keys to work with OpenHands programmatically</strong>.
+                                </li>
+                                <li class="feature-item">
+                                    Change your email address.
+                                </li>
+                            </ul>
+
+                            <section class="content-section">
+                                <h2 class="section-title">Key Features</h2>
+                                <p class="section-text">
+                                    For an overview of the key features available inside a conversation, please refer to the 
+                                    <a href="#" class="content-link">Key Features</a> section of the documentation.
+                                </p>
+                            </section>
+
+                            <section class="content-section">
+                                <h2 class="section-title">Next Steps</h2>
+                                <ul class="next-steps-list">
+                                    <li class="next-step-item">
+                                        <strong>Install GitHub Integration</strong> to use OpenHands with your GitHub repositories.
+                                    </li>
+                                    <li class="next-step-item">
+                                        <strong>Install GitLab Integration</strong> to use OpenHands with your GitLab repositories.
+                                    </li>
+                                    <li class="next-step-item">
+                                        <strong>Use the Cloud API</strong> to programmatically interact with OpenHands.
+                                    </li>
+                                </ul>
+                            </section>
+                        </div>
+                    </div>
+
+                    <!-- Microservice Architecture Content -->
+                    <div class="content-page" id="microservice-architecture-content" style="display: none;">
+                        <header class="page-header" id="microservice-architecture">
+                            <h1 class="page-title">Kiến trúc Thư mục Dự án Microservice</h1>
+                            <p class="page-description">
+                                Đây là kiến trúc thư mục tổng quan cho dự án Microservice, được tổ chức để dễ dàng quản lý và mở rộng.
+                            </p>
+                        </header>
+
+                        <div class="content-body">
+                            <p class="section-text">
+                                Cấu trúc này phản ánh sự phân chia rõ ràng giữa các dịch vụ backend, ứng dụng frontend, các thành phần dùng chung và hạ tầng.
+                            </p>
+
+                            <section class="content-section" id="cau-truc-thu-muc">
+                                <h2 class="section-title">Cấu trúc Thư mục</h2>
+                                <div class="code-block">
+                                    <pre><code>/project-root
+├── services/                                   # Chứa mã nguồn của tất cả các Microservice Backend
+│   ├── cart-service/                           # Dịch vụ giỏ hàng
+│   ├── product-service/                        # Dịch vụ sản phẩm
+│   ├── news-service/                           # Dịch vụ tin tức
+│   ├── design-calculation-service/             # Dịch vụ tính toán thiết kế
+│   ├── football-service/                       # Dịch vụ bóng đá
+│   ├── communication-log-service/              # Dịch vụ nhật ký thi công
+│   ├── chatbot-service/                        # Dịch vụ chatbot
+│   ├── payment-service/                        # Dịch vụ thanh toán
+│   ├── user-service/                           # Dịch vụ người dùng
+│   ├── shell-config-service/                   # Dịch vụ cấu hình shell
+│   ├── admin-service/                          # Dịch vụ quản trị hệ thống
+│   ├── agent-management-service/               # Dịch vụ quản lý đại lý
+│   └── agent-policy-service/                   # Dịch vụ chính sách đại lý
+
+├── frontend/                                   # Chứa mã nguồn của tất cả các ứng dụng Frontend
+│   ├── shell-app-user/                         # Ứng dụng Frontend chính cho người dùng cuối
+│   ├── shell-app-admin/                        # Ứng dụng Frontend chính cho quản trị viên
+│   ├── shell-config-admin-frontend/            # Ứng dụng Frontend độc lập cho quản trị cấu hình Shell
+│   ├── cart-service-frontend/                  # Giao diện người dùng giỏ hàng
+│   ├── cart-service-admin/                     # Giao diện quản trị giỏ hàng
+│   ├── product-service-frontend/               # Giao diện người dùng sản phẩm
+│   ├── product-service-admin/                  # Giao diện quản trị sản phẩm
+│   ├── news-service-frontend/                  # Giao diện người dùng tin tức
+│   ├── news-service-admin/                     # Giao diện quản trị tin tức
+│   ├── design-calculation-frontend/            # Giao diện người dùng tính toán thiết kế
+│   ├── design-calculation-admin/               # Giao diện quản trị tính toán thiết kế
+│   ├── football-service-frontend/              # Giao diện người dùng bóng đá
+│   ├── football-service-admin/                 # Giao diện quản trị bóng đá
+│   ├── communication-log-frontend/             # Giao diện người dùng nhật ký thi công
+│   ├── communication-log-admin/                # Giao diện quản trị nhật ký thi công
+│   ├── chatbot-service-frontend/               # Giao diện người dùng chatbot
+│   ├── chatbot-service-admin/                  # Giao diện quản trị chatbot
+│   ├── payment-service-frontend/               # Giao diện người dùng thanh toán
+│   ├── payment-service-admin/                  # Giao diện quản trị thanh toán
+│   ├── user-service-frontend/                  # Giao diện người dùng
+│   ├── user-service-admin/                     # Giao diện quản trị người dùng
+│   ├── admin-service-frontend/                 # Giao diện người dùng quản trị
+│   ├── admin-service-admin/                    # Giao diện quản trị hệ thống
+│   ├── agent-management-frontend/              # Giao diện người dùng quản lý đại lý
+│   ├── agent-management-admin/                 # Giao diện quản trị quản lý đại lý
+│   ├── agent-policy-frontend/                  # Giao diện người dùng chính sách đại lý
+│   └── agent-policy-admin/                     # Giao diện quản trị chính sách đại lý
+
+├── api-gateway/                                # Cấu hình và mã nguồn cho API Gateway
+│   ├── user-gateway/                           # API Gateway cho người dùng cuối
+│   └── admin-gateway/                          # API Gateway cho quản trị viên
+
+├── shared/                                     # Chứa các thư viện, module dùng chung
+│   ├── common-models/                          # Các định nghĩa model dùng chung
+│   ├── utils/                                  # Các tiện ích chung
+│   └── config/                                 # Cấu hình chung
+
+├── infrastructure/                             # Cấu hình và mã nguồn liên quan đến hạ tầng
+│   ├── kubernetes/                             # Cấu hình Kubernetes
+│   ├── terraform/                              # Mã Terraform để quản lý hạ tầng
+│   ├── ansible/                                # Playbook Ansible để cấu hình máy chủ
+│   ├── monitoring/                             # Cấu hình cho các công cụ giám sát
+│   └── logging/                                # Cấu hình cho hệ thống logging
+
+├── docs/                                       # Tài liệu dự án
+│   ├── architecture/                           # Tài liệu kiến trúc
+│   ├── deployment/                             # Tài liệu triển khai
+│   └── README.md
+
+├── scripts/                                    # Các script tự động hóa
+│   ├── ci-cd/                                  # Script cho CI/CD pipelines
+│   ├── deploy/                                 # Script triển khai
+│   └── setup/                                  # Script cài đặt môi trường
+
+├── .gitignore                                  # Các file/thư mục bỏ qua bởi Git
+├── README.md                                   # File README tổng quan dự án
+└── docker-compose.yml                          # File Docker Compose cho môi trường phát triển</code></pre>
+                                </div>
+                            </section>
+
+                            <section class="content-section" id="giai-thich-cau-truc">
+                                <h2 class="section-title">Giải thích cấu trúc</h2>
+                                
+                                <div class="architecture-item">
+                                    <h3 class="architecture-title">
+                                        <i class="fas fa-server"></i>
+                                        services/
+                                    </h3>
+                                    <p class="architecture-description">
+                                        Chứa tất cả các microservice backend. Mỗi thư mục con là một microservice độc lập với mã nguồn, Dockerfile, và các file cấu hình riêng.
+                                    </p>
+                                </div>
+
+                                <div class="architecture-item">
+                                    <h3 class="architecture-title">
+                                        <i class="fas fa-desktop"></i>
+                                        frontend/
+                                    </h3>
+                                    <p class="architecture-description">
+                                        Chứa tất cả các ứng dụng frontend. Mỗi thư mục con là một ứng dụng frontend độc lập, bao gồm cả Shell Config Admin Frontend được tách biệt.
+                                    </p>
+                                </div>
+
+                                <div class="architecture-item">
+                                    <h3 class="architecture-title">
+                                        <i class="fas fa-exchange-alt"></i>
+                                        api-gateway/
+                                    </h3>
+                                    <p class="architecture-description">
+                                        Chứa cấu hình và mã nguồn cho các API Gateway, phân tách giữa người dùng và quản trị.
+                                    </p>
+                                </div>
+
+                                <div class="architecture-item">
+                                    <h3 class="architecture-title">
+                                        <i class="fas fa-share-alt"></i>
+                                        shared/
+                                    </h3>
+                                    <p class="architecture-description">
+                                        Chứa các module, thư viện, hoặc định nghĩa dùng chung giữa các dịch vụ và ứng dụng để tránh trùng lặp mã.
+                                    </p>
+                                </div>
+
+                                <div class="architecture-item">
+                                    <h3 class="architecture-title">
+                                        <i class="fas fa-cloud"></i>
+                                        infrastructure/
+                                    </h3>
+                                    <p class="architecture-description">
+                                        Chứa tất cả các cấu hình và mã nguồn liên quan đến hạ tầng, như Kubernetes manifests, Terraform scripts, Ansible playbooks, cấu hình monitoring và logging.
+                                    </p>
+                                </div>
+
+                                <div class="architecture-item">
+                                    <h3 class="architecture-title">
+                                        <i class="fas fa-book"></i>
+                                        docs/
+                                    </h3>
+                                    <p class="architecture-description">
+                                        Chứa tất cả tài liệu của dự án, bao gồm tài liệu kiến trúc, triển khai, và các hướng dẫn khác.
+                                    </p>
+                                </div>
+
+                                <div class="architecture-item">
+                                    <h3 class="architecture-title">
+                                        <i class="fas fa-terminal"></i>
+                                        scripts/
+                                    </h3>
+                                    <p class="architecture-description">
+                                        Chứa các script tự động hóa cho các tác vụ như CI/CD, triển khai, và thiết lập môi trường.
+                                    </p>
+                                </div>
+                            </section>
+
+                            <section class="content-section" id="loi-ich">
+                                <h2 class="section-title">Lợi ích của cấu trúc này</h2>
+                                <ul class="feature-list">
+                                    <li class="feature-item">
+                                        <strong>Rõ ràng và có tổ chức:</strong> Mỗi thành phần có vị trí rõ ràng trong cấu trúc tổng thể.
+                                    </li>
+                                    <li class="feature-item">
+                                        <strong>Dễ dàng mở rộng:</strong> Có thể thêm microservice hoặc frontend mới mà không ảnh hưởng đến các thành phần khác.
+                                    </li>
+                                    <li class="feature-item">
+                                        <strong>Quản lý hiệu quả:</strong> Phân chia rõ ràng giúp team phát triển dễ dàng quản lý và bảo trì.
+                                    </li>
+                                    <li class="feature-item">
+                                        <strong>Tái sử dụng code:</strong> Thư mục shared giúp tránh trùng lặp và tăng tính nhất quán.
+                                    </li>
+                                    <li class="feature-item">
+                                        <strong>DevOps thân thiện:</strong> Cấu trúc hỗ trợ tốt cho CI/CD và deployment automation.
+                                    </li>
+                                </ul>
+                            </section>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Page Navigation -->
+                <div class="page-navigation">
+                    <div class="page-nav-item">
+                        <div class="nav-direction">Previous</div>
+                        <a href="#" class="nav-link-text">Linear Integration (Coming soon...)</a>
+                    </div>
+                    <div class="page-nav-item">
+                        <div class="nav-direction">Next</div>
+                        <a href="#" class="nav-link-text">Cloud API</a>
+                    </div>
+                </div>
+
+                <!-- Page Feedback -->
+                <div class="page-feedback">
+                    <div class="feedback-question">Was this page helpful?</div>
+                    <div class="feedback-buttons">
+                        <button class="feedback-btn feedback-yes">
+                            <i class="fas fa-thumbs-up"></i>
+                            Yes
+                        </button>
+                        <button class="feedback-btn feedback-no">
+                            <i class="fas fa-thumbs-down"></i>
+                            No
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Table of Contents -->
+            <aside class="toc-sidebar">
+                <div class="toc-content">
+                    <div class="toc-title">On this page</div>
+                    <nav class="toc-nav" id="dynamic-toc">
+                        <!-- Default TOC for Settings -->
+                        <div class="toc-content-settings">
+                            <a href="#settings" class="toc-link active">Settings</a>
+                            <a href="#key-features" class="toc-link">Key Features</a>
+                            <a href="#next-steps" class="toc-link">Next Steps</a>
+                        </div>
+                        
+                        <!-- TOC for Microservice Architecture -->
+                        <div class="toc-content-microservice" style="display: none;">
+                            <a href="#microservice-architecture" class="toc-link">Kiến trúc Microservice</a>
+                            <a href="#cau-truc-thu-muc" class="toc-link">Cấu trúc Thư mục</a>
+                            <a href="#giai-thich-cau-truc" class="toc-link">Giải thích cấu trúc</a>
+                            <a href="#loi-ich" class="toc-link">Lợi ích của cấu trúc</a>
+                        </div>
+                    </nav>
+                </div>
+            </aside>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="docs-footer">
+        <div class="footer-content">
+            <div class="footer-left">
+                <div class="footer-links">
+                    <a href="#" class="footer-link">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="#" class="footer-link">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="footer-link">
+                        <i class="fab fa-discord"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-right">
+                <span class="footer-text">Powered by ConstructVN</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Menu Toggle -->
+    <button class="mobile-menu-toggle" id="mobile-menu-toggle">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <script src="docs.js"></script>
+</body>
+</html>
